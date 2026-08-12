@@ -216,9 +216,6 @@ footer a:hover{color:#D63A2E}
     <label for="wlemail">EMAIL <span class="req">*</span></label>
     <input type="email" id="wlemail" inputmode="email" autocomplete="email" placeholder="you@email.com" required>
 
-    <label for="wlphone">PHONE <span style="color:#9BA5B4">(OPTIONAL)</span></label>
-    <input type="tel" id="wlphone" inputmode="tel" autocomplete="tel" placeholder="+1 555 000 0000">
-
     <label>WHERE DID YOU FIND US? <span style="color:#9BA5B4">(OPTIONAL)</span></label>
     <div class="opts" id="wlheard">
       <button type="button" data-v="instagram">INSTAGRAM</button>
@@ -366,7 +363,6 @@ footer a:hover{color:#D63A2E}
     go.disabled = true; say('SENDING...');
     var body = {
       email: email,
-      phone: document.getElementById('wlphone').value.trim() || null,
       platform: 'android',
       heard_from: heard()
     };
@@ -382,7 +378,6 @@ footer a:hover{color:#D63A2E}
       // export dedupes on the way out. Nobody gets told "you already did this".
       if (r.status === 201 || r.status === 200 || r.status === 204) {
         document.getElementById('wlemail').value = '';
-        document.getElementById('wlphone').value = '';
         [].forEach.call(document.querySelectorAll('#wlheard button'), function(x){ x.classList.remove('sel'); });
         document.getElementById('wlemail').focus();
         say('ADDED \u2014 ADD ANOTHER IF YOU WANT.', 'ok');
