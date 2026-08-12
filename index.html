@@ -138,6 +138,33 @@ h1{font-family:'J25';font-size:41px;line-height:.9;color:#fff;font-weight:400;ma
 .cta2 b{font-family:'Silk';font-size:12px;letter-spacing:1px;color:#151B23;font-weight:400;display:block}
 .cta2 .s{display:block;font-size:9px;letter-spacing:1px;color:#6B7686;margin-top:6px}
 
+/* ---- waitlist form: same frost plate as .cta2, opens under the button ---- */
+#wl{display:none;margin:0 3px 20px;padding:18px 16px;background:#F1F4F8;border:4px solid #0C1016;
+  clip-path:polygon(12px 0, calc(100% - 12px) 0, calc(100% - 12px) 6px, calc(100% - 6px) 6px, calc(100% - 6px) 12px, 100% 12px, 100% calc(100% - 12px), calc(100% - 6px) calc(100% - 12px), calc(100% - 6px) calc(100% - 6px), calc(100% - 12px) calc(100% - 6px), calc(100% - 12px) 100%, 12px 100%, 12px calc(100% - 6px), 6px calc(100% - 6px), 6px calc(100% - 12px), 0 calc(100% - 12px), 0 12px, 6px 12px, 6px 6px, 12px 6px);
+  box-shadow:inset 4px 4px 0 #FFFFFF, inset -4px -4px 0 #A3ACBA, inset 8px 8px 0 #F8FAFC, inset -8px -8px 0 #C6CDD7;text-align:left}
+#wl.on{display:block}
+#wl label{display:block;font-family:'Silk';font-size:9px;letter-spacing:1px;color:#6B7686;margin:14px 0 6px}
+#wl label:first-of-type{margin-top:0}
+#wl input[type=text],#wl input[type=email],#wl input[type=tel]{
+  width:100%;box-sizing:border-box;font-family:'Silk';font-size:11px;letter-spacing:1px;color:#151B23;
+  background:#FFFFFF;border:3px solid #0C1016;padding:10px 8px;outline:none;-webkit-appearance:none;border-radius:0;
+  box-shadow:inset 2px 2px 0 #C6CDD7}
+#wl input:focus{box-shadow:inset 2px 2px 0 #E0C273}
+#wl .opts{display:flex;flex-wrap:wrap;gap:6px}
+#wl .opts button{font-family:'Silk';font-size:9px;letter-spacing:1px;color:#6B7686;background:#E7EBF1;
+  border:3px solid #0C1016;padding:8px 10px;cursor:pointer;border-radius:0;box-shadow:inset 2px 2px 0 #FFFFFF, inset -2px -2px 0 #C6CDD7}
+#wl .opts button.sel{background:#151B23;color:#F1F4F8;box-shadow:inset 2px 2px 0 #2E3546}
+#wl .req{color:#C0392B}
+#wl #wlgo{width:100%;margin-top:20px;font-family:'Silk';font-size:12px;letter-spacing:1px;color:#F1F4F8;
+  background:#C0392B;border:4px solid #0C1016;padding:14px;cursor:pointer;border-radius:0;
+  box-shadow:inset 3px 3px 0 #E4685A, inset -3px -3px 0 #8E1F16}
+#wl #wlgo:active{transform:translate(2px,2px);box-shadow:inset 3px 3px 0 #8E1F16, inset -3px -3px 0 #E4685A}
+#wl #wlgo[disabled]{opacity:.55;cursor:default}
+#wl #wlmsg{font-family:'Silk';font-size:9px;letter-spacing:1px;line-height:1.7;margin-top:14px;color:#6B7686}
+#wl #wlmsg.ok{color:#1E7A4C}
+#wl #wlmsg.err{color:#C0392B}
+#wl .fine{font-family:'Silk';font-size:8px;letter-spacing:1px;line-height:1.8;color:#9BA5B4;margin-top:14px}
+
 .badges{display:flex;justify-content:center;gap:6px;margin:0 3px 30px;flex-wrap:wrap}
 .badges span{
   font-family:'Silk';font-size:9px;letter-spacing:1px;color:#9BA5B4;
@@ -180,13 +207,33 @@ footer a:hover{color:#D63A2E}
 
   <p class="iabhint" id="iabhint">STUCK IN INSTAGRAM'S BROWSER?<br>TAP &#183;&#183;&#183; &#8594; OPEN IN BROWSER</p>
 
-  <a class="cta2" href="mailto:support@motordexgame.com?subject=Android%20waitlist">
+  <a class="cta2" href="#wl" id="wltoggle" role="button" aria-expanded="false" aria-controls="wl">
     <b>ANDROID WAITLIST</b>
-    <span class="s">BE FIRST WHEN IT LANDS</span>
+    <span class="s">GOOGLE PLAY &#183; BE FIRST WHEN IT LANDS</span>
   </a>
 
+  <div id="wl">
+    <label for="wlemail">EMAIL <span class="req">*</span></label>
+    <input type="email" id="wlemail" inputmode="email" autocomplete="email" placeholder="you@email.com" required>
+
+    <label for="wlphone">PHONE <span style="color:#9BA5B4">(OPTIONAL)</span></label>
+    <input type="tel" id="wlphone" inputmode="tel" autocomplete="tel" placeholder="+1 555 000 0000">
+
+    <label>WHERE DID YOU FIND US? <span style="color:#9BA5B4">(OPTIONAL)</span></label>
+    <div class="opts" id="wlheard">
+      <button type="button" data-v="instagram">INSTAGRAM</button>
+      <button type="button" data-v="tiktok">TIKTOK</button>
+      <button type="button" data-v="friend">A FRIEND</button>
+      <button type="button" data-v="other">OTHER</button>
+    </div>
+
+    <button type="button" id="wlgo">JOIN THE WAITLIST</button>
+    <p id="wlmsg"></p>
+    <p class="fine">WE'LL EMAIL YOU ONCE, WHEN MOTORDEX HITS GOOGLE PLAY. NOTHING ELSE. ASK US TO DELETE YOUR DETAILS ANY TIME AT SUPPORT@MOTORDEXGAME.COM &#183; <a href="/privacy.html" style="color:#6B7686">PRIVACY</a></p>
+  </div>
+
   <div class="badges">
-    <span>IPHONE</span><span>FREE</span><span>1,600+ CARS</span>
+    <span>IPHONE</span><span>FREE</span><span>1,700+ CARS</span>
   </div>
 
   <div class="socials">
@@ -249,6 +296,7 @@ footer a:hover{color:#D63A2E}
   }
   setTimeout(pass, rand(1200, 2500));
 })();
+
 // App Store hand-off.
 // Meta's in-app browser refuses to launch native apps from an https:// link -
 // it loads the App Store's mobile WEB page inside the webview instead, which
@@ -271,15 +319,80 @@ footer a:hover{color:#D63A2E}
       window.location.href = NATIVE;
       setTimeout(function(){
         document.removeEventListener('visibilitychange', gone);
+        // still here and still visible => the scheme was swallowed
         if (!left && !document.hidden) window.location.href = HTTPS;
       }, 1200);
     });
   }
 
+  // Inside Instagram/Facebook, show the way out of their browser.
   if (/Instagram|FBAN|FBAV|FB_IAB/.test(ua)) {
     var hint = document.getElementById('iabhint');
     if (hint) hint.style.display = 'block';
   }
+})();
+</script>
+
+<script>
+/* Waitlist -> Supabase. The anon key is PUBLIC by design (it ships in the app too); the
+   `waitlist` table grants it INSERT on five columns and nothing else — SELECT is revoked, so
+   this key cannot read a single address back. Verified: insert 201, select 42501. */
+(function(){
+  var URL_ = "https://wjteolkwzshrnqoyupdx.supabase.co/rest/v1/waitlist";
+  var KEY  = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndqdGVvbGt3enNocm5xb3l1cGR4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAwOTc0MTAsImV4cCI6MjA5NTY3MzQxMH0.fLsVWIwz8addY-jo_isljSKndNXydOKQhMgABMSRuYM";
+  var tog = document.getElementById('wltoggle'), box = document.getElementById('wl');
+  tog.addEventListener('click', function(e){
+    e.preventDefault();
+    var on = box.classList.toggle('on');
+    tog.setAttribute('aria-expanded', on ? 'true' : 'false');
+    if (on) { box.scrollIntoView({behavior:'smooth', block:'nearest'}); document.getElementById('wlemail').focus(); }
+  });
+  function pick(id){
+    var w = document.getElementById(id);
+    w.addEventListener('click', function(e){
+      var b = e.target.closest('button'); if(!b) return;
+      [].forEach.call(w.querySelectorAll('button'), function(x){ x.classList.remove('sel'); });
+      b.classList.add('sel');
+    });
+    return function(){ var el = w.querySelector('button.sel'); return el ? el.dataset.v : null; };
+  }
+  var heard = pick('wlheard');   // platform is always 'android' — it's the only one we offer
+  var go = document.getElementById('wlgo'), msg = document.getElementById('wlmsg');
+  function say(t, cls){ msg.textContent = t; msg.className = cls || ''; }
+
+  go.addEventListener('click', function(){
+    var email = document.getElementById('wlemail').value.trim();
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { say('THAT EMAIL DOESN\'T LOOK RIGHT.', 'err'); return; }
+    go.disabled = true; say('SENDING...');
+    var body = {
+      email: email,
+      phone: document.getElementById('wlphone').value.trim() || null,
+      platform: 'android',
+      heard_from: heard()
+    };
+    fetch(URL_, {
+      method:'POST',
+      headers:{'apikey':KEY,'Authorization':'Bearer '+KEY,'Content-Type':'application/json','Prefer':'return=minimal'},
+      body: JSON.stringify(body)
+    }).then(function(r){
+      go.disabled = false;
+      // The form is NEVER replaced or locked. It clears and stays ready, so the same phone can
+      // be passed around a car meet and take one address after another. A repeat address is
+      // NOT called out either — the unique index was dropped, so it simply stores and the
+      // export dedupes on the way out. Nobody gets told "you already did this".
+      if (r.status === 201 || r.status === 200 || r.status === 204) {
+        document.getElementById('wlemail').value = '';
+        document.getElementById('wlphone').value = '';
+        [].forEach.call(document.querySelectorAll('#wlheard button'), function(x){ x.classList.remove('sel'); });
+        document.getElementById('wlemail').focus();
+        say('ADDED \u2014 ADD ANOTHER IF YOU WANT.', 'ok');
+        return;
+      }
+      say('SOMETHING WENT WRONG - TRY AGAIN, OR EMAIL SUPPORT@MOTORDEXGAME.COM', 'err');
+    }).catch(function(){
+      go.disabled = false; say('NO CONNECTION - CHECK YOUR SIGNAL AND TRY AGAIN.', 'err');
+    });
+  });
 })();
 </script>
 </body>
