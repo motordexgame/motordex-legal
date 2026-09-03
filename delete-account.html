@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MotorDex — Delete Your Account</title>
+<meta name="description" content="How to delete your MotorDex account and all associated data, in the app or by request.">
+<style>
+/* SUBSET woff2, not the full TTFs. The faces are used for headings and
+   labels only, so shipping every glyph cost 170KB to render about sixty
+   characters; subset to the printable ASCII range plus the punctuation the
+   site uses, that is 3KB. font-display:swap so the text is readable while
+   they load rather than invisible. */
+@font-face{font-family:'Silk';src:url(fonts/silkscreen.woff2) format('woff2');font-display:swap}
+@font-face{font-family:'J25';src:url(fonts/jersey25.woff2) format('woff2');font-display:swap}
+
+/* Same law as the app and the landing page: nothing is ever rounded. */
+*{box-sizing:border-box;margin:0;padding:0;border-radius:0 !important}
+
+html{background:#0E1016;-webkit-text-size-adjust:100%}
+body{
+  background:#0E1016;
+  /* the frost dot grid, as a 8px CSS gradient rather than a bitmap */
+  background-image:radial-gradient(#181D27 1px, transparent 1px);
+  background-size:8px 8px;
+  color:#B9C2D0;
+  /* PROSE is readable; Silkscreen is reserved for chrome and labels, exactly as
+     the app's type law reserves it. A whole page of pixel caps is authentic and
+     genuinely hard to read. */
+  font-family:ui-sans-serif,-apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif;
+  font-size:15px; line-height:1.75; letter-spacing:.1px;
+  padding:0 18px 64px;
+}
+
+/* Wider than index.html's 360px landing column ON PURPOSE — that width is
+   right for three buttons and wrong for eight paragraphs. Everything else
+   about the styling is shared. */
+.wrap{width:100%;max-width:640px;margin:0 auto}
+
+/* ---- the red device housing, echoing every tab root in the app ---- */
+.hous{
+  background:#D63A2E;border-bottom:5px solid #8E1F16;
+  margin:0 -18px 30px;padding:15px 18px;
+  display:flex;align-items:center;gap:11px;
+}
+.lens{width:26px;height:26px;flex:0 0 26px;background:#2F3845;border:3px solid #F4A79C;position:relative}
+.lens i{position:absolute;left:5px;top:5px;width:10px;height:10px;background:#7FC7E8;display:block}
+.leds{display:flex;gap:6px}
+.leds b{width:8px;height:8px;background:#F4A79C;display:block}
+.leds b:first-child{background:#FFE9A8}
+.plate{
+  margin-left:auto;font-family:'Silk';font-size:10px;letter-spacing:2px;color:#fff;
+  background:#8E1F16;padding:5px 9px;
+}
+
+h1{
+  font-family:'J25';font-weight:400;line-height:.92;color:#fff;
+  /* The floor has to be genuinely small: 360px is the most common Android
+     width and 375px every small iPhone, and Jersey25 is wide. A 34px floor
+     could not shrink far enough and the title ran off the screen on all
+     three. Measured, not eyeballed — see the width sweep. */
+  font-size:clamp(22px,8vw,52px);letter-spacing:1px;margin-bottom:14px;
+}
+.meta{font-family:'Silk';color:#6B7686;font-size:9px;letter-spacing:1.6px;line-height:1.9;margin-bottom:26px}
+
+h2{
+  scroll-margin-top:18px;
+  font-family:'J25';font-weight:400;color:#fff;
+  font-size:clamp(17px,5.2vw,30px);line-height:1.05;letter-spacing:.5px;
+  margin:40px 0 4px;
+}
+h2 + p, h2 + ul, h2 + .box{margin-top:14px}
+p{margin:0 0 16px}
+strong{color:#E8ECF2;font-weight:400}
+a{color:#D63A2E;text-decoration:none;border-bottom:1px solid #5C1F19}
+a:hover{color:#F4A79C;border-bottom-color:#D63A2E}
+
+ul{list-style:none;margin:0 0 18px}
+li{position:relative;padding-left:18px;margin-bottom:9px}
+/* a square bullet — a disc would be a rounded corner */
+li:before{content:"";position:absolute;left:0;top:12px;width:5px;height:5px;background:#D63A2E}
+
+/* ---- the emphasis panel: a sunken well, lit from the top-left ---- */
+.box{
+  background:#12161E;border:3px solid #0C1016;
+  box-shadow:inset 3px 3px 0 #070A0E, inset -3px -3px 0 #2A3040;
+  padding:22px 20px 8px;margin:24px 0 26px;
+}
+.box .lab{
+  font-family:'Silk';font-size:9px;letter-spacing:2px;color:#E0C273;margin-bottom:12px;display:block;
+}
+.mail{
+  font-family:'Silk';font-size:clamp(11px,3.4vw,14px);letter-spacing:.5px;
+  color:#E8ECF2;border-bottom:2px solid #D63A2E;
+  /* long addresses must never push the panel wider than the phone */
+  word-break:break-all;
+}
+code{background:#1B212C;color:#E0C273;padding:2px 6px;font-family:'Silk';font-size:11px}
+
+/* ---- steps ---- */
+.steps{counter-reset:s}
+.steps li{counter-increment:s;padding-left:34px;margin-bottom:12px}
+.steps li:before{
+  font-family:'Silk';content:counter(s);left:0;top:2px;width:22px;height:22px;background:#232936;
+  color:#9BA5B4;font-size:10px;line-height:22px;text-align:center;
+}
+
+.warn{border-left:5px solid #E0C273;padding:2px 0 2px 16px;margin:22px 0;color:#C9B98A}
+
+footer{margin-top:52px;padding-top:18px;border-top:3px solid #232936;text-align:center}
+footer a{font-family:'Silk';font-size:9px;letter-spacing:1.5px;color:#9BA5B4;padding:0 6px;line-height:2.6;border:0}
+footer a:hover{color:#D63A2E}
+.copy{font-family:'Silk';font-size:9px;color:#5D6675;margin-top:12px;letter-spacing:1.5px}
+
+/* Phone: slightly smaller prose, same rhythm. */
+@media (max-width:420px){
+  body{font-size:14px;line-height:1.72;padding:0 14px 48px}
+  .hous{margin:0 -14px 24px}
+  .plate{display:none}          /* the wordmark is the first thing to go */
+}
+</style>
+</head>
+<body>
+
+<div class="hous">
+  <span class="lens"><i></i></span>
+  <span class="leds"><b></b><b></b><b></b><b></b></span>
+  <span class="plate">MOTORDEX</span>
+</div>
+
+<div class="wrap">
+
+<h1>DELETE YOUR ACCOUNT</h1>
+<p class="meta">MOTORDEX &middot; PUBLISHED BY MATTEO FARINACCI<br>APPLIES TO THE iOS AND ANDROID APPS</p>
+
+<p>You can permanently delete your MotorDex account and everything stored under
+it, at any time, for any reason. You do not need to contact us first, and you do
+not need to give a reason.</p>
+
+<div class="warn"><strong>Paying monthly for Pro?</strong> Cancel the
+subscription first &mdash; deleting your account does not stop the billing.
+<a href="#cancel">How to cancel</a></div>
+
+<h2>1 &mdash; DO IT YOURSELF</h2>
+<p>Immediate, and does not require contacting anyone.</p>
+<ul class="steps">
+  <li>Open <strong>MotorDex</strong></li>
+  <li>Go to <strong>Settings</strong> &mdash; the gear icon, top right of HOME</li>
+  <li>Scroll to <strong>Account</strong></li>
+  <li>Tap <strong>DELETE ACCOUNT</strong>, then confirm</li>
+</ul>
+
+<h2>2 &mdash; ASK US</h2>
+<p>If you have already uninstalled MotorDex, lost access to your device, or
+cannot sign in, email us and we will delete the account for you.</p>
+
+<div class="box">
+  <span class="lab">EMAIL US</span>
+  <p><a class="mail" href="mailto:&#115;&#117;&#112;&#112;&#111;&#114;&#116;&#64;&#109;&#111;&#116;&#111;&#114;&#100;&#101;&#120;&#103;&#97;&#109;&#101;&#46;&#99;&#111;&#109;?subject=&#65;&#99;&#99;&#111;&#117;&#110;&#116;&#32;&#100;&#101;&#108;&#101;&#116;&#105;&#111;&#110;&#32;&#114;&#101;&#113;&#117;&#101;&#115;&#116;">&#115;&#117;&#112;&#112;&#111;&#114;&#116;&#64;&#109;&#111;&#116;&#111;&#114;&#100;&#101;&#120;&#103;&#97;&#109;&#101;&#46;&#99;&#111;&#109;</a></p>
+  <p>Subject line <code>Account deletion request</code>, and include the
+  <strong>email address</strong> or <strong>handle</strong> on the account so we
+  can find it.</p>
+  <p>We action these within <strong>7 days</strong> and reply to confirm. We may
+  ask one question to check you own the account &mdash; we will never ask for
+  your password.</p>
+</div>
+
+<h2>WHAT GETS DELETED</h2>
+<p>Permanently, with no way to recover it:</p>
+<ul>
+  <li>Your account and sign-in details</li>
+  <li>Your handle, profile photo, and Spotter License</li>
+  <li>Every catch, and every photo you scanned</li>
+  <li>Dex progress, XP, level, badges, and streaks</li>
+  <li>Friends, reactions, and anything you posted to the feed</li>
+  <li>Your scan history</li>
+</ul>
+
+<h2>WHAT WE KEEP</h2>
+<p>Only what the law requires, and only for as long as it requires:</p>
+<ul>
+  <li><strong>Purchase and tax records</strong> &mdash; held by the app stores and
+      our payment processor, not by us, and no longer linked to your gameplay
+      once the account is gone.</li>
+  <li><strong>Abuse records</strong> &mdash; if an account was removed for abuse, a
+      minimal record remains so it cannot simply be recreated.</li>
+</ul>
+<p>Neither can identify you as a MotorDex player. Neither is used for
+advertising or sold to anyone.</p>
+
+<h2 id="cancel">CANCEL FIRST</h2>
+<div class="warn"><strong>If you pay for MotorDex Pro monthly, cancel the
+subscription BEFORE you delete your account.</strong> Deleting the account does
+not stop the billing &mdash; the app store charges you, not us, and it keeps
+charging whether or not the account still exists.</div>
+
+<p>You do not need your MotorDex account to cancel: the subscription belongs to
+your Apple or Google account, so this still works after the app is gone. But it
+is far easier to remember while the app is still on your phone.</p>
+
+<ul>
+  <li><strong>Android</strong> &mdash; Play Store &rarr; profile icon &rarr;
+      Payments &amp; subscriptions &rarr; Subscriptions &rarr; MotorDex &rarr; Cancel</li>
+  <li><strong>iPhone</strong> &mdash; Settings &rarr; your name &rarr;
+      Subscriptions &rarr; MotorDex &rarr; Cancel</li>
+</ul>
+
+<p>A one-time <strong>Lifetime</strong> unlock is not a subscription. There is
+nothing to cancel and nothing further to pay.</p>
+
+<p>Already deleted your account and still being charged? Email us at the address
+above and we will help you sort it out.</p>
+
+<footer>
+  <a href="/">HOME</a>
+  <a href="support.html">SUPPORT</a>
+  <a href="privacy.html">PRIVACY</a>
+  <a href="terms.html">TERMS</a>
+  <div class="copy">&copy; 2026 MOTORDEX</div>
+</footer>
+
+</div>
+</body>
+</html>

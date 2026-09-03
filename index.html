@@ -138,32 +138,51 @@ h1{font-family:'J25';font-size:41px;line-height:.9;color:#fff;font-weight:400;ma
 .cta2 b{font-family:'Silk';font-size:12px;letter-spacing:1px;color:#151B23;font-weight:400;display:block}
 .cta2 .s{display:block;font-size:9px;letter-spacing:1px;color:#6B7686;margin-top:6px}
 
-/* ---- waitlist form: same frost plate as .cta2, opens under the button ---- */
-#wl{display:none;margin:0 3px 20px;padding:18px 16px;background:#F1F4F8;border:4px solid #0C1016;
-  clip-path:polygon(12px 0, calc(100% - 12px) 0, calc(100% - 12px) 6px, calc(100% - 6px) 6px, calc(100% - 6px) 12px, 100% 12px, 100% calc(100% - 12px), calc(100% - 6px) calc(100% - 12px), calc(100% - 6px) calc(100% - 6px), calc(100% - 12px) calc(100% - 6px), calc(100% - 12px) 100%, 12px 100%, 12px calc(100% - 6px), 6px calc(100% - 6px), 6px calc(100% - 12px), 0 calc(100% - 12px), 0 12px, 6px 12px, 6px 6px, 12px 6px);
-  box-shadow:inset 4px 4px 0 #FFFFFF, inset -4px -4px 0 #A3ACBA, inset 8px 8px 0 #F8FAFC, inset -8px -8px 0 #C6CDD7;text-align:left}
-#wl.on{display:block}
-#wl label{display:block;font-family:'Silk';font-size:9px;letter-spacing:1px;color:#6B7686;margin:14px 0 6px}
-#wl label:first-of-type{margin-top:0}
-#wl input[type=text],#wl input[type=email],#wl input[type=tel]{
-  width:100%;box-sizing:border-box;font-family:'Silk';font-size:11px;letter-spacing:1px;color:#151B23;
-  background:#FFFFFF;border:3px solid #0C1016;padding:10px 8px;outline:none;-webkit-appearance:none;border-radius:0;
-  box-shadow:inset 2px 2px 0 #C6CDD7}
-#wl input:focus{box-shadow:inset 2px 2px 0 #E0C273}
-#wl .opts{display:flex;flex-wrap:wrap;gap:6px}
-#wl .opts button{font-family:'Silk';font-size:9px;letter-spacing:1px;color:#6B7686;background:#E7EBF1;
-  border:3px solid #0C1016;padding:8px 10px;cursor:pointer;border-radius:0;box-shadow:inset 2px 2px 0 #FFFFFF, inset -2px -2px 0 #C6CDD7}
-#wl .opts button.sel{background:#151B23;color:#F1F4F8;box-shadow:inset 2px 2px 0 #2E3546}
-#wl .req{color:#C0392B}
-#wl #wlgo{width:100%;margin-top:20px;font-family:'Silk';font-size:12px;letter-spacing:1px;color:#F1F4F8;
-  background:#C0392B;border:4px solid #0C1016;padding:14px;cursor:pointer;border-radius:0;
-  box-shadow:inset 3px 3px 0 #E4685A, inset -3px -3px 0 #8E1F16}
-#wl #wlgo:active{transform:translate(2px,2px);box-shadow:inset 3px 3px 0 #8E1F16, inset -3px -3px 0 #E4685A}
-#wl #wlgo[disabled]{opacity:.55;cursor:default}
-#wl #wlmsg{font-family:'Silk';font-size:9px;letter-spacing:1px;line-height:1.7;margin-top:14px;color:#6B7686}
-#wl #wlmsg.ok{color:#1E7A4C}
-#wl #wlmsg.err{color:#C0392B}
-#wl .fine{font-family:'Silk';font-size:8px;letter-spacing:1px;line-height:1.8;color:#9BA5B4;margin-top:14px}
+/* --- Android waitlist form -----------------------------------------------
+   Sits in the secondary tier with .cta2: dark chrome, no white face and no
+   gold ring, so it can never compete with the one button this page exists to
+   get tapped. The input is SUNKEN (bevel inverted against the same top-left
+   light) because it is a well you type into, while the submit key is raised. */
+.wl{margin:0 3px 20px;text-align:left}
+.wlab{
+  display:block;font-family:'Silk';font-size:9px;letter-spacing:1px;
+  color:#9BA5B4;margin:0 0 7px 2px;
+}
+.wlin{
+  display:block;width:100%;
+  font-family:'Silk';font-size:12px;letter-spacing:1px;color:#E8ECF2;
+  background:#12161E;border:3px solid #0C1016;
+  box-shadow:inset 3px 3px 0 #070A0E, inset -3px -3px 0 #2A3040;
+  padding:14px 12px;outline:none;
+}
+.wlin::placeholder{color:#5D6675}
+.wlin:focus{box-shadow:inset 3px 3px 0 #070A0E, inset -3px -3px 0 #2A3040, inset 0 0 0 3px #D63A2E}
+.wlgo{
+  display:block;width:100%;margin-top:10px;cursor:pointer;
+  font-family:'Silk';font-size:12px;letter-spacing:1px;color:#151B23;
+  background:#F1F4F8;border:4px solid #0C1016;clip-path:polygon(12px 0, calc(100% - 12px) 0, calc(100% - 12px) 6px, calc(100% - 6px) 6px, calc(100% - 6px) 12px, 100% 12px, 100% calc(100% - 12px), calc(100% - 6px) calc(100% - 12px), calc(100% - 6px) calc(100% - 6px), calc(100% - 12px) calc(100% - 6px), calc(100% - 12px) 100%, 12px 100%, 12px calc(100% - 6px), 6px calc(100% - 6px), 6px calc(100% - 12px), 0 calc(100% - 12px), 0 12px, 6px 12px, 6px 6px, 12px 6px);
+  box-shadow:
+    inset 4px 4px 0 #FFFFFF,
+    inset -4px -4px 0 #A3ACBA,
+    inset 8px 8px 0 #F8FAFC,
+    inset -8px -8px 0 #C6CDD7;
+  padding:16px 20px;
+}
+.wlgo:active{
+  box-shadow:
+    inset 4px 4px 0 #A3ACBA,
+    inset -4px -4px 0 #FFFFFF,
+    inset 8px 8px 0 #C6CDD7,
+    inset -8px -8px 0 #F8FAFC;
+  transform:translate(2px,2px);
+}
+.wlgo[disabled]{color:#6B7686;cursor:default}
+.wlmsg{
+  font-family:'Silk';font-size:9px;letter-spacing:1px;line-height:1.7;
+  color:#9BA5B4;margin:10px 2px 0;min-height:1px;
+}
+.wlmsg.ok{color:#E0C273}
+.wlmsg.bad{color:#D63A2E}
 
 .badges{display:flex;justify-content:center;gap:6px;margin:0 3px 30px;flex-wrap:wrap}
 .badges span{
@@ -178,7 +197,7 @@ h1{font-family:'J25';font-size:41px;line-height:.9;color:#fff;font-weight:400;ma
 .socials .dot{color:#39404F}
 
 footer{margin-top:20px;padding-top:14px;border-top:3px solid #232936}
-footer a{font-family:'Silk';font-size:9px;letter-spacing:1px;color:#9BA5B4;padding:0 5px;line-height:2.4}
+footer a{font-family:'Silk';font-size:9px;letter-spacing:1px;color:#9BA5B4;padding:0 5px;line-height:2.4;white-space:nowrap}
 footer a:hover{color:#D63A2E}
 .copy{font-family:'Silk';font-size:9px;color:#5D6675;margin-top:10px;letter-spacing:1px}
 
@@ -193,7 +212,7 @@ footer a:hover{color:#D63A2E}
 <div id="lane" aria-hidden="true"></div>
 <div class="wrap">
 
-  <div class="av"><img src="data:image/png;base64,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" alt="MotorDex" width="64" height="64"></div>
+  <div class="av"><img src="data:image/png;base64,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" alt="MotorDex" width="64" height="64"></div>
 
   <h1>@MOTORDEXGAME</h1>
   <p class="tag">SCAN &amp; COLLECT REAL CARS</p>
@@ -205,32 +224,27 @@ footer a:hover{color:#D63A2E}
     </span>
   </a>
 
-  <p class="iabhint" id="iabhint">STUCK IN INSTAGRAM'S BROWSER?<br>PRESS &amp; HOLD THE BUTTON ABOVE &#8594; OPEN<br><span style="opacity:.72">OR TAP &#183;&#183;&#183; &#8594; OPEN IN BROWSER</span></p>
+  <p class="iabhint" id="iabhint">STUCK IN INSTAGRAM'S BROWSER?<br>TAP &#183;&#183;&#183; &#8594; OPEN IN BROWSER</p>
 
-  <a class="cta2" href="#wl" id="wltoggle" role="button" aria-expanded="false" aria-controls="wl">
+  <a class="cta2" id="wlopen" href="mailto:&#115;&#117;&#112;&#112;&#111;&#114;&#116;&#64;&#109;&#111;&#116;&#111;&#114;&#100;&#101;&#120;&#103;&#97;&#109;&#101;&#46;&#99;&#111;&#109;?subject=Android%20waitlist">
     <b>ANDROID WAITLIST</b>
-    <span class="s">GOOGLE PLAY &#183; BE FIRST WHEN IT LANDS</span>
+    <span class="s">BE FIRST WHEN IT LANDS</span>
   </a>
 
-  <div id="wl">
-    <label for="wlemail">EMAIL <span class="req">*</span></label>
-    <input type="email" id="wlemail" inputmode="email" autocomplete="email" placeholder="you@email.com" required>
-
-    <label>WHERE DID YOU FIND US? <span style="color:#9BA5B4">(OPTIONAL)</span></label>
-    <div class="opts" id="wlheard">
-      <button type="button" data-v="instagram">INSTAGRAM</button>
-      <button type="button" data-v="tiktok">TIKTOK</button>
-      <button type="button" data-v="friend">A FRIEND</button>
-      <button type="button" data-v="other">OTHER</button>
-    </div>
-
-    <button type="button" id="wlgo">JOIN THE WAITLIST</button>
-    <p id="wlmsg"></p>
-    <p class="fine">WE'LL EMAIL YOU ONCE, WHEN MOTORDEX HITS GOOGLE PLAY. NOTHING ELSE. ASK US TO DELETE YOUR DETAILS ANY TIME AT SUPPORT@MOTORDEXGAME.COM &#183; <a href="/privacy.html" style="color:#6B7686">PRIVACY</a></p>
-  </div>
+  <!-- Revealed by JS when the button above is tapped. Hidden by default so a
+       reader with JS off keeps the working mailto rather than a form that
+       cannot submit. -->
+  <form class="wl" id="wl" hidden novalidate>
+    <label class="wlab" for="wlmail">YOUR EMAIL</label>
+    <input class="wlin" id="wlmail" name="email" type="email"
+           inputmode="email" autocomplete="email" autocapitalize="off"
+           spellcheck="false" placeholder="you@example.com" required>
+    <button class="wlgo" id="wlgo" type="submit">JOIN THE LIST</button>
+    <p class="wlmsg" id="wlmsg" role="status" aria-live="polite"></p>
+  </form>
 
   <div class="badges">
-    <span>IPHONE</span><span>FREE</span><span>1,700+ CARS</span>
+    <span>IPHONE</span><span>FREE</span><span>2,000+ CARS</span>
   </div>
 
   <div class="socials">
@@ -238,10 +252,11 @@ footer a:hover{color:#D63A2E}
   </div>
 
   <footer>
-    <a href="mailto:support@motordexgame.com">CONTACT</a>
+    <a href="mailto:&#115;&#117;&#112;&#112;&#111;&#114;&#116;&#64;&#109;&#111;&#116;&#111;&#114;&#100;&#101;&#120;&#103;&#97;&#109;&#101;&#46;&#99;&#111;&#109;">CONTACT</a>
     <a href="/support.html">SUPPORT</a>
     <a href="/privacy.html">PRIVACY</a>
     <a href="/terms.html">TERMS</a>
+    <a href="/delete-account.html">DELETE ACCOUNT</a>
     <div class="copy">&copy; 2026 MOTORDEX</div>
   </footer>
 
@@ -328,64 +343,70 @@ footer a:hover{color:#D63A2E}
     if (hint) hint.style.display = 'block';
   }
 })();
-</script>
 
-<script>
-/* Waitlist -> Supabase. The anon key is PUBLIC by design (it ships in the app too); the
-   `waitlist` table grants it INSERT on five columns and nothing else — SELECT is revoked, so
-   this key cannot read a single address back. Verified: insert 201, select 42501. */
+// Android waitlist -> the `waitlist` table, straight over PostgREST.
+//
+// PROGRESSIVE ENHANCEMENT ON PURPOSE. The markup ships with the button as a
+// working mailto and the form `hidden`; this script is what turns it into a
+// form. With JS off nothing here runs and the mailto still collects the
+// address, which is the behaviour the page had before - so the upgrade can
+// only ever add a path, never remove one.
 (function(){
-  var URL_ = "https://wjteolkwzshrnqoyupdx.supabase.co/rest/v1/waitlist";
-  var KEY  = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndqdGVvbGt3enNocm5xb3l1cGR4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAwOTc0MTAsImV4cCI6MjA5NTY3MzQxMH0.fLsVWIwz8addY-jo_isljSKndNXydOKQhMgABMSRuYM";
-  var tog = document.getElementById('wltoggle'), box = document.getElementById('wl');
-  tog.addEventListener('click', function(e){
-    e.preventDefault();
-    var on = box.classList.toggle('on');
-    tog.setAttribute('aria-expanded', on ? 'true' : 'false');
-    if (on) { box.scrollIntoView({behavior:'smooth', block:'nearest'}); document.getElementById('wlemail').focus(); }
-  });
-  function pick(id){
-    var w = document.getElementById(id);
-    w.addEventListener('click', function(e){
-      var b = e.target.closest('button'); if(!b) return;
-      [].forEach.call(w.querySelectorAll('button'), function(x){ x.classList.remove('sel'); });
-      b.classList.add('sel');
-    });
-    return function(){ var el = w.querySelector('button.sel'); return el ? el.dataset.v : null; };
-  }
-  var heard = pick('wlheard');   // platform is always 'android' — it's the only one we offer
-  var go = document.getElementById('wlgo'), msg = document.getElementById('wlmsg');
-  function say(t, cls){ msg.textContent = t; msg.className = cls || ''; }
+  var open = document.getElementById('wlopen');
+  var form = document.getElementById('wl');
+  var mail = document.getElementById('wlmail');
+  var go   = document.getElementById('wlgo');
+  var msg  = document.getElementById('wlmsg');
+  if (!open || !form || !mail || !go || !msg) return;
 
-  go.addEventListener('click', function(){
-    var email = document.getElementById('wlemail').value.trim();
-    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { say('THAT EMAIL DOESN\'T LOOK RIGHT.', 'err'); return; }
-    go.disabled = true; say('SENDING...');
-    var body = {
-      email: email,
-      platform: 'android',
-      heard_from: heard()
-    };
-    fetch(URL_, {
-      method:'POST',
-      headers:{'apikey':KEY,'Authorization':'Bearer '+KEY,'Content-Type':'application/json','Prefer':'return=minimal'},
-      body: JSON.stringify(body)
+  open.addEventListener('click', function(e){
+    e.preventDefault();                 // stop the mailto now that the form exists
+    form.hidden = false;
+    open.setAttribute('aria-expanded','true');
+    mail.focus();
+  });
+
+  function say(text, cls){ msg.textContent = text; msg.className = 'wlmsg' + (cls ? ' ' + cls : ''); }
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var email = (mail.value || '').trim();
+    // Same shape the table's CHECK constraint enforces, applied here only so a
+    // typo gets an instant answer instead of a round trip. The server remains
+    // the authority - this is a courtesy, not a gate.
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email) || email.length > 254) {
+      say('THAT EMAIL DOESN’T LOOK RIGHT.', 'bad'); mail.focus(); return;
+    }
+
+    go.disabled = true; say('SENDING…');
+    fetch('https://wjteolkwzshrnqoyupdx.supabase.co/rest/v1/waitlist', {
+      method: 'POST',
+      headers: {
+        'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndqdGVvbGt3enNocm5xb3l1cGR4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAwOTc0MTAsImV4cCI6MjA5NTY3MzQxMH0.fLsVWIwz8addY-jo_isljSKndNXydOKQhMgABMSRuYM',
+        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndqdGVvbGt3enNocm5xb3l1cGR4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAwOTc0MTAsImV4cCI6MjA5NTY3MzQxMH0.fLsVWIwz8addY-jo_isljSKndNXydOKQhMgABMSRuYM',
+        'Content-Type': 'application/json',
+        // return=minimal matters: anon has no SELECT on this table, so asking
+        // for the row back would turn a successful insert into a 401.
+        'Prefer': 'return=minimal'
+      },
+      body: JSON.stringify({ email: email, platform: 'android', heard_from: 'site' })
     }).then(function(r){
-      go.disabled = false;
-      // The form is NEVER replaced or locked. It clears and stays ready, so the same phone can
-      // be passed around a car meet and take one address after another. A repeat address is
-      // NOT called out either — the unique index was dropped, so it simply stores and the
-      // export dedupes on the way out. Nobody gets told "you already did this".
-      if (r.status === 201 || r.status === 200 || r.status === 204) {
-        document.getElementById('wlemail').value = '';
-        [].forEach.call(document.querySelectorAll('#wlheard button'), function(x){ x.classList.remove('sel'); });
-        document.getElementById('wlemail').focus();
-        say('ADDED \u2014 ADD ANOTHER IF YOU WANT.', 'ok');
+      if (r.ok) {
+        form.innerHTML = '<p class="wlmsg ok">YOU’RE ON THE LIST.<br>WE’LL EMAIL YOU WHEN ANDROID LANDS.</p>';
         return;
       }
-      say('SOMETHING WENT WRONG - TRY AGAIN, OR EMAIL SUPPORT@MOTORDEXGAME.COM', 'err');
+      // The throttle raises check_violation with "waitlist: slow down"; a
+      // double-tap is the common way to hit it, so say what to do rather than
+      // reporting a failure the person cannot act on.
+      return r.text().then(function(t){
+        go.disabled = false;
+        if (/slow down/i.test(t)) { say('ONE SEC — TRY THAT AGAIN IN A MOMENT.', 'bad'); }
+        else if (r.status === 409)  { say('YOU’RE ALREADY ON THE LIST.', 'ok'); }
+        else { say('COULDN’T SIGN YOU UP. EMAIL ' + ['SUPPORT','MOTORDEXGAME.COM'].join('@') + ' AND WE’LL ADD YOU.', 'bad'); }
+      });
     }).catch(function(){
-      go.disabled = false; say('NO CONNECTION - CHECK YOUR SIGNAL AND TRY AGAIN.', 'err');
+      go.disabled = false;
+      say('NO CONNECTION. TRY AGAIN IN A MOMENT.', 'bad');
     });
   });
 })();
