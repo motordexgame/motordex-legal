@@ -241,6 +241,14 @@ footer a:hover{color:#D63A2E}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 @media (prefers-reduced-motion: reduce){ .wpip{animation:none} }
 
+/* --- footer feedback ---------------------------------------------------------
+   The waitlist's sunken well and raised key, reused rather than restyled, so it reads as
+   the same family. Revealed from the footer link; with JS off that link is a mailto. */
+.fb{margin:16px 3px 4px}
+.fbta{height:96px;resize:none;font-size:11px;line-height:1.7}
+.fbtrap{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.fbhint{font-family:'Silk';font-size:8px;letter-spacing:1px;color:#5D6675;margin:8px 2px 0}
+
 @media (max-width:360px){
   h1{font-size:34px}
   .av{width:112px;height:112px}
@@ -304,10 +312,22 @@ footer a:hover{color:#D63A2E}
 
   <footer>
     <a href="mailto:&#115;&#117;&#112;&#112;&#111;&#114;&#116;&#64;&#109;&#111;&#116;&#111;&#114;&#100;&#101;&#120;&#103;&#97;&#109;&#101;&#46;&#99;&#111;&#109;">CONTACT</a>
+    <a href="mailto:&#115;&#117;&#112;&#112;&#111;&#114;&#116;&#64;&#109;&#111;&#116;&#111;&#114;&#100;&#101;&#120;&#103;&#97;&#109;&#101;&#46;&#99;&#111;&#109;?subject=Feedback" id="fbopen" aria-controls="fb" aria-expanded="false">FEEDBACK</a>
     <a href="/support.html">SUPPORT</a>
     <a href="/privacy.html">PRIVACY</a>
     <a href="/terms.html">TERMS</a>
     <a href="/delete-account.html">DELETE ACCOUNT</a>
+    <!-- Revealed by JS from the FEEDBACK link. Hidden by default so a reader with JS
+         off keeps the working mailto rather than a form that cannot submit. -->
+    <form class="wl fb" id="fb" hidden novalidate>
+      <label class="wlab" for="fbtext">YOUR FEEDBACK</label>
+      <textarea class="wlin fbta" id="fbtext" name="message" maxlength="1000" rows="4"
+                placeholder="Bugs, ideas, cars we're missing..." required></textarea>
+      <input class="fbtrap" id="fbtrap" name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button class="wlgo" id="fbgo" type="submit">SEND FEEDBACK</button>
+      <p class="wlmsg" id="fbmsg" role="status" aria-live="polite"></p>
+      <p class="fbhint">WANT A REPLY? USE CONTACT.</p>
+    </form>
     <div class="copy">&copy; 2026 MOTORDEX</div>
   </footer>
 
@@ -585,6 +605,80 @@ footer a:hover{color:#D63A2E}
   }
   document.addEventListener('visibilitychange', function(){ if (document.visibilityState === 'visible') poll(); });
   poll();
+})();
+
+// Footer feedback -> the `site_feedback` table, straight over PostgREST.
+//
+// PROGRESSIVE ENHANCEMENT, same as the waitlist: the link ships as a working mailto and the
+// form `hidden`, so with JS off nothing here runs and the mailto still works.
+//
+// SECURITY, proven live on 6 Oct 2026 against the real endpoint with this exact key: anon can
+// INSERT a message and nothing else. Reading, updating, deleting, forging id/created_at, a
+// message over 1000 characters and a blank one are all refused, and a global flood guard caps
+// it at 20 a minute (20 landed, the next 6 got "slow down"). See
+// supabase/migration_site_feedback_oct06.sql.
+//
+// return=minimal is REQUIRED, not a nicety: asking for the row back is a SELECT, which anon
+// does not have, so it would turn a successful send into a 401. Verified.
+(function(){
+  var open = document.getElementById('fbopen');
+  var form = document.getElementById('fb');
+  var text = document.getElementById('fbtext');
+  var trap = document.getElementById('fbtrap');
+  var go   = document.getElementById('fbgo');
+  var msg  = document.getElementById('fbmsg');
+  if (!open || !form || !text || !go || !msg || !window.fetch) return;
+
+  var URL  = 'https://wjteolkwzshrnqoyupdx.supabase.co/rest/v1/site_feedback';
+  var ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndqdGVvbGt3enNocm5xb3l1cGR4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAwOTc0MTAsImV4cCI6MjA5NTY3MzQxMH0.fLsVWIwz8addY-jo_isljSKndNXydOKQhMgABMSRuYM';
+  var DONE = '<p class="wlmsg ok">THANKS — WE GOT IT.</p>';   // static text only, never user input
+
+  open.addEventListener('click', function(e){
+    e.preventDefault();                 // stop the mailto now that the form exists
+    form.hidden = false;
+    open.setAttribute('aria-expanded', 'true');
+    text.focus();
+  });
+
+  function say(t, cls){ msg.textContent = t; msg.className = 'wlmsg' + (cls ? ' ' + cls : ''); }
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    if (go.disabled) return;            // one send at a time; a double-tap can't send twice
+    var body = (text.value || '').trim();
+    // Same rules the table's CHECK constraint enforces, here only so a mistake gets an
+    // instant answer. The server stays the authority.
+    if (!body) { say('WRITE SOMETHING FIRST.', 'bad'); text.focus(); return; }
+    if (body.length > 1000) { say('KEEP IT UNDER 1,000 CHARACTERS.', 'bad'); return; }
+    // A bot that fills every field fills this one too; a person never sees it. Pretend it
+    // worked, so the bot learns nothing, and send nothing.
+    if (trap && trap.value) { form.innerHTML = DONE; return; }
+
+    go.disabled = true; say('SENDING…');
+    // Same 8s ceiling as the counter: a stalled request must not leave the button dead.
+    var ctl  = window.AbortController ? new AbortController() : null;
+    var kill = ctl ? setTimeout(function(){ ctl.abort(); }, 8000) : null;
+    fetch(URL, {
+      method: 'POST',
+      headers: {
+        'apikey': ANON, 'Authorization': 'Bearer ' + ANON,
+        'Content-Type': 'application/json', 'Prefer': 'return=minimal'
+      },
+      body: JSON.stringify({ message: body, page: 'site' }),
+      signal: ctl ? ctl.signal : undefined
+    }).then(function(r){
+      clearTimeout(kill);
+      if (r.ok) { form.innerHTML = DONE; return; }
+      return r.text().then(function(t){
+        go.disabled = false;
+        if (/slow down/i.test(t)) say('LOTS OF FEEDBACK RIGHT NOW — TRY AGAIN IN A MINUTE.', 'bad');
+        else say('COULDN’T SEND THAT. TRY AGAIN, OR USE CONTACT.', 'bad');
+      });
+    }).catch(function(){
+      clearTimeout(kill); go.disabled = false;
+      say('NO CONNECTION. TRY AGAIN IN A MOMENT.', 'bad');
+    });
+  });
 })();
 </script>
 </body>
