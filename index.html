@@ -201,10 +201,53 @@ footer a{font-family:'Silk';font-size:9px;letter-spacing:1px;color:#9BA5B4;paddi
 footer a:hover{color:#D63A2E}
 .copy{font-family:'Silk';font-size:9px;color:#5D6675;margin-top:10px;letter-spacing:1px}
 
+/* --- live worldwide counter ---------------------------------------------
+   The same split-flap board as the app's MOTORDEX WORLDWIDE screen
+   (DexFlapCounter in Components.swift): seven sunken cells, thousands
+   grouped by a pixel comma rather than a comma glyph, leading zeros
+   installed-but-unlit, and a hinge drawn across every cell. A new number
+   ROLLS through the values in between, and each digit flips in four
+   integer steps - stepped, never smooth, same as the cars. The cell is the
+   page's existing sunken well (.wlin), so it belongs here, not pasted in. */
+.world{margin:0 3px 28px}
+.world[hidden]{display:none}
+.flaps{display:flex;justify-content:center;gap:4px}
+.flap{
+  position:relative;flex:0 0 32px;width:32px;height:50px;overflow:hidden;
+  background:#12161E;border:3px solid #0C1016;
+  box-shadow:inset 3px 3px 0 #070A0E, inset -3px -3px 0 #2A3040;
+}
+.flap span{
+  position:absolute;left:0;top:0;width:100%;height:44px;
+  font-family:'J25';font-size:41px;line-height:44px;color:#FFFFFF;text-align:center;
+}
+.flap.dim span{color:#4A5363}
+/* hinge over the glyph: the split line, and a pin on each side */
+.flap::after{content:"";position:absolute;left:2px;right:2px;top:21px;height:2px;background:#0C1016;z-index:2}
+.flap::before{content:"";position:absolute;left:0;top:19px;width:4px;height:6px;
+  background:#2A3040;box-shadow:22px 0 0 #2A3040;z-index:3}
+.fcomma{position:relative;flex:0 0 6px;width:6px}
+.fcomma::before,.fcomma::after{content:"";position:absolute;left:0;background:#FFFFFF}
+.fcomma::before{bottom:12px;width:6px;height:6px}   /* head */
+.fcomma::after{bottom:9px;width:3px;height:3px}     /* tail, hooking down-left */
+.fcomma.dim::before,.fcomma.dim::after{background:#4A5363}
+.wcap{
+  display:flex;align-items:center;justify-content:center;gap:7px;margin-top:12px;
+  font-family:'Silk';font-size:9px;letter-spacing:1px;color:#9BA5B4;
+}
+/* the live pip: a two-state blink, no fade - glow colour only on a pip */
+.wpip{flex:0 0 6px;width:6px;height:6px;background:#D63A2E;animation:pip 1.2s steps(1,end) infinite}
+@keyframes pip{50%{background:#4A1712}}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (prefers-reduced-motion: reduce){ .wpip{animation:none} }
+
 @media (max-width:360px){
   h1{font-size:34px}
   .av{width:112px;height:112px}
   .cta .t{font-size:11px}
+  .flaps{gap:3px}
+  .flap{flex-basis:29px;width:29px}
+  .flap::before{box-shadow:19px 0 0 #2A3040}
 }
 </style>
 </head>
@@ -216,6 +259,14 @@ footer a:hover{color:#D63A2E}
 
   <h1>@MOTORDEXGAME</h1>
   <p class="tag">SCAN &amp; COLLECT REAL CARS</p>
+
+  <!-- Hidden until a REAL number arrives. If the count can't load, the board
+       never appears - a page showing 0000000 or dashes would be a lie. -->
+  <div class="world" id="world" hidden>
+    <div class="flaps" id="flaps" aria-hidden="true"></div>
+    <p class="wcap" aria-hidden="true"><i class="wpip"></i>CARS CAUGHT BY ALL SPOTTERS</p>
+    <span class="sr" id="worldsr"></span>
+  </div>
 
   <a class="cta" href="https://apps.apple.com/us/app/motordex/id6779553740">
     <span class="ic"><img src="data:image/png;base64,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" alt="" width="32" height="32"></span>
@@ -409,6 +460,131 @@ footer a:hover{color:#D63A2E}
       say('NO CONNECTION. TRY AGAIN IN A MOMENT.', 'bad');
     });
   });
+})();
+
+// Live worldwide counter -> total_catches(), the same public RPC the app's
+// MOTORDEX WORLDWIDE screen polls.
+//
+// WHY CATCHES AND NOT SCANS. total_catches() already exists, is granted to the
+// public key ON PURPOSE, and is safe at any poll rate: it sums the public
+// per-car mint counter (~1,400 rows), never a user's data. The scan tally lives
+// in scan_day_counter, which is locked to anon and ALSO holds the daily Gemini
+// spend - exposing it would mean a new public database function on production.
+// It also keeps the site and the app showing the same number.
+//
+// Polls only while the page is on screen, exactly like the app's .task loop,
+// so a backgrounded tab costs nothing.
+(function(){
+  var box = document.getElementById('world');
+  var row = document.getElementById('flaps');
+  var sr  = document.getElementById('worldsr');
+  if (!box || !row || !sr || !window.fetch) return;
+
+  var URL  = 'https://wjteolkwzshrnqoyupdx.supabase.co/rest/v1/rpc/total_catches';
+  var ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndqdGVvbGt3enNocm5xb3l1cGR4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAwOTc0MTAsImV4cCI6MjA5NTY3MzQxMH0.fLsVWIwz8addY-jo_isljSKndNXydOKQhMgABMSRuYM';
+  var DIGITS = 7, CAP = Math.pow(10, DIGITS) - 1, POLL = 6000;
+  var STILL = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Old glyph slides up, new one rises from below: four 45ms integer steps over
+  // the 44px cell - the app's outY/inY tables, scaled from its 26-unit cell.
+  var OUT = [0, -11, -22, -33, -44], IN = [44, 33, 22, 11, 0];
+
+  var digits = [], commas = [];
+  for (var i = 0; i < DIGITS; i++) {
+    if (i > 0 && (DIGITS - i) % 3 === 0) {
+      var c = document.createElement('i'); c.className = 'fcomma';
+      row.appendChild(c); commas.push({ el: c, at: i });
+    }
+    var cell = document.createElement('div'); cell.className = 'flap';
+    var cur = document.createElement('span'), nxt = document.createElement('span');
+    nxt.style.transform = 'translateY(' + IN[0] + 'px)';
+    cell.appendChild(cur); cell.appendChild(nxt); row.appendChild(cell);
+    digits.push({ el: cell, cur: cur, nxt: nxt, ch: '', t: null });
+  }
+
+  function text(v){ var t = String(Math.min(Math.max(0, v), CAP)); while (t.length < DIGITS) t = '0' + t; return t; }
+  function lead(t){ var n = 0; for (var i = 0; i < t.length - 1; i++) { if (t[i] === '0') n++; else break; } return n; }
+
+  function flip(d, ch, silent){
+    if (ch === d.ch) return;
+    clearTimeout(d.t); d.ch = ch;
+    if (silent || STILL) {
+      d.cur.textContent = ch; d.cur.style.transform = ''; d.nxt.style.transform = 'translateY(' + IN[0] + 'px)';
+      return;
+    }
+    d.nxt.textContent = ch;
+    var s = 0;
+    (function step(){
+      s++;
+      d.cur.style.transform = 'translateY(' + OUT[s] + 'px)';
+      d.nxt.style.transform = 'translateY(' + IN[s] + 'px)';
+      if (s < OUT.length - 1) { d.t = setTimeout(step, 45); return; }
+      d.t = setTimeout(function(){          // settle: the new glyph becomes the resting one
+        d.cur.textContent = ch; d.cur.style.transform = '';
+        d.nxt.style.transform = 'translateY(' + IN[0] + 'px)';
+      }, 45);
+    })();
+  }
+
+  function paint(v, silent){
+    var t = text(v), z = lead(t);
+    for (var i = 0; i < DIGITS; i++) {
+      flip(digits[i], t[i], silent);
+      digits[i].el.className = 'flap' + (i < z ? ' dim' : '');
+    }
+    for (var k = 0; k < commas.length; k++) commas[k].el.className = 'fcomma' + (commas[k].at <= z ? ' dim' : '');
+    sr.textContent = Number(v).toLocaleString('en-US') + ' cars caught by all spotters';
+  }
+
+  // A jump ROLLS through the numbers in between - up to ten eased frames at
+  // 90ms, fast through the middle and settling at the end: the airport-board
+  // whir, the same curve the app uses.
+  var shown = null, roll = null;
+  function show(to){
+    if (shown === null) { shown = to; paint(to, true); box.hidden = false; return; }
+    if (to === shown) return;
+    clearTimeout(roll);
+    var from = shown, delta = to - from, steps = STILL ? 1 : Math.min(10, Math.abs(delta)), i = 0;
+    (function frame(){
+      i++;
+      var e = 1 - Math.pow(1 - i / steps, 2);
+      shown = i >= steps ? to : from + Math.round(delta * e);
+      paint(shown, false);
+      if (i < steps) roll = setTimeout(frame, 90);
+    })();
+  }
+
+  // ONE loop, ever. `gen` names the current poll: a reply from an older one
+  // neither paints nor reschedules. Without it, flipping back to the tab while
+  // a request was in flight started a SECOND loop, and every flip added
+  // another - one visitor polling harder and harder the longer they stayed.
+  var timer = null, gen = 0;
+  function poll(){
+    clearTimeout(timer);
+    if (document.visibilityState === 'hidden') return;   // resumed by visibilitychange
+    var my = ++gen;
+    // A request that never answers would freeze the board for good, so give
+    // it 8s. Same lesson as the port's "16 network calls could hang forever".
+    var ctl = window.AbortController ? new AbortController() : null;
+    var kill = ctl ? setTimeout(function(){ ctl.abort(); }, 8000) : null;
+    fetch(URL, {
+      method: 'POST',
+      headers: { 'apikey': ANON, 'Authorization': 'Bearer ' + ANON, 'Content-Type': 'application/json' },
+      body: '{}',
+      signal: ctl ? ctl.signal : undefined
+    }).then(function(r){ if (!r.ok) throw 0; return r.json(); })
+      .then(function(n){
+        if (my !== gen) return;
+        n = Math.floor(Number(n));
+        if (isFinite(n) && n >= 0) show(n);
+      })
+      .catch(function(){ /* a missed poll just waits for the next one; the board never shows a guess */ })
+      .then(function(){
+        clearTimeout(kill);
+        if (my === gen) timer = setTimeout(poll, POLL);
+      });
+  }
+  document.addEventListener('visibilitychange', function(){ if (document.visibilityState === 'visible') poll(); });
+  poll();
 })();
 </script>
 </body>
