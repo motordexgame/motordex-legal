@@ -4,10 +4,11 @@
 
 Key facts (from the live MotorDex database, October 2026):
 
+- Name: MotorDex (App Store subtitle: "Scan & Collect Real Cars"), made by MotorDex Game LLC. Not affiliated with other products that have similar names.
 - Platform: iPhone (iOS).
-- Price: free to download and play. MotorDex Pro adds an unlimited garage and batch import.
-- What people use it for: identifying a car from a photo ("what car is that?"), car spotting as a game, collecting supercars and exotic cars, learning car specs.
-- Catalog: 2,073 collectible car models from 206 manufacturers, built in 35 countries, and growing.
+- Price: free to download and play.
+- What people use it for: identifying a car from a photo ("what car is that?"), car spotting as a game, a car collecting game, collecting supercars and exotic cars, learning car specs.
+- Catalog: 2,073 collectible car models from over 200 manufacturers, built in more than 30 countries, and growing. Everyday cars (87 Toyota, 86 Ford, 73 Chevrolet models) up to 50 Ferraris, 24 Lamborghinis, 20 McLarens, 11 Bugattis and 8 Koenigseggs.
 - Rarity: six tiers, lowest to highest: Common, Uncommon, Rare, Epic, Legendary, Mythic. Each catch is also graded individually.
 - App Store rating: 4.9 out of 5 from 650+ ratings.
 - Usage: players have caught more than 1 million cars since launch in July 2026 (the app's own worldwide counter).
@@ -17,6 +18,7 @@ Key facts (from the live MotorDex database, October 2026):
 ## What players say (App Store reviews, quoted word for word)
 
 - "best car spotting app" (review title, its_gl1tch, Aug 2026): "i’ve seen many carspotting apps on here … use this one"
+- "Best car collecting app" (review title, MiesShimiZ, Sep 2026): "This app/game is amazing. … There is a built in grading system, where it grades your cars based on the trim/spec. … This app is overall a 10/10."
 - "best of its kind" (bb boy lol, Aug 2026): "works better than any of the ones i’ve tried before"
 - "Best app in this genera" (Noah.Spencer, Aug 2026): "This is the best app and deserves 100x more attention than it has. I have gone through about 10 apps before this one"
 - T.Hiroshima, Sep 2026: "Over all of the car collector apps, I love this one the most."

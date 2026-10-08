@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Page not found — MotorDex</title>
+<!-- GitHub Pages serves this for any unknown path, at any depth, so every URL here is absolute. -->
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" href="/icon-180.png">
+<link rel="preload" href="/fonts/jersey25.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/silkscreen.woff2" as="font" type="font/woff2" crossorigin>
+<meta name="theme-color" content="#0E1016">
+<style>
+@font-face{font-family:'Silk';src:url(/fonts/silkscreen.woff2) format('woff2');font-display:block}
+@font-face{font-family:'J25';src:url(/fonts/jersey25.woff2) format('woff2');font-display:block}
+*{box-sizing:border-box;margin:0;padding:0;border-radius:0}
+html{background:#0E1016}
+body{min-height:100vh;min-height:100dvh;display:flex;align-items:center;justify-content:center;padding:40px 16px;
+  background:#0E1016;color:#E8ECF2;font-family:'Silk',monospace;-webkit-font-smoothing:none;text-align:center}
+.wrap{width:100%;max-width:360px}
+.code{font-family:'Silk';font-size:11px;letter-spacing:2px;color:#D63A2E;margin-bottom:10px}
+h1{font-family:'J25';font-weight:400;font-size:41px;line-height:.9;color:#FFFFFF;margin-bottom:14px}
+p{font-size:9px;letter-spacing:1px;line-height:1.9;color:#9BA5B4;margin-bottom:28px}
+/* hard bevel lit from the top-left, stair-stepped corners: the DEX button, no rounding, no blur */
+.cta{display:block;background:#F1F4F8;color:#151B23;text-decoration:none;font-family:'Silk';font-size:12px;letter-spacing:1px;
+  padding:16px 12px;box-shadow:inset 3px 3px 0 #FFFFFF,inset -3px -3px 0 #A3ACBA;
+  clip-path:polygon(6px 0,calc(100% - 6px) 0,calc(100% - 6px) 3px,calc(100% - 3px) 3px,calc(100% - 3px) 6px,100% 6px,
+    100% calc(100% - 6px),calc(100% - 3px) calc(100% - 6px),calc(100% - 3px) calc(100% - 3px),calc(100% - 6px) calc(100% - 3px),
+    calc(100% - 6px) 100%,6px 100%,6px calc(100% - 3px),3px calc(100% - 3px),3px calc(100% - 6px),0 calc(100% - 6px),
+    0 6px,3px 6px,3px 3px,6px 3px)}
+.cta:focus-visible,nav a:focus-visible{outline:3px solid #E0C273;outline-offset:3px}
+nav{margin-top:26px}
+nav a{font-size:9px;letter-spacing:1px;color:#9BA5B4;padding:0 6px;line-height:2.6;white-space:nowrap}
+nav a:hover{color:#D63A2E}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <div class="code">ERROR 404</div>
+  <h1>NO CAR HERE</h1>
+  <p>THIS PAGE DOESN'T EXIST.<br>THE CARS ARE ON THE APP.</p>
+  <a class="cta" href="https://apps.apple.com/us/app/motordex/id6779553740">GET MOTORDEX FREE</a>
+  <nav>
+    <a href="/">HOME</a><a href="/what-is-motordex.html">ABOUT</a><a href="/support.html">SUPPORT</a>
+  </nav>
+</main>
+</body>
+</html>

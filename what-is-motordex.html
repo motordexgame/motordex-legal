@@ -7,7 +7,7 @@
 <meta name="description" content="MotorDex is a free car spotting app and car identifier for iPhone: snap any car to identify it in seconds and collect it as a card with full specs.">
 <link rel="canonical" href="https://motordexgame.com/what-is-motordex.html">
 <meta property="og:title" content="MotorDex: Car Spotting App &amp; Car Identifier for iPhone">
-<meta property="og:description" content="Identify any car from a photo in seconds and collect it as a trading card with full specs and rarity. 2,073 cars from 206 makers.">
+<meta property="og:description" content="Identify any car from a photo in seconds and collect it as a trading card with full specs and rarity. 2,073 cars from over 200 makers.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://motordexgame.com/what-is-motordex.html">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
@@ -29,9 +29,12 @@
 <link rel="apple-touch-icon" href="icon-180.png">
 <link rel="alternate" type="text/plain" href="/llms.txt" title="MotorDex facts for AI assistants">
 <meta name="theme-color" content="#0E1016">
+<link rel="preload" href="fonts/jersey10.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/jersey25.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/silkscreen.woff2" as="font" type="font/woff2" crossorigin>
 <!-- "1M+ cars caught" is total_catches() — the same all-time counter the homepage and the app show.
      Every figure on this page was read from the live MotorDex database or the public App Store
-     listing on 7 October 2026. When they move, update them here, in the JSON-LD below and in
+     listing on 7 October 2026 (make counts: 8 October 2026). When they move, update them here, in the JSON-LD below and in
      /llms.txt together. No player or waitlist numbers (Matteo's call, 7 Oct 2026). -->
 <script type="application/ld+json">
 {
@@ -57,8 +60,7 @@
       },
       "sameAs": [
         "https://instagram.com/motordexgame",
-        "https://tiktok.com/@motordexgame",
-        "https://apps.apple.com/us/app/motordex/id6779553740"
+        "https://tiktok.com/@motordexgame"
       ]
     },
     {
@@ -66,9 +68,13 @@
       "@id": "https://motordexgame.com/#app",
       "name": "MotorDex",
       "alternateName": [
-        "MotorDex: Scan & Collect Cars",
+        "MotorDex: Scan & Collect Real Cars",
         "MotorDex car identifier",
         "MotorDex car spotting game"
+      ],
+      "disambiguatingDescription": "MotorDex is an iPhone car spotting app and car identifier made by MotorDex Game LLC. It is not affiliated with other products that have similar names.",
+      "sameAs": [
+        "https://apps.apple.com/us/app/motordex/id6779553740"
       ],
       "description": "A car spotting app and collection game for iPhone. Scan a real car with your camera, MotorDex identifies the make and model, and you collect it as a trading card with full specs, a rarity tier and an estimated value.",
       "operatingSystem": "iOS",
@@ -93,7 +99,7 @@
       },
       "featureList": [
         "Identifies a car's make and model from a photo",
-        "2,073 collectible car models from 206 manufacturers across 35 countries",
+        "2,073 collectible car models from over 200 manufacturers across more than 30 countries",
         "Six rarity tiers: Common, Uncommon, Rare, Epic, Legendary, Mythic",
         "Trading cards with horsepower, top speed, 0-60, MSRP and market value",
         "XP and levels, daily challenges, monthly leaderboards and a friends feed",
@@ -246,7 +252,7 @@
           "name": "Is MotorDex free?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. MotorDex is free to download and play. MotorDex Pro adds an unlimited garage and batch import."
+            "text": "Yes. MotorDex is free to download and play."
           }
         },
         {
@@ -275,10 +281,18 @@
         },
         {
           "@type": "Question",
+          "name": "Is there a game where you collect real cars?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. MotorDex is a car collecting game for iPhone: photograph a real car you see, MotorDex identifies it, and it joins your collection as a trading card with its specs and a rarity tier from Common to Mythic. There are 2,073 cars to collect."
+          }
+        },
+        {
+          "@type": "Question",
           "name": "How many cars can MotorDex identify?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "The MotorDex catalog covers 2,073 car models from 206 manufacturers, from everyday commuters to hypercars, and it keeps growing: players can request new cars."
+            "text": "The MotorDex catalog covers 2,073 car models from over 200 manufacturers, from everyday commuters to hypercars, and it keeps growing: players can request new cars."
           }
         },
         {
@@ -288,6 +302,14 @@
             "@type": "Answer",
             "text": "Every car model sits in one of six tiers, from Common up through Uncommon, Rare, Epic and Legendary to Mythic, based on how rare it is on real roads. Each catch is also graded on its own, so the exact car you photograph matters."
           }
+        },
+        {
+          "@type": "Question",
+          "name": "Who makes MotorDex?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "MotorDex Game LLC. Follow along on Instagram and TikTok at @motordexgame, or email support@motordexgame.com."
+          }
         }
       ]
     }
@@ -295,9 +317,9 @@
 }
 </script>
 <style>
-@font-face{font-family:'Silk';src:url(fonts/silkscreen.ttf) format('truetype');font-display:swap}
-@font-face{font-family:'J25';src:url(fonts/jersey25.ttf) format('truetype');font-display:swap}
-@font-face{font-family:'J10';src:url(fonts/jersey10.ttf) format('truetype');font-display:swap}
+@font-face{font-family:'Silk';src:url(fonts/silkscreen.woff2) format('woff2');font-display:swap}
+@font-face{font-family:'J25';src:url(fonts/jersey25.woff2) format('woff2');font-display:swap}
+@font-face{font-family:'J10';src:url(fonts/jersey10.woff2) format('woff2');font-display:swap}
 /* The DEX design system on the web: no rounded corners, no smooth gradients, no blurred shadows —
    hard bevels lit from the top-left, the app's pixel fonts, a dot grid so no large area is flat. */
 *{box-sizing:border-box;margin:0;padding:0;border-radius:0 !important}
@@ -325,6 +347,7 @@ section{margin-top:30px}
 h1{font-family:'J25';font-weight:400;font-size:41px;line-height:1;color:#FFFFFF;text-shadow:3px 3px 0 #0C1016;margin-bottom:12px}
 h1 span{color:#D63A2E}
 .lead{font-size:22px;margin-bottom:14px}
+p+p{margin-top:12px}
 .chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
 .chips span{font-family:'Silk';font-size:9px;letter-spacing:1px;color:#9BA5B4;border:2px solid #2A3040;background:#171B24;padding:4px 7px;text-transform:uppercase}
 .cta{display:block;text-align:center;border:4px solid #0C1016;background:#F1F4F8;
@@ -415,7 +438,7 @@ footer a{font-family:'Silk';font-size:9px;letter-spacing:1px;color:#9BA5B4;paddi
 <div class="stats">
   <div class="stat"><b>1M+</b><span>cars caught</span></div>
   <div class="stat"><b>2,073</b><span>cars to collect</span></div>
-  <div class="stat"><b>206</b><span>manufacturers</span></div>
+  <div class="stat"><b>200+</b><span>manufacturers</span></div>
   <div class="stat"><b>6</b><span>rarity tiers</span></div>
 </div>
 <div class="tiers"><span style="background:#9A9488">Common</span><span style="background:#B98A4B">Uncommon</span><span style="background:#2A9D8F">Rare</span><span style="background:#7E4FB0">Epic</span><span style="background:#E3A93C">Legendary</span><span style="background:#E0457E">Mythic</span></div>
@@ -433,17 +456,21 @@ footer a{font-family:'Silk';font-size:9px;letter-spacing:1px;color:#9BA5B4;paddi
 </section>
 
 <section>
-<h2>Car identifier + game</h2>
+<h2>Car identifier and car collecting game</h2>
 <p>Wondering “what car is that?” Snap it. MotorDex is a car identifier and car scanner that names any car from a
 single photo, then turns it into a card in your collection, from everyday commuters to rare supercars and exotics.
 Your garage becomes a map of everywhere you have spotted cars, and every card teaches you the specs of the car in
 front of you.</p>
+<p>Every car you catch stays in your collection as a card, and the rarer the car, the rarer the card. The catalog
+runs from everyday cars, with 87 Toyota, 86 Ford and 73 Chevrolet models, up to 50 Ferraris, 24 Lamborghinis,
+20 McLarens, 11 Bugattis and 8 Koenigseggs.</p>
 </section>
 
 <section>
 <h2>What players say</h2>
 <div class="revs">
     <figure class="rev"><span class="stars" role="img" aria-label="5 out of 5 stars"><i></i><i></i><i></i><i></i><i></i></span><b>best car spotting app</b><blockquote>“i’ve seen many carspotting apps on here … use this one, try climb the leaderboards, and compete with your friends for the best cars you can spot!”</blockquote><figcaption>its_gl1tch &middot; App Store review &middot; Aug 2026</figcaption></figure>
+    <figure class="rev"><span class="stars" role="img" aria-label="5 out of 5 stars"><i></i><i></i><i></i><i></i><i></i></span><b>Best car collecting app</b><blockquote>“This app/game is amazing. … There is a built in grading system, where it grades your cars based on the trim/spec. … This app is overall a 10/10.”</blockquote><figcaption>MiesShimiZ &middot; App Store review &middot; Sep 2026</figcaption></figure>
     <figure class="rev"><span class="stars" role="img" aria-label="5 out of 5 stars"><i></i><i></i><i></i><i></i><i></i></span><b>best of its kind</b><blockquote>“i have wanted an app that does exactly this but have found nothing good after searching. i love the way it looks and feels. works better than any of the ones i’ve tried before”</blockquote><figcaption>bb boy lol &middot; App Store review &middot; Aug 2026</figcaption></figure>
     <figure class="rev"><span class="stars" role="img" aria-label="5 out of 5 stars"><i></i><i></i><i></i><i></i><i></i></span><b>WONDERFUL</b><blockquote>“Over all of the car collector apps, I love this one the most. The design, audio, and animations are great”</blockquote><figcaption>T.Hiroshima &middot; App Store review &middot; Sep 2026</figcaption></figure>
     <figure class="rev"><span class="stars" role="img" aria-label="5 out of 5 stars"><i></i><i></i><i></i><i></i><i></i></span><b>Best app in this genera</b><blockquote>“This is the best app and deserves 100x more attention than it has. I have gone through about 10 apps before this one, looking for the perfect car catcher like app.”</blockquote><figcaption>Noah.Spencer &middot; App Store review &middot; Aug 2026</figcaption></figure>
@@ -456,11 +483,12 @@ front of you.</p>
 
 <section>
 <h2>Questions</h2>
-  <details><summary><h3>Is MotorDex free?</h3></summary><p>Yes. MotorDex is free to download and play. MotorDex Pro adds an unlimited garage and batch import.</p></details>
+  <details><summary><h3>Is MotorDex free?</h3></summary><p>Yes. MotorDex is free to download and play.</p></details>
   <details><summary><h3>What is the best app for car spotting?</h3></summary><p>If you want car spotting to be a game, MotorDex is built for exactly that. Most car apps only tell you what a car is; MotorDex turns each car you find into a collectible card with a rarity tier, so spotting becomes a collection you build over time. App Store reviewers call it the “best car spotting app” and “best of its kind”, and one wrote that it “works better than any of the ones i’ve tried before.” It is rated 4.9 out of 5 on the App Store from 650+ ratings, and its players have caught more than 1 million cars since launch in July 2026.</p></details>
   <details><summary><h3>What app identifies a car from a photo?</h3></summary><p>MotorDex identifies a car from a photo. Point the in-app camera at any car, or import a photo, and MotorDex names the make, model and trim in seconds, then shows its horsepower, top speed, 0-60 time, original MSRP and estimated market value.</p></details>
   <details><summary><h3>Is there a car spotting game?</h3></summary><p>Yes: MotorDex is a car spotting game for iPhone. Every car you scan becomes a collectible card with a rarity tier from Common to Mythic, and you earn XP, level up, take on daily challenges and climb monthly leaderboards. Supercars and exotics are the rarest finds.</p></details>
-  <details><summary><h3>How many cars can MotorDex identify?</h3></summary><p>The MotorDex catalog covers 2,073 car models from 206 manufacturers, from everyday commuters to hypercars, and it keeps growing: players can request new cars.</p></details>
+  <details><summary><h3>Is there a game where you collect real cars?</h3></summary><p>Yes. MotorDex is a car collecting game for iPhone: photograph a real car you see, MotorDex identifies it, and it joins your collection as a trading card with its specs and a rarity tier from Common to Mythic. There are 2,073 cars to collect.</p></details>
+  <details><summary><h3>How many cars can MotorDex identify?</h3></summary><p>The MotorDex catalog covers 2,073 car models from over 200 manufacturers, from everyday commuters to hypercars, and it keeps growing: players can request new cars.</p></details>
   <details><summary><h3>How does MotorDex decide rarity?</h3></summary><p>Every car model sits in one of six tiers, from Common up through Uncommon, Rare, Epic and Legendary to Mythic, based on how rare it is on real roads. Each catch is also graded on its own, so the exact car you photograph matters.</p></details>
   <details><summary><h3>Who makes MotorDex?</h3></summary><p>MotorDex Game LLC. Follow along on <a href="https://instagram.com/motordexgame">Instagram</a> and <a href="https://tiktok.com/@motordexgame">TikTok</a> at @motordexgame, or email <a href="mailto:support@motordexgame.com">support@motordexgame.com</a>.</p></details>
 </section>
