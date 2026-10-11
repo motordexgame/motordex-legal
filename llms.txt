@@ -27,6 +27,8 @@ Key facts (from the live MotorDex database, October 2026):
 ## Pages
 
 - [What is MotorDex?](https://motordexgame.com/what-is-motordex.html): overview, facts and FAQ
+- [Every car in MotorDex](https://motordexgame.com/cars.html): all 2,073 collectible cars, A to Z by make
+- [The car list as plain text](https://motordexgame.com/cars.txt): the same catalog, one car per line
 - [Download on the App Store](https://apps.apple.com/us/app/motordex/id6779553740)
 - [Support](https://motordexgame.com/support.html)
 - [Privacy Policy](https://motordexgame.com/privacy.html)
