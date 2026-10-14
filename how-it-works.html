@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>How MotorDex Works — Built on Google Gemini</title>
+<meta name="description" content="Point your phone at a car on the street. Google Gemini works out what it is. You keep the card. 2,073 real cars to find.">
+<meta name="theme-color" content="#0E1016">
+<link rel="icon" type="image/png" href="/icon-180.png">
+<link rel="apple-touch-icon" href="/icon-180.png">
+<link rel="canonical" href="https://motordexgame.com/how-it-works.html">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="apple-itunes-app" content="app-id=6779553740">
+<meta property="og:site_name" content="MotorDex">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://motordexgame.com/how-it-works.html">
+<meta property="og:title" content="How MotorDex Works — Built on Google Gemini">
+<meta property="og:description" content="Point your phone at a car. Gemini works out what it is. You keep the card.">
+<meta property="og:image" content="https://motordexgame.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How MotorDex Works — Built on Google Gemini">
+<meta name="twitter:description" content="Point your phone at a car. Gemini works out what it is. You keep the card.">
+<meta name="twitter:image" content="https://motordexgame.com/og.png">
+<link rel="alternate" type="text/plain" href="/llms.txt" title="MotorDex facts for AI assistants">
+<link rel="preload" href="/fonts/silkscreen.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/jersey25.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/jersey10.woff2" as="font" type="font/woff2" crossorigin>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "How MotorDex Works",
+  "description": "Point your phone at a real car, Google Gemini works out what it is, and you keep a collectible card of it.",
+  "url": "https://motordexgame.com/how-it-works.html",
+  "inLanguage": "en",
+  "isPartOf": { "@id": "https://motordexgame.com/#website" },
+  "about": { "@id": "https://motordexgame.com/#app" },
+  "publisher": { "@id": "https://motordexgame.com/#org" }
+}
+</script>
+<style>
+@font-face{font-family:'Silk';src:url(fonts/silkscreen.woff2) format('woff2');font-display:swap}
+@font-face{font-family:'J25';src:url(fonts/jersey25.woff2) format('woff2');font-display:swap}
+@font-face{font-family:'J10';src:url(fonts/jersey10.woff2) format('woff2');font-display:swap}
+
+/* ---------------------------------------------------------------------------
+   A conventional page. One centred container, a consistent spacing scale, and
+   grids that size themselves with auto-fit/minmax so there are no hand-written
+   breakpoints to get wrong — every width between a phone and a wide desktop is
+   handled by the same rules rather than by a tier I had to remember to test.
+   Palette and type are the site's existing ones so this page belongs with the
+   others; nothing here is bespoke.
+--------------------------------------------------------------------------- */
+:root{
+  --bg:#0E1016; --panel:#12161E; --steel:#1A1F2A; --chip:#171B24;
+  --line:#0C1016; --rule:#1E2430; --lit:#2E3546; --dark:#10141B;
+  --ink:#F4F7FA; --dim:#C9D0DA; --dim2:#9BA5B4; --faint:#7D8696;
+  --red:#D63A2E; --redlit:#F0614F; --reddark:#8E241B; --gold:#E0C273;
+  --s1:8px; --s2:16px; --s3:24px; --s4:32px; --s5:48px; --s6:72px; --s7:96px;
+}
+*{box-sizing:border-box;margin:0;padding:0;border-radius:0 !important}
+html{background:var(--bg);overflow-x:clip;scroll-behavior:smooth}
+body{background:var(--bg) url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAIAAABLbSncAAAAHUlEQVR42mPkExBjwAaYGHAACiVEJBXgbEbqWQ4AV4sAxAR8+BQAAAAASUVORK5CYII=") repeat;
+  background-size:16px 16px;image-rendering:pixelated;
+  color:var(--ink);font-family:'J10',system-ui,sans-serif;font-size:19px;line-height:1.45;
+  -webkit-font-smoothing:none;overflow-x:clip}
+img{display:block;max-width:100%;height:auto}
+a{color:var(--gold);text-decoration:none}
+
+/* layout primitives */
+.wrap{width:100%;max-width:1080px;margin:0 auto;padding:0 var(--s3)}
+.section{padding:var(--s6) 0}
+.section + .section{border-top:3px solid var(--rule)}
+
+/* type scale */
+h1{font-family:'J25';font-weight:400;font-size:clamp(40px,6vw,68px);line-height:1.02;letter-spacing:1px}
+h2{font-family:'J25';font-weight:400;font-size:clamp(30px,4vw,44px);line-height:1.08;letter-spacing:1px}
+h3{font-family:'Silk';font-weight:400;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--ink)}
+.kicker{font-family:'Silk';font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold)}
+.lead{font-size:22px;color:var(--dim)}
+p{color:var(--dim);max-width:62ch}
+.muted{font-family:'Silk';font-size:9px;letter-spacing:1px;line-height:1.9;color:var(--faint);text-transform:uppercase}
+
+/* header */
+.site-head{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:3px solid var(--rule)}
+.site-head .wrap{display:flex;align-items:center;justify-content:space-between;
+  padding-top:calc(12px + env(safe-area-inset-top));padding-bottom:12px}
+.brand{display:inline-flex;align-items:center;gap:8px;font-family:'Silk';font-size:10px;letter-spacing:3px;
+  color:#F7F1E3;background:var(--red);border:3px solid var(--line);height:36px;padding:0 12px;
+  box-shadow:inset 3px 3px 0 var(--redlit),inset -3px -3px 0 var(--reddark)}
+.brand:before{content:"";width:7px;height:7px;background:#FF5A4A;box-shadow:0 0 0 2px #241A17}
+.nav{display:flex;gap:var(--s3);align-items:center}
+.nav a{font-family:'Silk';font-size:10px;letter-spacing:1px;color:var(--dim2)}
+.nav a:hover{color:var(--red)}
+
+/* buttons */
+.btn{display:inline-block;text-align:center;font-family:'Silk';font-size:13px;letter-spacing:1px;
+  padding:16px 26px;border:3px solid var(--line);max-width:360px}
+.btn-primary{background:#F1F4F8;color:#151B23;
+  box-shadow:inset 0 0 0 3px var(--gold),inset 6px 6px 0 #FFFFFF,inset -6px -6px 0 #A3ACBA}
+.btn-primary:hover{color:#151B23}
+.btn-primary:active{transform:translate(2px,2px)}
+.btn-ghost{background:var(--steel);color:var(--ink);
+  box-shadow:inset 3px 3px 0 var(--lit),inset -3px -3px 0 var(--dark)}
+.btn-ghost:hover{color:var(--ink)}
+.btn-row{display:flex;flex-wrap:wrap;gap:var(--s2);align-items:center;margin-top:var(--s4)}
+
+/* surfaces */
+.card{background:var(--panel);border:3px solid var(--line);padding:var(--s3);
+  box-shadow:inset 3px 3px 0 #070A0E,inset -3px -3px 0 #2A3040}
+.card h3{margin-bottom:var(--s1)}
+.card p{color:var(--dim);font-size:18px}
+
+/* the one grid rule the whole page uses */
+.grid{display:grid;gap:var(--s2)}
+.cols-3{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.cols-4{grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
+.cols-cards{grid-template-columns:repeat(auto-fit,minmax(168px,1fr))}
+
+/* hero */
+.hero{padding:var(--s6) 0 var(--s6)}
+.hero-grid{display:grid;gap:var(--s5);align-items:center;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.hero figure{margin:0;justify-self:center}
+.hero figure img{width:100%;max-width:320px;margin:0 auto}
+.hero figcaption{margin-top:var(--s2);text-align:center}
+
+/* numbered steps */
+.step-n{font-family:'J25';font-size:38px;line-height:1;color:var(--red);margin-bottom:var(--s1)}
+
+/* stats */
+.stat{background:var(--panel);border:3px solid var(--line);padding:var(--s3) var(--s2);text-align:center;
+  box-shadow:inset 3px 3px 0 #070A0E,inset -3px -3px 0 #2A3040}
+.stat b{display:block;font-family:'J25';font-weight:400;font-size:clamp(26px,3.4vw,40px);line-height:1.05;color:var(--gold)}
+.stat span{display:block;font-family:'Silk';font-size:9px;letter-spacing:1px;color:var(--dim2);
+  text-transform:uppercase;margin-top:var(--s1);line-height:1.7}
+
+/* screenshot figures */
+.shot{background:var(--panel);border:3px solid var(--line);padding:10px;
+  max-width:300px;margin:0 auto;                /* never larger than a phone screen should look */
+  box-shadow:inset 3px 3px 0 #070A0E,inset -3px -3px 0 #2A3040}
+.shot img{width:100%}
+figure.shotfig{margin:0}
+figure.shotfig figcaption{margin-top:var(--s2)}
+
+/* catch cards */
+.cards img{width:100%;max-width:280px;margin:0 auto;border:0}
+
+/* sprite sheet */
+.sprites{display:grid;grid-template-columns:repeat(auto-fit,75px);gap:var(--s2);
+  justify-content:center;max-width:728px;margin:0 auto}   /* 8 per row, so 24 divides evenly */
+.sprites span{display:flex;align-items:flex-end;justify-content:center;height:34px}
+.sprites img{width:75px;image-rendering:pixelated}
+
+/* the hero's own text shares one left and right edge, whatever the column width */
+.hero-grid > div > *{max-width:none}
+
+/* centred section intro */
+.intro{max-width:62ch;margin:0 auto var(--s5);text-align:center}
+.intro h2{max-width:18ch;margin-left:auto;margin-right:auto}
+.intro p{margin:var(--s2) auto 0}
+.intro h2{margin-top:var(--s2)}
+
+/* cta band */
+.cta-band{text-align:center}
+.cta-band .btn-row{justify-content:center}
+
+/* footer */
+.site-foot{border-top:3px solid var(--rule);padding:var(--s4) 0 var(--s5);margin-top:var(--s5)}
+.site-foot .links{display:flex;flex-wrap:wrap;gap:var(--s1) var(--s3);justify-content:center}
+.site-foot a{font-family:'Silk';font-size:9px;letter-spacing:1px;color:var(--dim2)}
+.site-foot a:hover{color:var(--red)}
+.site-foot .fine{margin-top:var(--s3);text-align:center}
+
+@media (max-width:620px){
+  .section{padding:var(--s5) 0}
+  .wrap{padding:0 var(--s2)}
+  .nav{gap:var(--s2)}
+  .btn{display:block;width:100%;max-width:360px}
+  .btn-row{gap:var(--s1)}
+}
+</style>
+</head>
+<body>
+
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="/">MOTORDEX</a>
+    <nav class="nav">
+      <a href="/">Home</a>
+      <a href="/cars.html">All cars</a>
+      <a href="/support.html">Support</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="kicker">Built on Google Gemini</p>
+        <h1 style="margin-top:16px">Point it at a car.<br>Keep the card.</h1>
+        <p class="lead" style="margin-top:24px">MotorDex turns real cars you see on the street into a collection. Photograph one, Gemini works out what it is, and it becomes a card in your dex.</p>
+        <div class="btn-row">
+          <a class="btn btn-primary" href="https://apps.apple.com/app/id6779553740">Get MotorDex &mdash; free</a>
+          <a class="btn btn-ghost" href="#how">See how it works</a>
+        </div>
+        <p class="muted" style="margin-top:24px">Free on iPhone &middot; 4.9 from 650+ ratings &middot; 2,073 cars to find</p>
+      </div>
+      <figure>
+        <img src="shots/card-legendary.webp"
+             srcset="shots/card-legendary-620.webp 2x, shots/card-legendary.webp 3x"
+             width="310" height="496"
+             alt="A MotorDex catch card for a Ferrari 488 Pista, graded Legendary.">
+        <figcaption class="muted">A real catch card &mdash; Ferrari 488 Pista, Legendary</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section" id="how">
+    <div class="wrap">
+      <div class="intro">
+        <p class="kicker">How it works</p>
+        <h2>Three steps, about two seconds</h2>
+      </div>
+      <div class="grid cols-3">
+        <div class="card">
+          <div class="step-n">1</div>
+          <h3>Photograph it</h3>
+          <p>Hold your phone up and press the red key. No forms, no list of makes to scroll through.</p>
+        </div>
+        <div class="card">
+          <div class="step-n">2</div>
+          <h3>Gemini reads it</h3>
+          <p>Google Gemini looks at the photo and works out the make, the model and the year. That is the hard part.</p>
+        </div>
+        <div class="card">
+          <div class="step-n">3</div>
+          <h3>Keep the card</h3>
+          <p>The car is graded and minted into your dex, pinned to the spot where you found it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- IN THE APP -->
+  <section class="section">
+    <div class="wrap">
+      <div class="intro">
+        <p class="kicker">In the app</p>
+        <h2>Scan, catch, collect</h2>
+        <p>Every screen here is the shipping iPhone app.</p>
+      </div>
+      <div class="grid cols-3">
+        <figure class="shotfig">
+          <div class="shot"><img src="shots/app-scan.webp" width="660" height="1434" loading="lazy" alt="The MotorDex scan screen with a Ferrari F40 in the viewfinder."></div>
+          <figcaption class="muted">Point the camera at the car</figcaption>
+        </figure>
+        <figure class="shotfig">
+          <div class="shot"><img src="shots/app-reveal.webp" width="660" height="1434" loading="lazy" alt="The MotorDex mint screen reading CAUGHT!"></div>
+          <figcaption class="muted">The card is made</figcaption>
+        </figure>
+        <figure class="shotfig">
+          <div class="shot"><img src="shots/app-garage.webp" width="603" height="1311" loading="lazy" alt="The MotorDex dex, a grid of caught cars."></div>
+          <figcaption class="muted">It lands in your dex</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- GRADES -->
+  <section class="section">
+    <div class="wrap">
+      <div class="intro">
+        <p class="kicker">What you collect</p>
+        <h2>Six grades, Common to Mythic</h2>
+        <p>Gemini says what the car is. How rare it is isn't up to the model &mdash; a Corolla is Common for everyone, everywhere, every time.</p>
+      </div>
+      <div class="grid cols-cards cards">
+        <img src="shots/card-uncommon.webp"  srcset="shots/card-uncommon-620.webp 2x"   width="310" height="496" loading="lazy" alt="Catch card for a Volkswagen Golf R32, graded Uncommon.">
+        <img src="shots/card-rare.webp"      srcset="shots/card-rare-620.webp 2x"       width="310" height="496" loading="lazy" alt="Catch card for a BMW Bavaria, graded Rare.">
+        <img src="shots/card-epic.webp"      srcset="shots/card-epic-620.webp 2x"       width="310" height="496" loading="lazy" alt="Catch card for a Porsche 911 SC, graded Epic.">
+        <img src="shots/card-legendary.webp" srcset="shots/card-legendary-620.webp 2x"  width="310" height="496" loading="lazy" alt="Catch card for a Ferrari 488 Pista, graded Legendary.">
+        <img src="shots/card-mythic.webp"    srcset="shots/card-mythic-620.webp 2x"     width="310" height="496" loading="lazy" alt="Catch card for a Prodrive P25, graded Mythic.">
+      </div>
+    </div>
+  </section>
+
+  <!-- MAP -->
+  <section class="section">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <p class="kicker">Where you found it</p>
+          <h2 style="margin-top:16px">Every catch gets a pin</h2>
+          <p style="margin-top:20px">Each card remembers where it was caught. Your map fills in as you go &mdash; a record of everything you have spotted and exactly where.</p>
+        </div>
+        <figure class="shotfig">
+          <div class="shot"><img src="shots/app-map.webp" width="603" height="1311" loading="lazy" alt="The MotorDex map covered in catch pins across California."></div>
+          <figcaption class="muted">417 pins on one spotter's account</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- GEMINI -->
+  <section class="section">
+    <div class="wrap">
+      <div class="intro">
+        <p class="kicker">Built on Google Gemini</p>
+        <h2>Gemini also drew the cars</h2>
+        <p>Every car in the catalogue has its own pixel sprite, drawn with Gemini's image model &mdash; as were the class backdrops and the card art.</p>
+      </div>
+      <div class="sprites">
+        <span><img src="sprites/car-1223.png" width="75" loading="lazy" alt=""></span>
+        <span><img src="sprites/car-1248.png" width="75" loading="lazy" alt=""></span>
+        <span><img src="sprites/car-515.png" width="75" loading="lazy" alt=""></span>
+        <span><img src="sprites/car-449.png" width="75" loading="lazy" alt=""></span>
+        <span><img src="sprites/car-1213.png" width="75" loading="lazy" alt=""></span>
+        <span><img src="sprites/car-239.png" width="75" loading="lazy" alt=""></span>
+        <span><img src="sprites/car-519.png" width="75" loading="lazy" alt=""></span>
+        <span><img src="sprites/car-1226.png" width="75" loading="lazy" alt=""></span>
+        <span><img src="sprites/car-1294.png" width="75" loading="lazy" alt=""></span>
+        <span><img src="sprites/car-622.png" width="75" loading="lazy" alt=""></span>
+        <span><img src="sprites/car-1202.png" width="75" loading="lazy" alt=""></span>
+        <span><img src="sprites/car-921.png" width="75" loading="lazy" alt=""></span>
+        <span><img src="sprites/car-560.png" width="75" loading="lazy" alt=""></span>
+        <span><img src="sprites/car-1218.png" width="75" loading="lazy" alt=""></span>
+        <span><img src="sprites/car-1245.png" width="75" loading="lazy" alt=""></span>
+        <span><img src="sprites/car-1256.png" width="75" loading="lazy" alt=""></span>
+        <span><img src="sprites/car-1216.png" width="75" loading="lazy" alt=""></span>
+        <span><img src="sprites/car-514.png" width="75" loading="lazy" alt=""></span>
+        <span><img src="sprites/car-659.png" width="75" loading="lazy" alt=""></span>
+        <span><img src="sprites/car-771.png" width="75" loading="lazy" alt=""></span>
+        <span><img src="sprites/car-927.png" width="75" loading="lazy" alt=""></span>
+        <span><img src="sprites/car-1081.png" width="75" loading="lazy" alt=""></span>
+        <span><img src="sprites/car-671.png" width="75" loading="lazy" alt=""></span>
+        <span><img src="sprites/car-123.png" width="75" loading="lazy" alt=""></span>
+      </div>
+      <p class="muted" style="text-align:center;margin-top:24px">24 of them, at native size &mdash; 75 pixels wide, unscaled</p>
+    </div>
+  </section>
+
+  <!-- NUMBERS -->
+  <section class="section">
+    <div class="wrap">
+      <div class="intro">
+        <p class="kicker">Where it stands</p>
+        <h2>Live, and growing</h2>
+      </div>
+      <div class="grid cols-4">
+        <div class="stat"><b>1,000,000+</b><span>Cars caught worldwide</span></div>
+        <div class="stat"><b>Tens of thousands</b><span>Spotters</span></div>
+        <div class="stat"><b>Thousands</b><span>Caught every day</span></div>
+        <div class="stat"><b>2,073</b><span>Cars in the catalogue</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section cta-band">
+    <div class="wrap">
+      <h2>Start your dex</h2>
+      <p style="margin:16px auto 0">Free to download and play. 2,073 cars are out there.</p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="https://apps.apple.com/app/id6779553740">Get MotorDex &mdash; free on iPhone</a>
+      </div>
+      <p class="muted" style="margin-top:24px">4.9 from 650+ ratings</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="links">
+      <a href="/">Home</a>
+      <a href="/what-is-motordex.html">About</a>
+      <a href="/cars.html">All 2,073 cars</a>
+      <a href="/support.html">Support</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/terms.html">Terms</a>
+    </div>
+    <p class="muted fine">Gemini is a Google product. This page describes how MotorDex uses it and is not endorsed by Google. Screens and cards are captures of the shipping iOS app.<br>&copy; 2026 MotorDex Game LLC</p>
+  </div>
+</footer>
+
+</body>
+</html>

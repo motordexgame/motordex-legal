@@ -1,6 +1,6 @@
 # MotorDex
 
-> MotorDex is a free car spotting app for iPhone that turns real-world car spotting into a collection. You photograph a car, the app identifies its make and model, and you keep it as a trading card with full specs, a rarity tier and an estimated value. Made by MotorDex Game LLC.
+> MotorDex is a free car spotting app that turns real-world car spotting into a collection. You photograph a car, the app identifies its make and model, and you keep it as a trading card with full specs, a rarity tier and an estimated value. Made by MotorDex Game LLC.
 
 Key facts (from the live MotorDex database, October 2026):
 

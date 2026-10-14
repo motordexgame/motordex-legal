@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>MotorDex — Car Spotting App: Scan &amp; Collect Real Cars</title>
-<meta name="description" content="MotorDex is the free car spotting app for iPhone, rated 4.9 on the App Store. Scan any car, identify it in seconds and collect it as a card.">
+<meta name="description" content="MotorDex is the free car spotting app, rated 4.9 on the App Store. Scan any car, identify it in seconds and collect it as a card.">
 <meta property="og:title" content="MotorDex — Car Spotting App: Scan &amp; Collect Real Cars">
-<meta property="og:description" content="Spot a car, scan it, collect it as a trading card. Free on iPhone.">
+<meta property="og:description" content="Spot a car, scan it, collect it as a trading card. Free to play.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://motordexgame.com/">
 <meta name="theme-color" content="#0E1016">
@@ -20,10 +20,10 @@
 <meta property="og:image" content="https://motordexgame.com/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="MotorDex, the car spotting app for iPhone">
+<meta property="og:image:alt" content="MotorDex, the free car spotting app">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="MotorDex — Car Spotting App: Scan &amp; Collect Real Cars">
-<meta name="twitter:description" content="Spot a car, scan it, collect it as a trading card. Free on iPhone.">
+<meta name="twitter:description" content="Spot a car, scan it, collect it as a trading card. Free to play.">
 <meta name="twitter:image" content="https://motordexgame.com/og.png">
 <link rel="alternate" type="text/plain" href="/llms.txt" title="MotorDex facts for AI assistants">
 <link rel="preload" href="/fonts/jersey25.woff2" as="font" type="font/woff2" crossorigin>
@@ -74,11 +74,11 @@
         "MotorDex car identifier",
         "MotorDex car spotting game"
       ],
-      "disambiguatingDescription": "MotorDex is an iPhone car spotting app and car identifier made by MotorDex Game LLC. It is not affiliated with other products that have similar names.",
+      "disambiguatingDescription": "MotorDex is a free car spotting app and car identifier made by MotorDex Game LLC. It is not affiliated with other products that have similar names.",
       "sameAs": [
         "https://apps.apple.com/us/app/motordex/id6779553740"
       ],
-      "description": "A car spotting app and collection game for iPhone. Scan a real car with your camera, MotorDex identifies the make and model, and you collect it as a trading card with full specs, a rarity tier and an estimated value.",
+      "description": "A free car spotting app and collection game. Scan a real car with your camera, MotorDex identifies the make and model, and you collect it as a trading card with full specs, a rarity tier and an estimated value.",
       "operatingSystem": "iOS",
       "availableOnDevice": "iPhone",
       "softwareRequirements": "iOS",
@@ -186,7 +186,7 @@ a{text-decoration:none;color:inherit}
 
 h1{font-family:'J25';font-size:41px;line-height:.9;color:#fff;font-weight:400;margin-bottom:12px}
 .tag{font-family:'Silk';font-size:11px;line-height:1.7;letter-spacing:2px;color:#9BA5B4;margin-bottom:10px}
-.claim{font-family:'Silk';font-size:9px;line-height:1.9;letter-spacing:1px;color:#E0C273;margin-bottom:30px}
+
 
 /* --- THE button: the only white on the page, so the eye lands here --- */
 .cta{
@@ -389,8 +389,7 @@ footer a:hover{color:#D63A2E}
 
   <h1>@MOTORDEXGAME</h1>
   <p class="tag">SCAN &amp; COLLECT REAL CARS</p>
-  <p class="claim">THE CAR SPOTTING APP FOR IPHONE<br>RATED 4.9 ON THE APP STORE</p>
-
+  
   <!-- Hidden until a REAL number arrives. If the count can't load, the board
        never appears - a page showing 0000000 or dashes would be a lie. -->
   <div class="world" id="world" hidden>
@@ -434,9 +433,10 @@ footer a:hover{color:#D63A2E}
   </div>
 
   <footer>
-    <a href="mailto:&#115;&#117;&#112;&#112;&#111;&#114;&#116;&#64;&#109;&#111;&#116;&#111;&#114;&#100;&#101;&#120;&#103;&#97;&#109;&#101;&#46;&#99;&#111;&#109;">CONTACT</a>
+    <a href="mailto:&#115;&#117;&#112;&#112;&#111;&#114;&#116;&#64;&#109;&#111;&#116;&#111;&#114;&#100;&#101;&#120;&#103;&#97;&#109;&#101;&#46;&#99;&#111;&#109;" id="ctopen" aria-controls="ct" aria-expanded="false">CONTACT</a>
     <a href="mailto:&#115;&#117;&#112;&#112;&#111;&#114;&#116;&#64;&#109;&#111;&#116;&#111;&#114;&#100;&#101;&#120;&#103;&#97;&#109;&#101;&#46;&#99;&#111;&#109;?subject=Feedback" id="fbopen" aria-controls="fb" aria-expanded="false">FEEDBACK</a>
     <a href="/what-is-motordex.html">ABOUT</a>
+    <a href="/how-it-works.html">HOW IT WORKS</a>
     <a href="/cars.html">ALL CARS</a>
     <a href="/support.html">SUPPORT</a>
     <a href="/privacy.html">PRIVACY</a>
@@ -453,6 +453,23 @@ footer a:hover{color:#D63A2E}
       <p class="wlmsg" id="fbmsg" role="status" aria-live="polite"></p>
       <p class="fbhint">WANT A REPLY? USE CONTACT.</p>
     </form>
+
+    <!-- Revealed by JS from the CONTACT link. A bare mailto: does NOTHING on a device
+         with no mail handler registered - a Mac where Mail.app was never set up, and
+         most in-app browsers, which is exactly where the Instagram traffic lands. The
+         href stays a real mailto so it still works with JS off and for anyone who does
+         have a client; this panel just makes the address readable and copyable too.
+         Same mistake as the waitlist button, which sat as a dead mailto for two weeks. -->
+    <div class="wl fb" id="ct" hidden>
+      <label class="wlab" for="ctmail">EMAIL US</label>
+      <input class="wlin" id="ctmail" value="&#115;&#117;&#112;&#112;&#111;&#114;&#116;&#64;&#109;&#111;&#116;&#111;&#114;&#100;&#101;&#120;&#103;&#97;&#109;&#101;&#46;&#99;&#111;&#109;" readonly spellcheck="false">
+      <button class="wlgo" id="ctcopy" type="button">COPY ADDRESS</button>
+      <p class="wlmsg" id="ctmsg" role="status" aria-live="polite"></p>
+
+      <label class="wlab" for="ctphone" style="margin-top:14px">OR CALL</label>
+      <input class="wlin" id="ctphone" value="(855) 668-6739" readonly spellcheck="false">
+      <p class="fbhint"><a href="tel:+18556686739">TAP TO CALL</a> &middot; <a href="mailto:&#115;&#117;&#112;&#112;&#111;&#114;&#116;&#64;&#109;&#111;&#116;&#111;&#114;&#100;&#101;&#120;&#103;&#97;&#109;&#101;&#46;&#99;&#111;&#109;">OPEN YOUR MAIL APP</a></p>
+    </div>
     <div class="copy">&copy; 2026 MOTORDEX</div>
   </footer>
 
@@ -745,6 +762,52 @@ footer a:hover{color:#D63A2E}
 //
 // return=minimal is REQUIRED, not a nicety: asking for the row back is a SELECT, which anon
 // does not have, so it would turn a successful send into a 401. Verified.
+// CONTACT: show the address instead of trusting mailto:.
+// A mailto only does something if the OS has a mail handler. Plenty of visitors
+// have none, and for them the link is simply dead - no error, no feedback, exactly
+// the "doesn't do anything" this was reported as. Clicking now opens a panel with
+// the address in selectable text and a copy key. The mailto stays on the href as
+// the no-JS fallback and is still offered inside the panel.
+(function(){
+  var open = document.getElementById('ctopen');
+  var box  = document.getElementById('ct');
+  var inp  = document.getElementById('ctmail');
+  var btn  = document.getElementById('ctcopy');
+  var msg  = document.getElementById('ctmsg');
+  if (!open || !box || !inp || !btn) return;
+
+  open.addEventListener('click', function(e){
+    e.preventDefault();                 // the mailto is the fallback, not the first move
+    var show = box.hidden;
+    box.hidden = !show;
+    open.setAttribute('aria-expanded', show ? 'true' : 'false');
+    if (show){ try { inp.focus(); inp.select(); } catch(_){} }
+  });
+
+  function say(t, cls){ msg.textContent = t; msg.className = 'wlmsg ' + cls; }
+
+  function copyFallback(){
+    // ONE attempt, and report what actually happened — calling this inside the
+    // message expression ran the copy twice and then reported success either way.
+    var ok = false;
+    try { ok = !!(document.execCommand && document.execCommand('copy')); } catch(_){}
+    say(ok ? 'COPIED.' : 'SELECT IT AND COPY.', ok ? 'ok' : 'bad');
+  }
+
+  btn.addEventListener('click', function(){
+    try { inp.focus(); inp.select(); } catch(_){}
+    // navigator.clipboard needs a secure context; execCommand is the fallback
+    if (navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(inp.value).then(
+        function(){ say('COPIED.', 'ok'); },
+        copyFallback
+      );
+      return;
+    }
+    copyFallback();
+  });
+})();
+
 (function(){
   var open = document.getElementById('fbopen');
   var form = document.getElementById('fb');

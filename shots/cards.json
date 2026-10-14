@@ -1,0 +1,37 @@
+[
+  {
+    "file": "shots/card-rare.webp",
+    "car": "Bavaria",
+    "make": "BMW",
+    "rarity": "RARE",
+    "color": "#4BACA2"
+  },
+  {
+    "file": "shots/card-mythic.webp",
+    "car": "P25",
+    "make": "Prodrive",
+    "rarity": "MYTHIC",
+    "color": "#DA4278"
+  },
+  {
+    "file": "shots/card-legendary.webp",
+    "car": "488 Pista",
+    "make": "Ferrari",
+    "rarity": "LEGENDARY",
+    "color": "#E6AC3E"
+  },
+  {
+    "file": "shots/card-uncommon.webp",
+    "car": "Golf R32",
+    "make": "Volkswagen",
+    "rarity": "UNCOMMON",
+    "color": "#BA884E"
+  },
+  {
+    "file": "shots/card-epic.webp",
+    "car": "911 SC",
+    "make": "Porsche",
+    "rarity": "EPIC",
+    "color": "#987DB8"
+  }
+]

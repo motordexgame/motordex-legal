@@ -1,7 +1,7 @@
 # Every car in MotorDex
 
 > The full MotorDex catalog as of 2026-10-11: 2,073 real cars you can spot and collect in the MotorDex
-> car spotting app for iPhone, from 205 makes, A to Z by make with production years. Each entry covers
+> free car spotting app, from 205 makes, A to Z by make with production years. Each entry covers
 > the whole nameplate; trims and special editions are graded inside it. Source: the live MotorDex database.
 > Web version: https://motordexgame.com/cars.html
 
