@@ -158,6 +158,11 @@ figure.shotfig figcaption{margin-top:var(--s2)}
 /* the hero's own text shares one left and right edge, whatever the column width */
 .hero-grid > div > *{max-width:none}
 
+/* the rank ladder, and prose that sits centred under a section */
+.ladder{font-family:'J25';font-size:clamp(20px,2.4vw,30px);line-height:1.5;color:var(--gold);
+  text-align:center;max-width:none;margin:0 auto}
+.centred{text-align:center;margin:var(--s3) auto 0}
+
 /* centred section intro */
 .intro{max-width:62ch;margin:0 auto var(--s5);text-align:center}
 .intro h2{max-width:18ch;margin-left:auto;margin-right:auto}
@@ -292,6 +297,30 @@ figure.shotfig figcaption{margin-top:var(--s2)}
     </div>
   </section>
 
+  <!-- WHAT IS ON A CARD -->
+  <section class="section">
+    <div class="wrap">
+      <div class="intro">
+        <p class="kicker">What a card tells you</p>
+        <h2>No two cards are the same</h2>
+      </div>
+      <div class="grid cols-3">
+        <div class="card">
+          <h3>A serial that means something</h3>
+          <p>Every card is stamped with the car's code and a serial &mdash; and that serial is how many times that car has been caught by anyone, anywhere. Catch the 1,482nd Mustang and your card reads 1,482 for good.</p>
+        </div>
+        <div class="card">
+          <h3>The whole spec sheet</h3>
+          <p>Top speed, horsepower and 0&ndash;60 fill as bars when the card opens, with redline, torque, weight and drivetrain underneath. Plus what it cost new against what it is worth now, and a "1 of 500" stamp when the real car was built in tiny numbers.</p>
+        </div>
+        <div class="card">
+          <h3>Your photo, your note</h3>
+          <p>The photo you took is the card art. Open the original full screen, save it, or reframe how the car sits in the window. You can add a private note to any card &mdash; where you found it, what it sounded like &mdash; that nobody else ever sees.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- MAP -->
   <section class="section">
     <div class="wrap">
@@ -304,6 +333,42 @@ figure.shotfig figcaption{margin-top:var(--s2)}
         <figure class="shotfig">
           <div class="shot"><img src="shots/app-map.webp" width="603" height="1311" loading="lazy" alt="The MotorDex map covered in catch pins across California."></div>
           <figcaption class="muted">417 pins on one spotter's account</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEX AND DECK -->
+  <section class="section">
+    <div class="wrap">
+      <div class="hero-grid">
+        <figure class="shotfig">
+          <div class="shot"><img src="shots/app-deck.webp" width="603" height="1311" loading="lazy" alt="The MotorDex dex, a grid of caught cars with a search box."></div>
+          <figcaption class="muted">The dex, and every card you have minted</figcaption>
+        </figure>
+        <div>
+          <p class="kicker">Two ways to see it</p>
+          <h2 style="margin-top:16px">A dex and a deck</h2>
+          <p style="margin-top:20px">The dex has a slot for all 2,073 cars: the ones you have caught in colour, the rest as grey silhouettes, so you can see the shape you are hunting before you find it.</p>
+          <p>Flip the title and you get your deck instead &mdash; every card you have ever minted, newest first. Search a make or a model, sort by rarity or by when you caught it, or narrow the grid to one marque.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAR PAGES -->
+  <section class="section">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <p class="kicker">The catalogue</p>
+          <h2 style="margin-top:16px">Every car has its own page</h2>
+          <p style="margin-top:20px">Tap a car you have caught and you get its entry: the years it was built, where it came from, its class, how many were made, its story and a fact worth knowing. All 2,073 have one written &mdash; not just the famous ones.</p>
+          <p>Long-lived nameplates list every generation, and the eras you have actually caught light up gold while the rest stay grey.</p>
+        </div>
+        <figure class="shotfig">
+          <div class="shot"><img src="shots/app-detail.webp" width="660" height="1434" loading="lazy" alt="A MotorDex car page for the Ferrari F40, with its overview, story and fun fact."></div>
+          <figcaption class="muted">The Ferrari F40's entry</figcaption>
         </figure>
       </div>
     </div>
@@ -347,6 +412,108 @@ figure.shotfig figcaption{margin-top:var(--s2)}
     </div>
   </section>
 
+  <!-- LICENCE -->
+  <section class="section">
+    <div class="wrap">
+      <div class="hero-grid">
+        <figure class="shotfig">
+          <div class="shot"><img src="shots/app-home.webp" width="603" height="1311" loading="lazy" alt="The MotorDex home screen: a spotter licence, a day streak and three daily challenges."></div>
+          <figcaption class="muted">Your licence, your streak, today's three</figcaption>
+        </figure>
+        <div>
+          <p class="kicker">Who you are in the app</p>
+          <h2 style="margin-top:16px">Your spotter licence</h2>
+          <p style="margin-top:20px">The home screen is an ID card: your handle, a licence number, your rank and level, how much of the catalogue you have found, your lifetime catch count and the date you joined.</p>
+          <p>Pick any car you have caught to stand in the photo window, or use a picture of your own. Tap the banner and the whole licence renders out as an image you can post.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RANKS -->
+  <section class="section">
+    <div class="wrap">
+      <div class="intro">
+        <p class="kicker">The spotter's road</p>
+        <h2>Twelve ranks, Novice to Legend</h2>
+        <p>Every catch pays XP, and the barcode across your licence is the bar that fills. Levels bundle into twelve ranks, laid out as a road you climb &mdash; the gates behind you lit gold, a chequered line at the top.</p>
+      </div>
+      <p class="ladder">Novice &middot; Spotter &middot; Scout &middot; Tracker &middot; Enthusiast &middot; Collector &middot; Curator &middot; Veteran &middot; Master &middot; Elite &middot; Champion &middot; Legend</p>
+      <p class="centred">A car new to your dex pays the most. A better example of one you already own still pays well. Photographing the same car over and over does not &mdash; the game pays you for finding something, not for firing the shutter.</p>
+    </div>
+  </section>
+
+  <!-- DAILY -->
+  <section class="section">
+    <div class="wrap">
+      <div class="intro">
+        <p class="kicker">Every day, a new set</p>
+        <h2>Three things to do today</h2>
+      </div>
+      <div class="grid cols-3">
+        <div class="card">
+          <h3>Three goals a day</h3>
+          <p>Dealt from a pool of a hundred: catch a 1990s car, catch three body types, catch from three regions, catch something with a sub-four-second 0&ndash;60. Each has a bar that fills as you catch, and XP to collect when it is full.</p>
+        </div>
+        <div class="card">
+          <h3>Keep the streak</h3>
+          <p>Catch at least one car and a flame keeps your day count running. Miss a whole day and it goes out and starts again. Your best run ever is kept on your licence.</p>
+        </div>
+        <div class="card">
+          <h3>Picked up where you left off</h3>
+          <p>Open the app after a day out and a card recaps what you caught last time, best find first, and the streak you are keeping alive.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BADGES -->
+  <section class="section">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <p class="kicker">What you have done</p>
+          <h2 style="margin-top:16px">A wall of medals</h2>
+          <p style="margin-top:20px">Badges track the collecting you do without thinking about it: body styles, decades, places you have spotted in, streaks, your first Legendary, and a medal for every marque as you work through its cars.</p>
+          <p>Most climb copper to silver to gold, and the board shows how far you are from all&#8209;gold. You pin four of them onto your licence.</p>
+        </div>
+        <figure class="shotfig">
+          <div class="shot"><img src="shots/app-badges.webp" width="660" height="1434" loading="lazy" alt="The MotorDex badge board, showing 18 of 49 badges earned."></div>
+          <figcaption class="muted">The badge board</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- FRIENDS -->
+  <section class="section">
+    <div class="wrap">
+      <div class="hero-grid">
+        <figure class="shotfig">
+          <div class="shot"><img src="shots/app-feed.webp" width="603" height="1311" loading="lazy" alt="The MotorDex feed, with leaderboard and friends tabs."></div>
+          <figcaption class="muted">The feed, the leaderboard and your friends</figcaption>
+        </figure>
+        <div>
+          <p class="kicker">Who else is out there</p>
+          <h2 style="margin-top:16px">Friends, by code</h2>
+          <p style="margin-top:20px">Every spotter gets an eight&#8209;character code. Type a friend's in and their catches land in your feed, newest first, with a star you can leave on anything good.</p>
+          <p>Open a friend and you get their licence and their whole dex, and each car's page tells you which of your friends already has it. Their cards never carry a location, and neither do yours.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEADERBOARD -->
+  <section class="section">
+    <div class="wrap">
+      <div class="intro">
+        <p class="kicker">Leaderboard</p>
+        <h2>The board starts over every month</h2>
+        <p>A world board ranks spotters for the month you are in &mdash; by cars caught, by different cars, or by XP &mdash; with a clock counting down to the reset, so every month everyone starts level. Your friends have their own standing board beside it, and one switch keeps you off the public one entirely.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- NUMBERS -->
   <section class="section">
     <div class="wrap">
@@ -359,6 +526,8 @@ figure.shotfig figcaption{margin-top:var(--s2)}
         <div class="stat"><b>Tens of thousands</b><span>Spotters</span></div>
         <div class="stat"><b>Thousands</b><span>Caught every day</span></div>
         <div class="stat"><b>2,073</b><span>Cars in the catalogue</span></div>
+        <div class="stat"><b>206</b><span>Marques to collect</span></div>
+        <div class="stat"><b>100</b><span>Daily challenges in the pool</span></div>
       </div>
     </div>
   </section>
