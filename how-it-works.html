@@ -183,27 +183,33 @@ figure.shotfig figcaption{margin-top:var(--s2);text-align:center}
 /* the hero's own text shares one left and right edge, whatever the column width */
 .hero-grid > div > *{max-width:none}
 
-/* THE TOWER. Twelve rungs, widest at the bottom, narrowing to the summit — a
-   climb you can see rather than a list of twelve words. The bars grow from zero
-   when the section arrives; with the animation off they are simply already full. */
-.tower{list-style:none;max-width:640px;margin:0 auto;display:grid;gap:9px}
-.rung{text-align:center;position:relative;padding:0 2px}
-.rung .rname{display:inline-block;font-family:'J25';font-size:clamp(17px,2vw,24px);
-  color:var(--dim2);line-height:1.15;vertical-align:middle}
-.rung .rlv{display:inline-block;margin-left:9px;font-family:'Silk';font-size:8px;letter-spacing:1px;
-  color:var(--faint);vertical-align:middle}
-.rung .rbar{display:block;height:14px;width:var(--w);margin:5px auto 0;
-  background:#2A3040;border:2px solid var(--line);transform:scaleX(0);transform-origin:50% 50%}
-.rung.lit .rbar{animation:grow .5s steps(6,end) forwards}
-@keyframes grow{to{transform:scaleX(1)}}
-/* the climb brightens toward the summit */
-.rung:nth-child(-n+4) .rname{color:var(--ink)}
-.rung:nth-child(-n+4) .rbar{background:#6E5A2A}
-.rung.top .rname{color:var(--gold);font-size:clamp(22px,2.8vw,34px)}
+/* THE TOWER, read left to right. Twelve columns climbing to a gold summit — the
+   same information as a list of twelve names, in a fifth of the height. It scrolls
+   sideways rather than reflowing, so the shape of the climb survives on a phone. */
+.towerwrap{overflow-x:auto;scrollbar-width:none;margin:0 -8px;padding:0 8px}
+.towerwrap::-webkit-scrollbar{display:none}
+.tower{list-style:none;display:flex;align-items:flex-end;gap:6px;
+  height:210px;min-width:min(100%,680px)}
+.rung{flex:1 1 0;min-width:46px;display:flex;flex-direction:column;
+  align-items:center;justify-content:flex-end;height:100%}
+.rung .rbar{display:block;width:100%;height:var(--h);position:relative;
+  background:#242B39;border:2px solid var(--line);border-bottom:0;
+  transform:scaleY(0);transform-origin:50% 100%}
+.rung .rbar b{position:absolute;top:5px;left:0;right:0;text-align:center;
+  font-family:'Silk';font-weight:400;font-size:8px;letter-spacing:0;color:var(--faint)}
+.rung.lit .rbar{animation:climb .45s cubic-bezier(.3,.8,.4,1) forwards}
+@keyframes climb{to{transform:scaleY(1)}}
+.rung .rname{margin-top:7px;font-family:'Silk';font-size:8px;letter-spacing:0;
+  color:var(--dim2);text-align:center;line-height:1.3;word-break:break-word}
+/* the climb warms toward the summit */
+.rung:nth-child(n+7) .rbar{background:#3A3A2E}
+.rung:nth-child(n+10) .rbar{background:#6E5A2A}
+.rung:nth-child(n+10) .rname{color:var(--ink)}
 .rung.top .rbar{background:var(--gold);box-shadow:inset 2px 2px 0 #FFE7A3,inset -2px -2px 0 #9A6A12}
-.rung.top .rlv{color:var(--gold)}
+.rung.top .rbar b{color:#5A4410}
+.rung.top .rname{color:var(--gold)}
 @media (prefers-reduced-motion:reduce){
-  .rung .rbar{transform:scaleX(1)}
+  .rung .rbar{transform:scaleY(1)}
   .rung.lit .rbar{animation:none}
 }
 .centred{text-align:center;margin:var(--s3) auto 0}
@@ -509,70 +515,60 @@ figure.shotfig figcaption{margin-top:var(--s2);text-align:center}
       <div class="intro">
         <p class="kicker">The spotter's road</p>
         <h2>Twelve ranks, Novice to Legend</h2>
-        <p>Every catch pays XP, and the barcode across your licence is the bar that fills. Levels bundle into twelve ranks, laid out as a road you climb &mdash; the gates behind you lit gold, a chequered line at the top.</p>
+        <p>Every catch pays XP, and the barcode across your licence is the bar that fills. Levels bundle into twelve ranks &mdash; a climb from Novice all the way to Legend.</p>
       </div>
-<ol class="tower">
-        <li class="rung top" style="--w:100%">
-          <span class="rname">Legend</span>
-          <span class="rbar"></span>
-          <span class="rlv">LV 100</span>
-        </li>
-        <li class="rung" style="--w:94%">
-          <span class="rname">Champion</span>
-          <span class="rbar"></span>
-          <span class="rlv">LV 90</span>
-        </li>
-        <li class="rung" style="--w:87%">
-          <span class="rname">Elite</span>
-          <span class="rbar"></span>
-          <span class="rlv">LV 80</span>
-        </li>
-        <li class="rung" style="--w:81%">
-          <span class="rname">Master</span>
-          <span class="rbar"></span>
-          <span class="rlv">LV 70</span>
-        </li>
-        <li class="rung" style="--w:75%">
-          <span class="rname">Veteran</span>
-          <span class="rbar"></span>
-          <span class="rlv">LV 60</span>
-        </li>
-        <li class="rung" style="--w:68%">
-          <span class="rname">Curator</span>
-          <span class="rbar"></span>
-          <span class="rlv">LV 50</span>
-        </li>
-        <li class="rung" style="--w:62%">
-          <span class="rname">Collector</span>
-          <span class="rbar"></span>
-          <span class="rlv">LV 40</span>
-        </li>
-        <li class="rung" style="--w:55%">
-          <span class="rname">Enthusiast</span>
-          <span class="rbar"></span>
-          <span class="rlv">LV 30</span>
-        </li>
-        <li class="rung" style="--w:49%">
-          <span class="rname">Tracker</span>
-          <span class="rbar"></span>
-          <span class="rlv">LV 20</span>
-        </li>
-        <li class="rung" style="--w:43%">
-          <span class="rname">Scout</span>
-          <span class="rbar"></span>
-          <span class="rlv">LV 10</span>
-        </li>
-        <li class="rung" style="--w:36%">
-          <span class="rname">Spotter</span>
-          <span class="rbar"></span>
-          <span class="rlv">LV 5</span>
-        </li>
-        <li class="rung" style="--w:30%">
-          <span class="rname">Novice</span>
-          <span class="rbar"></span>
-          <span class="rlv">LV 1</span>
-        </li>
-      </ol>
+<div class="towerwrap">
+        <ol class="tower">
+          <li class="rung" style="--h:18%">
+            <span class="rbar"><b>1</b></span>
+            <span class="rname">Novice</span>
+          </li>
+          <li class="rung" style="--h:25%">
+            <span class="rbar"><b>5</b></span>
+            <span class="rname">Spotter</span>
+          </li>
+          <li class="rung" style="--h:33%">
+            <span class="rbar"><b>10</b></span>
+            <span class="rname">Scout</span>
+          </li>
+          <li class="rung" style="--h:40%">
+            <span class="rbar"><b>20</b></span>
+            <span class="rname">Tracker</span>
+          </li>
+          <li class="rung" style="--h:48%">
+            <span class="rbar"><b>30</b></span>
+            <span class="rname">Enthusiast</span>
+          </li>
+          <li class="rung" style="--h:55%">
+            <span class="rbar"><b>40</b></span>
+            <span class="rname">Collector</span>
+          </li>
+          <li class="rung" style="--h:63%">
+            <span class="rbar"><b>50</b></span>
+            <span class="rname">Curator</span>
+          </li>
+          <li class="rung" style="--h:70%">
+            <span class="rbar"><b>60</b></span>
+            <span class="rname">Veteran</span>
+          </li>
+          <li class="rung" style="--h:78%">
+            <span class="rbar"><b>70</b></span>
+            <span class="rname">Master</span>
+          </li>
+          <li class="rung" style="--h:85%">
+            <span class="rbar"><b>80</b></span>
+            <span class="rname">Elite</span>
+          </li>
+          <li class="rung" style="--h:93%">
+            <span class="rbar"><b>90</b></span>
+            <span class="rname">Champion</span>
+          </li>
+          <li class="rung top" style="--h:100%">
+            <span class="rbar"><b>100</b></span>
+            <span class="rname">Legend</span>
+          </li>
+        </ol>
+      </div>
       <p class="centred">A car new to your dex pays the most. A better example of one you already own still pays well. Photographing the same car over and over does not &mdash; the game pays you for finding something, not for firing the shutter.</p>
     </div>
   </section>
@@ -732,9 +728,8 @@ figure.shotfig figcaption{margin-top:var(--s2);text-align:center}
     var tio = new IntersectionObserver(function(es){
       es.forEach(function(e){
         if (!e.isIntersecting) return;
-        var order = rungs.length - 1 - rungs.indexOf(e.target);   // Novice first
-        e.target.style.animationDelay = (order * 0.06) + 's';
-        e.target.querySelector('.rbar').style.animationDelay = (order * 0.06) + 's';
+        var order = rungs.indexOf(e.target);   // Novice is first in the DOM now, so the climb runs left to right
+        e.target.querySelector('.rbar').style.animationDelay = (order * 0.045) + 's';
         e.target.classList.add('lit');
         tio.unobserve(e.target);
       });
