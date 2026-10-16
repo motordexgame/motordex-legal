@@ -84,7 +84,7 @@ h3{font-family:'Silk';font-weight:400;font-size:12px;letter-spacing:2px;text-tra
 p{color:var(--dim);max-width:62ch}
 .muted{font-family:'Silk';font-size:9px;letter-spacing:1px;line-height:1.9;color:var(--faint);text-transform:uppercase}
 /* captions and fine print are centred BLOCKS, not left blocks with centred text */
-figure.shotfig figcaption,.cta-band .muted,.site-foot .fine,.centred{
+figure.shotfig figcaption,.cta-band .muted,.site-foot .fine,.centred,.towerhint{
   max-width:none;margin-left:auto;margin-right:auto;text-align:center}
 
 /* header */
@@ -117,11 +117,41 @@ figure.shotfig figcaption,.cta-band .muted,.site-foot .fine,.centred{
 .card h3{margin-bottom:var(--s1)}
 .card p{color:var(--dim);font-size:18px}
 
-/* the one grid rule the whole page uses */
+/* ROWS NEVER BREAK RAGGED.
+   auto-fit decides the column count on its own, and with three items in a row it
+   loves to make two columns and leave the third sitting alone against the left
+   edge. So: a row of three is one column or three columns, nothing between -- and
+   rows of five centre their remainder instead of stranding it. */
 .grid{display:grid;gap:var(--s2)}
-.cols-3{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
-.cols-4{grid-template-columns:repeat(auto-fit,minmax(172px,1fr))}
-.cols-cards{grid-template-columns:repeat(auto-fit,minmax(168px,1fr))}
+.cols-3{grid-template-columns:1fr}
+@media (min-width:880px){ .cols-3{grid-template-columns:repeat(3,1fr)} }
+/* Five items, in three honest shapes: 2+2+1 on a phone, 3+2 in the middle, five
+   across on a desktop. Every item in a row is the SAME width (no flex-grow), so
+   the second row never comes out fatter than the first, and the flex box centres
+   each row under the one above it. */
+.cols-4,.cols-cards{display:flex;flex-wrap:wrap;justify-content:center;align-items:stretch;
+  margin-left:auto;margin-right:auto}
+.cols-4{max-width:516px}
+.cols-cards{max-width:552px}
+/* min-width on a flex item defaults to AUTO, which lets an item shove itself
+   wider than its basis to fit its content -- a loaded 310px card did exactly
+   that, and the stat tiles came out five different widths. The basis is the
+   width; nothing gets a vote. */
+.cols-4 > *,.cols-cards > *{min-width:0}
+.cols-4 > *{flex:0 0 150px}
+.cols-cards > *{flex:0 0 160px}
+@media (max-width:619px){
+  .cols-4 > *{flex:0 0 148px}
+  .cols-cards > *{flex:0 0 136px}
+}
+@media (max-width:359px){   /* the smallest phones still get two to a row */
+  .cols-4 > *,.cols-cards > *{flex:0 0 132px}
+}
+@media (min-width:1060px){
+  .cols-4,.cols-cards{max-width:none}
+  .cols-4 > *{flex:0 0 184px}
+  .cols-cards > *{flex:0 0 188px}
+}
 
 /* hero */
 .hero{padding:var(--s6) 0 var(--s6)}
@@ -135,31 +165,47 @@ figure.shotfig figcaption,.cta-band .muted,.site-foot .fine,.centred{
    repeating hard-stop gradient so it stays pixel-crisp, and it only draws on the
    wide layout where the stops actually sit in a row. */
 .steps{list-style:none;display:grid;gap:var(--s3);position:relative;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
-.steps:before{content:"";position:absolute;left:0;right:0;top:34px;height:4px;z-index:0;
+  grid-template-columns:1fr}
+@media (min-width:880px){ .steps{grid-template-columns:repeat(3,1fr)} }
+/* The road runs through the PINS, not through the middle of the cards -- at the old
+   height all you saw was four dashes in the gaps, which read as debris. It only
+   draws where the three stops are genuinely in a row. */
+.steps:before{display:none;content:"";position:absolute;left:16%;right:16%;top:-2px;height:4px;z-index:0;
   background:repeating-linear-gradient(90deg,#2A3040 0 14px,transparent 14px 28px)}
+@media (min-width:880px){ .steps:before{display:block} }
 .steps li{position:relative;z-index:1;background:var(--panel);border:3px solid var(--line);
   padding:var(--s3);padding-top:var(--s4);text-align:center;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
   box-shadow:inset 3px 3px 0 #070A0E,inset -3px -3px 0 #2A3040}
 .steps .pin{position:absolute;top:-21px;left:50%;transform:translateX(-50%);
   width:42px;height:42px;line-height:36px;text-align:center;
   font-family:'J25';font-size:26px;color:#FFFFFF;background:var(--red);border:3px solid var(--line);
   box-shadow:inset 3px 3px 0 var(--redlit),inset -3px -3px 0 var(--reddark)}
-.steps .stepart{height:62px;width:auto;margin:var(--s2) auto var(--s3);image-rendering:pixelated}
+/* All three pieces of art sit in the SAME box and are centred in it on both axes,
+   so a wide car, a reading bar and an upright card carry the same weight. The
+   sprite is drawn at exactly 2x its native size -- an integer step, so its pixels
+   stay square; 62px tall was a 2.4x scale and the edges went soft. */
+.steps li{max-width:520px;width:100%;margin:0 auto}
+@media (min-width:880px){ .steps li{max-width:none} }
+.steps .artband{width:100%;height:104px;display:flex;align-items:center;justify-content:center;
+  margin:var(--s2) 0 var(--s3)}
+.steps .stepart{width:150px;height:auto;margin:0;image-rendering:pixelated}
+.steps .cardart{width:auto;height:96px;image-rendering:auto}
 .steps h3{margin-bottom:var(--s1)}
-.steps p{color:var(--dim);font-size:18px;max-width:none}
+.steps p{color:var(--dim);font-size:18px;max-width:30ch;margin-left:auto;margin-right:auto}
 /* step two has nothing to photograph yet, so it gets a reading bar instead */
-.scanning{display:flex;gap:6px;align-items:flex-end;justify-content:center;height:62px}
-.scanning i{width:10px;background:var(--gold);animation:read 1.1s steps(3,end) infinite}
-.scanning i:nth-child(1){height:26px;animation-delay:0s}
-.scanning i:nth-child(2){height:44px;animation-delay:.18s}
-.scanning i:nth-child(3){height:34px;animation-delay:.36s}
+.scanning{display:flex;gap:6px;align-items:flex-end;justify-content:center;height:72px}
+.scanning{gap:8px}
+.scanning i{width:14px;background:var(--gold);animation:read 1.1s steps(3,end) infinite}
+.scanning i:nth-child(1){height:32px;animation-delay:0s}
+.scanning i:nth-child(2){height:60px;animation-delay:.18s}
+.scanning i:nth-child(3){height:46px;animation-delay:.36s}
 @keyframes read{0%,100%{opacity:.25}40%{opacity:1}}
 
 /* stats */
 .stat{background:var(--panel);border:3px solid var(--line);padding:var(--s3) var(--s2);text-align:center;
   box-shadow:inset 3px 3px 0 #070A0E,inset -3px -3px 0 #2A3040}
-.stat b{display:block;font-family:'J25';font-weight:400;font-size:clamp(26px,3.4vw,40px);line-height:1.05;color:var(--gold)}
+.stat b{display:block;font-family:'J25';font-weight:400;font-size:clamp(24px,2.6vw,34px);line-height:1.05;color:var(--gold)}
 .stat span{display:block;font-family:'Silk';font-size:9px;letter-spacing:1px;color:var(--dim2);
   text-transform:uppercase;margin-top:var(--s1);line-height:1.7}
 
@@ -172,11 +218,12 @@ figure.shotfig{margin:0}
 figure.shotfig figcaption{margin-top:var(--s2);text-align:center}
 
 /* catch cards */
-.cards img{width:100%;max-width:280px;margin:0 auto;border:0}
+.cards img{width:100%;max-width:280px;margin:0;border:0}
 
 /* sprite sheet */
-.sprites{display:grid;grid-template-columns:repeat(auto-fit,75px);gap:var(--s2);
+.sprites{display:flex;flex-wrap:wrap;gap:var(--s2);
   justify-content:center;max-width:728px;margin:0 auto}   /* 8 per row, so 24 divides evenly */
+.sprites span{flex:0 0 75px}
 .sprites span{display:flex;align-items:flex-end;justify-content:center;height:34px}
 .sprites img{width:75px;image-rendering:pixelated}
 
@@ -189,8 +236,8 @@ figure.shotfig figcaption{margin-top:var(--s2);text-align:center}
 .towerwrap{overflow-x:auto;scrollbar-width:none;margin:0 -8px;padding:0 8px}
 .towerwrap::-webkit-scrollbar{display:none}
 .tower{list-style:none;display:flex;align-items:flex-end;gap:6px;
-  height:210px;min-width:min(100%,680px)}
-.rung{flex:1 1 0;min-width:46px;display:flex;flex-direction:column;
+  height:210px;min-width:max-content}
+.rung{flex:1 1 0;min-width:72px;display:flex;flex-direction:column;
   align-items:center;justify-content:flex-end;height:100%}
 .rung .rbar{display:block;width:100%;height:var(--h);position:relative;
   background:#242B39;border:2px solid var(--line);border-bottom:0;
@@ -200,7 +247,7 @@ figure.shotfig figcaption{margin-top:var(--s2);text-align:center}
 .rung.lit .rbar{animation:climb .45s cubic-bezier(.3,.8,.4,1) forwards}
 @keyframes climb{to{transform:scaleY(1)}}
 .rung .rname{margin-top:7px;font-family:'Silk';font-size:8px;letter-spacing:0;
-  color:var(--dim2);text-align:center;line-height:1.3;word-break:break-word}
+  color:var(--dim2);text-align:center;line-height:1.3;white-space:nowrap}
 /* the climb warms toward the summit */
 .rung:nth-child(n+7) .rbar{background:#3A3A2E}
 .rung:nth-child(n+10) .rbar{background:#6E5A2A}
@@ -208,6 +255,14 @@ figure.shotfig figcaption{margin-top:var(--s2);text-align:center}
 .rung.top .rbar{background:var(--gold);box-shadow:inset 2px 2px 0 #FFE7A3,inset -2px -2px 0 #9A6A12}
 .rung.top .rbar b{color:#5A4410}
 .rung.top .rname{color:var(--gold)}
+@media (max-width:1023px){
+  .rung{min-width:54px}
+  .rung .rname{font-size:7px}
+  .tower{height:180px}
+}
+/* only say "drag" when it actually scrolls */
+.towerhint{display:none;text-align:center;margin-top:10px}
+@media (max-width:767px){ .towerhint{display:block} }
 @media (prefers-reduced-motion:reduce){
   .rung .rbar{transform:scaleY(1)}
   .rung.lit .rbar{animation:none}
@@ -256,12 +311,94 @@ figure.shotfig figcaption{margin-top:var(--s2);text-align:center}
   .inview,.stagger.inview > *{animation:none}
 }
 
+
+/* ---------------------------------------------------------------------------
+   MOTION. Everything that moves under a pointer moves in STEPS, so the page keeps
+   its pixel feel instead of sliding around like glass. Every rule below is a
+   hover, a focus or an arrival decoration -- nothing here is load-bearing, and
+   the reduced-motion block at the bottom switches the lot off.
+--------------------------------------------------------------------------- */
+a,.btn,.card,.shot,.stat,.sprites img,.rung .rname,.rung .rbar{
+  transition:transform .1s steps(2),color .1s steps(2),
+             border-color .1s steps(2),box-shadow .1s steps(2)}
+
+/* keys lift off the page, then press back in */
+.btn:hover{transform:translate(-2px,-2px)}
+.btn-primary:hover{box-shadow:inset 0 0 0 3px var(--gold),inset 6px 6px 0 #FFFFFF,
+  inset -6px -6px 0 #A3ACBA,4px 4px 0 #070A0E}
+.btn-ghost:hover{box-shadow:inset 3px 3px 0 var(--lit),inset -3px -3px 0 var(--dark),
+  4px 4px 0 #070A0E}
+.nav a:hover,.site-foot a:hover{box-shadow:0 4px 0 var(--red)}
+.card:hover{transform:translate(-2px,-2px);border-color:#3A4252;
+  box-shadow:inset 3px 3px 0 #070A0E,inset -3px -3px 0 #2A3040,4px 4px 0 #070A0E}
+.shot:hover,.stat:hover{transform:translateY(-3px);border-color:var(--gold)}
+.sprites img:hover{transform:translateY(-5px)}
+.rung:hover .rname{color:var(--gold)}
+.rung:hover .rbar{box-shadow:inset 0 0 0 2px var(--gold)}
+a:focus-visible,.btn:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+
+/* the brand LED, same slow blink as the device housing in the app */
+@keyframes pip{0%,62%{background:#FF5A4A}63%,100%{background:#7A2018}}
+.brand:before{animation:pip 2.4s steps(1,end) infinite}
+
+/* how far down the page you are, drawn over the header rule in gold */
+.scrollrail{position:absolute;left:0;right:0;bottom:-3px;height:3px;pointer-events:none}
+.scrollrail i{display:block;height:3px;width:0;background:var(--gold)}
+
+/* the hero deals itself out on load -- pure CSS, so it needs no observer, and
+   with no base opacity set it stays visible if animations never run at all */
+.hero .kicker{animation:rise .5s cubic-bezier(.22,.61,.36,1) both}
+.hero h1{animation:rise .55s cubic-bezier(.22,.61,.36,1) .08s both}
+.hero .lead{animation:rise .55s cubic-bezier(.22,.61,.36,1) .18s both}
+.hero .btn-row{animation:rise .55s cubic-bezier(.22,.61,.36,1) .28s both}
+.hero > .wrap > div > .muted{animation:rise .5s cubic-bezier(.22,.61,.36,1) .36s both}
+.hero figure{animation:rise .6s cubic-bezier(.22,.61,.36,1) .2s both}
+/* and the card floats, two frames, like a sprite */
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+.hero figure img{animation:bob 2.8s steps(1,end) 1.1s infinite}
+
+/* arrival decorations: the road marches, the pins flash, the numbers strike on */
+@keyframes march{to{background-position:28px 0}}
+.steps.inview:before{animation:march 1.1s steps(4,end) 4}
+@keyframes pinflash{0%,100%{background:var(--red)}50%{background:#FF8A77}}
+.steps.inview .pin{animation:pinflash .4s steps(1,end) .3s 2}
+@keyframes flick{0%{opacity:.2}18%{opacity:1}30%{opacity:.35}46%{opacity:1}100%{opacity:1}}
+.grid.inview .stat b{animation:flick .5s steps(1,end) .25s both}
+/* the sprite sheet types itself in, one car at a time (delays set by script) */
+.sprites.pre span{opacity:0}
+.sprites.inview span{animation:rise .45s cubic-bezier(.22,.61,.36,1) both}
+
+/* two-column rows arrive from their own side of the page */
+@keyframes riseL{from{opacity:0;transform:translateX(-26px)}to{opacity:1;transform:none}}
+@keyframes riseR{from{opacity:0;transform:translateX(26px)}to{opacity:1;transform:none}}
+.inview.from-l{animation-name:riseL}
+.inview.from-r{animation-name:riseR}
+@media (max-width:767px){   /* stacked: coming in sideways reads as a wobble */
+  .inview.from-l,.inview.from-r{animation-name:rise}
+}
+
+/* A finished arrival hands the element BACK to the cascade. Without this an
+   animation-fill-mode:forwards keeps the final keyframe locked in and every
+   :hover transform above would silently do nothing. */
+.done,
+.stagger.inview > .done,
+.sprites.inview span.done,
+.inview.from-l.done,.inview.from-r.done{
+  animation:none;opacity:1;transform:none}
+
 @media (max-width:620px){
   .section{padding:var(--s5) 0}
   .wrap{padding:0 var(--s2)}
   .nav{gap:var(--s2)}
   .btn{display:block;width:100%;max-width:360px}
   .btn-row{gap:var(--s1)}
+}
+
+/* One switch. Nothing on this page needs an animation in order to be readable,
+   so reduced motion can safely kill every last one of them. */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*:before,*:after{animation:none !important;transition:none !important}
 }
 </style>
 </head>
@@ -276,6 +413,7 @@ figure.shotfig figcaption{margin-top:var(--s2);text-align:center}
       <a href="/support.html">Support</a>
     </nav>
   </div>
+  <div class="scrollrail" aria-hidden="true"><i></i></div>
 </header>
 
 <main>
@@ -313,19 +451,19 @@ figure.shotfig figcaption{margin-top:var(--s2);text-align:center}
       <ol class="steps stagger">
         <li>
           <span class="pin">1</span>
-          <img class="stepart" src="sprites/car-401.png" width="75" alt="" loading="lazy">
+          <span class="artband"><img class="stepart" src="sprites/car-401.png" width="75" alt="" loading="lazy"></span>
           <h3>Photograph it</h3>
           <p>Hold your phone up and press the red key. No forms, no list of makes to scroll through.</p>
         </li>
         <li>
           <span class="pin">2</span>
-          <span class="stepart scanning" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="artband"><span class="scanning" aria-hidden="true"><i></i><i></i><i></i></span></span>
           <h3>Gemini reads it</h3>
           <p>Google Gemini looks at the photo and works out the make, the model and the year. That is the hard part.</p>
         </li>
         <li>
           <span class="pin">3</span>
-          <img class="stepart" src="shots/card-legendary-620.webp" width="60" alt="" loading="lazy">
+          <span class="artband"><img class="stepart cardart" src="shots/card-legendary-620.webp" width="60" alt="" loading="lazy"></span>
           <h3>Keep the card</h3>
           <p>The car is graded and minted into your dex, pinned to the spot where you found it.</p>
         </li>
@@ -487,7 +625,7 @@ figure.shotfig figcaption{margin-top:var(--s2);text-align:center}
         <span><img src="sprites/car-671.png" width="75" loading="lazy" alt=""></span>
         <span><img src="sprites/car-123.png" width="75" loading="lazy" alt=""></span>
       </div>
-      <p class="muted" style="text-align:center;margin-top:24px">24 of them, at native size &mdash; 75 pixels wide, unscaled</p>
+      <p class="muted" style="text-align:center;margin-top:24px">24 of them, at native size &mdash; exactly as the app draws them</p>
     </div>
   </section>
 
@@ -569,6 +707,7 @@ figure.shotfig figcaption{margin-top:var(--s2);text-align:center}
           </li>
         </ol>
       </div>
+      <p class="muted towerhint">Drag to see the whole climb</p>
       <p class="centred">A car new to your dex pays the most. A better example of one you already own still pays well. Photographing the same car over and over does not &mdash; the game pays you for finding something, not for firing the shutter.</p>
     </div>
   </section>
@@ -626,7 +765,7 @@ figure.shotfig figcaption{margin-top:var(--s2);text-align:center}
         <div>
           <p class="kicker">Who else is out there</p>
           <h2 style="margin-top:16px">Friends, by code</h2>
-          <p style="margin-top:20px">Every spotter gets an eight&#8209;character code. Type a friend's in and their catches land in your feed, newest first, with a star you can leave on anything good.</p>
+          <p style="margin-top:20px">Every spotter gets a code of their own. Type a friend's in and their catches land in your feed, newest first, with a star you can leave on anything good.</p>
           <p>Open a friend and you get their licence and their whole dex, and each car's page tells you which of your friends already has it. Their cards never carry a location, and neither do yours.</p>
         </div>
       </div>
@@ -710,6 +849,13 @@ figure.shotfig figcaption{margin-top:var(--s2);text-align:center}
   var hidden = targets.filter(function(el){ return el.getBoundingClientRect().top > vh * 0.92; });
   hidden.forEach(function(el){ el.classList.add('pre'); });
 
+  // in a two-column row, each half comes in from its own side
+  [].forEach.call(document.querySelectorAll('.hero-grid'), function(row){
+    [].forEach.call(row.children, function(half, i){
+      half.classList.add(i === 0 ? 'from-l' : 'from-r');
+    });
+  });
+
   function show(el){
     el.classList.remove('pre');
     el.classList.add('inview');
@@ -737,11 +883,44 @@ figure.shotfig figcaption{margin-top:var(--s2);text-align:center}
     rungs.forEach(function(el){ tio.observe(el); });
   }
 
+  // An arrival that has finished must give the element back to the cascade, or
+  // animation-fill-mode:forwards keeps the last keyframe pinned and no :hover
+  // transform can ever take effect again.
+  document.addEventListener('animationend', function(e){
+    if (e.animationName.lastIndexOf('rise',0) === 0) e.target.classList.add('done');
+  }, true);
+
   // last line of defence: nothing stays hidden, whatever the observers do
   setTimeout(function(){
-    hidden.forEach(function(el){ el.classList.remove('pre'); });
+    hidden.forEach(function(el){ el.classList.remove('pre'); el.classList.add('done'); });
     rungs.forEach(function(el){ el.classList.add('lit'); });
   }, 2500);
+})();
+
+// The sprite sheet types in one car at a time. Delays only, so a sprite whose
+// section is never revealed simply never animates -- it is visible either way.
+(function(){
+  var sprites = document.querySelectorAll('.sprites span');
+  for (var i=0; i<sprites.length; i++) sprites[i].style.animationDelay = (i*0.028)+'s';
+})();
+
+// How far down the page you are, drawn in gold over the header rule. Integer
+// pixels only: a fractional width would leave a half-lit pixel on the end.
+(function(){
+  var rail = document.querySelector('.scrollrail i');
+  if (!rail) return;
+  var queued = false;
+  function draw(){
+    queued = false;
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    var p = h > 0 ? Math.min(1, Math.max(0, (window.pageYOffset||0) / h)) : 0;
+    rail.style.width = Math.round(p * document.documentElement.clientWidth) + 'px';
+  }
+  function queue(){ if (!queued){ queued = true; requestAnimationFrame(draw); } }
+  addEventListener('scroll', queue, {passive:true});
+  addEventListener('resize', queue);
+  addEventListener('load', queue);
+  draw();
 })();
 </script>
 </body>
