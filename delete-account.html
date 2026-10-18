@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MotorDex — Delete Your Account</title>
-<meta name="description" content="How to delete your MotorDex account and all associated data, in the app or by request.">
+<meta name="description" content="How to delete your MotorDex account, in the app or by email without reinstalling it, and exactly what is deleted and what is kept.">
 <link rel="canonical" href="https://motordexgame.com/delete-account.html">
 <link rel="icon" type="image/png" href="/icon-180.png">
 <style>
@@ -82,6 +82,25 @@ li{position:relative;padding-left:18px;margin-bottom:9px}
 /* a square bullet — a disc would be a rounded corner */
 li:before{content:"";position:absolute;left:0;top:12px;width:5px;height:5px;background:#D63A2E}
 
+/* ---- jump links: the deletion routes are the first thing on the page (Play
+   asks for the pathway to be prominent and easy to find) ---- */
+.jump{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 26px}
+.jump a{
+  font-family:'Silk';font-size:9px;letter-spacing:1.4px;color:#E8ECF2;
+  background:#232936;border:0;padding:7px 10px;line-height:1.4;
+}
+.jump a.go{background:#D63A2E;color:#fff}
+.jump a:hover{background:#2E3646;color:#fff}
+.jump a.go:hover{background:#B7301F}
+
+/* ---- a word the app itself shows: the label on the button you tap ---- */
+.ui{
+  font-family:'Silk';font-weight:400;font-size:11px;letter-spacing:.6px;
+  color:#E8ECF2;background:#232936;padding:1px 6px;
+  /* labels are short, but a phone at 320px must still never scroll sideways */
+  overflow-wrap:anywhere;
+}
+
 /* ---- the emphasis panel: a sunken well, lit from the top-left ---- */
 .box{
   background:#12161E;border:3px solid #0C1016;
@@ -97,7 +116,7 @@ li:before{content:"";position:absolute;left:0;top:12px;width:5px;height:5px;back
   /* long addresses must never push the panel wider than the phone */
   word-break:break-all;
 }
-code{background:#1B212C;color:#E0C273;padding:2px 6px;font-family:'Silk';font-size:11px}
+code{background:#1B212C;color:#E0C273;padding:2px 6px;font-family:'Silk';font-size:11px;overflow-wrap:anywhere}
 
 /* ---- steps ---- */
 .steps{counter-reset:s}
@@ -106,6 +125,10 @@ code{background:#1B212C;color:#E0C273;padding:2px 6px;font-family:'Silk';font-si
   font-family:'Silk';content:counter(s);left:0;top:2px;width:22px;height:22px;background:#232936;
   color:#9BA5B4;font-size:10px;line-height:22px;text-align:center;
 }
+
+/* ---- what we keep: each record says HOW LONG, which is what Play asks for ---- */
+.keep li{margin-bottom:16px}
+.how{display:block;font-family:'Silk';font-size:9px;letter-spacing:1.4px;color:#E0C273;margin-top:4px;line-height:1.8}
 
 .warn{border-left:5px solid #E0C273;padding:2px 0 2px 16px;margin:22px 0;color:#C9B98A}
 
@@ -132,73 +155,151 @@ footer a:hover{color:#D63A2E}
 
 <div class="wrap">
 
-<h1>DELETE YOUR ACCOUNT</h1>
-<p class="meta">MOTORDEX &middot; PUBLISHED BY MOTORDEX GAME LLC<br>APPLIES TO THE iOS AND ANDROID APPS</p>
+<h1>DELETE YOUR MOTORDEX ACCOUNT</h1>
+<p class="meta">MOTORDEX &middot; BY MOTORDEX GAME LLC<br>FOR THE IPHONE AND ANDROID APPS &middot; UPDATED 18 OCT 2026</p>
 
-<p>You can permanently delete your MotorDex account and everything stored under
-it, at any time, for any reason. You do not need to contact us first, and you do
-not need to give a reason.</p>
+<p>This page is for <strong>MotorDex</strong>, the car spotting app for iPhone
+and Android made by <strong>MotorDex Game LLC</strong>.</p>
 
-<div class="warn"><strong>Paying monthly for Pro?</strong> Cancel the
-subscription first &mdash; deleting your account does not stop the billing.
+<p>You can delete your MotorDex account, and the data stored with it, at any
+time and for any reason. There are two ways. Neither needs a reason, and the
+email route works even if you no longer have the app.</p>
+
+<nav class="jump" aria-label="On this page">
+  <a class="go" href="#in-app">IN THE APP</a>
+  <a class="go" href="#by-email">BY EMAIL</a>
+  <a href="#deleted">WHAT IS DELETED</a>
+  <a href="#kept">WHAT WE KEEP</a>
+  <a href="#some-data">DELETE SOME DATA</a>
+  <a href="#cancel">CANCEL PRO</a>
+</nav>
+
+<div class="warn"><strong>Paying for a Pro subscription, monthly or yearly?</strong>
+Cancel it first. Deleting your account does not stop the billing.
 <a href="#cancel">How to cancel</a></div>
 
-<h2>1 &mdash; DO IT YOURSELF</h2>
-<p>Immediate, and does not require contacting anyone.</p>
+<h2 id="in-app">1 &mdash; IN THE APP</h2>
+<p>Instant, and it works for guest accounts too.</p>
 <ul class="steps">
-  <li>Open <strong>MotorDex</strong></li>
-  <li>Go to <strong>Settings</strong> &mdash; the gear icon, top right of HOME</li>
-  <li>Scroll to <strong>Account</strong></li>
-  <li>Tap <strong>DELETE ACCOUNT</strong>, then confirm</li>
+  <li>Open <strong>MotorDex</strong> and go to <b class="ui">HOME</b>.</li>
+  <li>Tap the <strong>gear</strong> in the top-right corner to open Settings.</li>
+  <li>Open the <b class="ui">ACCOUNT</b> tab.</li>
+  <li>Tap <b class="ui">DELETE ACCOUNT</b>, then confirm. On Android, tap it
+      again when it says <b class="ui" data-app="android">CONFIRM — DELETE?</b>.
+      On iPhone, tap <b class="ui" data-app="ios">DELETE FOREVER</b>.</li>
 </ul>
+<p>Your account is deleted straight away and the app goes back to its first
+screen. If you signed in with Apple, we also ask Apple to disconnect MotorDex.
+To check, or to do it yourself: iPhone Settings &rarr; your name &rarr;
+Sign-In &amp; Security &rarr; Sign in with Apple &rarr; MotorDex.</p>
+<p><strong>Uninstalling the app does not delete your account.</strong> Delete it
+in the app first, or email us.</p>
 
-<h2>2 &mdash; ASK US</h2>
-<p>If you have already uninstalled MotorDex, lost access to your device, or
-cannot sign in, email us and we will delete the account for you.</p>
+<h2 id="by-email">2 &mdash; BY EMAIL</h2>
+<p>Use this if you have uninstalled MotorDex, lost your phone, or cannot sign
+in. You do not need to reinstall anything.</p>
 
 <div class="box">
   <span class="lab">EMAIL US</span>
   <p><a class="mail" href="mailto:&#115;&#117;&#112;&#112;&#111;&#114;&#116;&#64;&#109;&#111;&#116;&#111;&#114;&#100;&#101;&#120;&#103;&#97;&#109;&#101;&#46;&#99;&#111;&#109;?subject=&#65;&#99;&#99;&#111;&#117;&#110;&#116;&#32;&#100;&#101;&#108;&#101;&#116;&#105;&#111;&#110;&#32;&#114;&#101;&#113;&#117;&#101;&#115;&#116;">&#115;&#117;&#112;&#112;&#111;&#114;&#116;&#64;&#109;&#111;&#116;&#111;&#114;&#100;&#101;&#120;&#103;&#97;&#109;&#101;&#46;&#99;&#111;&#109;</a></p>
-  <p>Subject line <code>Account deletion request</code>, and include the
-  <strong>email address</strong> or <strong>handle</strong> on the account so we
-  can find it.</p>
-  <p>We action these within <strong>7 days</strong> and reply to confirm. We may
-  ask one question to check you own the account &mdash; we will never ask for
-  your password.</p>
+  <p>Use the subject line <code>Account deletion request</code> and tell us
+  your <strong>handle</strong>. So we know the account is yours:</p>
+  <ul>
+    <li><strong>Email account:</strong> send it from the email address you sign
+        in with.</li>
+    <li><strong>Sign in with Apple:</strong> send it from any address. We will
+        write to the address Apple gave us for your account, and you confirm by
+        replying to that email.</li>
+    <li><strong>Guest (no email):</strong> while the app is still on your
+        phone, delete the account in the app (steps above). A guest account has
+        no email or name, so we cannot check by email that it is yours, and once
+        the app is uninstalled nobody can sign in to it again, you included.
+        Email us your handle anyway and we will explain what we can do.</li>
+  </ul>
+  <p>We delete the account within <strong>7 days</strong> and email you when
+  it is done. We will never ask for your password or a reset code.</p>
 </div>
 
-<h2>WHAT GETS DELETED</h2>
-<p>Permanently, with no way to recover it:</p>
+<h2 id="deleted">WHAT IS DELETED</h2>
+<p>Whichever way you delete, this is removed for good, and we cannot get it
+back. In the app it happens straight away; by email, within 7 days.</p>
 <ul>
-  <li>Your account and sign-in details</li>
-  <li>Your handle, profile photo, and Spotter License</li>
-  <li>Every catch, and every photo you scanned</li>
-  <li>Dex progress, XP, level, badges, and streaks</li>
-  <li>Friends, reactions, and anything you posted to the feed</li>
-  <li>Your scan history</li>
+  <li>Your sign-in: your email address, password, Sign in with Apple link, and
+      your sign-in sessions (including the IP address each one came from)</li>
+  <li>Your handle, Spotter License and profile photo</li>
+  <li>Every catch: the cards, every photo you scanned (including the
+      full-size copies), their map locations and your private notes</li>
+  <li>Dex progress, XP, level, badges, daily challenges and streaks</li>
+  <li>Friends, friend requests, reactions and blocks</li>
+  <li>Reports you made, reports other players made about you, wrong-car
+      reports, car requests and promo codes you tried</li>
+  <li>The log of every scan you made</li>
+  <li>Your place on the leaderboards, past months included (the public boards
+      update within a few minutes)</li>
+  <li>Pro on this account (see <a href="#cancel">Cancel Pro first</a>)</li>
+</ul>
+<p>Card images you shared outside the app, for example to a chat or to social
+media, are copies we cannot reach.</p>
+
+<h2 id="kept">WHAT WE KEEP</h2>
+<p>A few records are not stored with your profile, so deleting the account
+does not remove them. None of them holds your photos or your catch locations.
+Where one keeps your account number, it is the random ID the app gave you;
+once the account is deleted and the short-lived server logs below have
+expired, nothing in our systems links that ID to your email address.</p>
+<ul class="keep">
+  <li><strong>Purchase records, if you ever bought Pro.</strong> What you
+      bought, the price, currency, country, date and the store's transaction
+      ID, with your old account number. We keep a copy, so does RevenueCat (the
+      service that handles our in-app purchases), and Apple or Google keep their
+      own under their rules.
+      <span class="how">HOW LONG: AS LONG AS TAX AND ACCOUNTING LAW REQUIRES</span></li>
+  <li><strong>A few service records, with your old account number.</strong>
+      How many scans the account made each day (for the daily scan limit);
+      when you used TRY AGAIN, which car the AI guessed first and which car you
+      chose (to make scanning more accurate; the photo itself is deleted); any
+      feedback you typed in Settings; and your handle with our automatic name
+      check's verdict on it.
+      <span class="how">HOW LONG: NO SET END DATE YET. DELETE BY EMAIL AND WE REMOVE THESE TOO</span></li>
+  <li><strong>Backups and server logs.</strong> Copies of deleted data can
+      stay in our encrypted database backups and in server logs for a short
+      time, then expire on their own.
+      <span class="how">HOW LONG: UP TO 30 DAYS</span></li>
+  <li><strong>Your email to us.</strong> If you ask us by email, we keep that
+      conversation as a record that we did what you asked.
+      <span class="how">HOW LONG: ONLY AS LONG AS WE NEED TO SHOW THE REQUEST WAS COMPLETED</span></li>
+</ul>
+<p>We do not sell any of this or use it for advertising. More detail is in our
+<a href="privacy.html">Privacy Policy</a>.</p>
+
+<h2 id="some-data">KEEP THE ACCOUNT, DELETE SOME DATA</h2>
+<ul>
+  <li><strong>One catch:</strong> open the card, tap the trash icon, then
+      <b class="ui">DELETE?</b>. The card goes at once. Its photos leave our
+      storage within about 8 days, except a photo you used with TRY AGAIN,
+      which stays until you delete the account.</li>
+  <li><strong>Every catch at once:</strong> Settings &rarr;
+      <b class="ui">ACCOUNT</b> &rarr; <b class="ui">RESET</b>, then confirm.
+      Your account, handle and friends stay. The photos leave our storage the
+      same way.</li>
+  <li><strong>Your profile photo:</strong> Settings &rarr;
+      <b class="ui">PROFILE</b> &rarr; <b class="ui">LICENSE PHOTO</b> &rarr;
+      <b class="ui">USE MY CAR</b>. The photo is deleted from our servers
+      straight away.</li>
+  <li><strong>Location:</strong> turn location off for MotorDex in your
+      phone's settings and new catches get no map pin. Pins you already have go
+      when you delete those catches.</li>
 </ul>
 
-<h2>WHAT WE KEEP</h2>
-<p>Only what the law requires, and only for as long as it requires:</p>
-<ul>
-  <li><strong>Purchase and tax records</strong> &mdash; held by the app stores and
-      our payment processor, not by us, and no longer linked to your gameplay
-      once the account is gone.</li>
-  <li><strong>Abuse records</strong> &mdash; if an account was removed for abuse, a
-      minimal record remains so it cannot simply be recreated.</li>
-</ul>
-<p>Neither can identify you as a MotorDex player. Neither is used for
-advertising or sold to anyone.</p>
-
-<h2 id="cancel">CANCEL FIRST</h2>
-<div class="warn"><strong>If you pay for MotorDex Pro monthly, cancel the
-subscription BEFORE you delete your account.</strong> Deleting the account does
-not stop the billing &mdash; the app store charges you, not us, and it keeps
+<h2 id="cancel">CANCEL PRO FIRST</h2>
+<div class="warn"><strong>If you pay for MotorDex Pro monthly or yearly, cancel
+the subscription BEFORE you delete your account.</strong> Deleting the account
+does not stop the billing. The app store charges you, not us, and it keeps
 charging whether or not the account still exists.</div>
 
-<p>You do not need your MotorDex account to cancel: the subscription belongs to
-your Apple or Google account, so this still works after the app is gone. But it
-is far easier to remember while the app is still on your phone.</p>
+<p>You do not need your MotorDex account to cancel. The subscription belongs to
+your Google or Apple account, so this still works after the app is gone. It is
+just easier to remember while the app is still on your phone.</p>
 
 <ul>
   <li><strong>Android</strong> &mdash; Play Store &rarr; profile icon &rarr;
@@ -208,7 +309,8 @@ is far easier to remember while the app is still on your phone.</p>
 </ul>
 
 <p>A one-time <strong>Lifetime</strong> unlock is not a subscription. There is
-nothing to cancel and nothing further to pay.</p>
+nothing to cancel and nothing more to pay. Deleting the account removes Pro
+from it; if you bought Lifetime and want it on a new account later, email us.</p>
 
 <p>Already deleted your account and still being charged? Email us at the address
 above and we will help you sort it out.</p>
@@ -216,11 +318,11 @@ above and we will help you sort it out.</p>
 <footer>
   <a href="/">HOME</a>
   <a href="what-is-motordex.html">ABOUT</a>
-<a href="how-it-works.html">HOW IT WORKS</a>
+  <a href="how-it-works.html">HOW IT WORKS</a>
   <a href="support.html">SUPPORT</a>
   <a href="privacy.html">PRIVACY</a>
   <a href="terms.html">TERMS</a>
-  <div class="copy">&copy; 2026 MOTORDEX</div>
+  <div class="copy">&copy; 2026 MOTORDEX GAME LLC</div>
 </footer>
 
 </div>
