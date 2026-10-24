@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MotorDex — Law Enforcement</title>
+<meta name="description" content="How law enforcement and government agencies can request MotorDex user data, send a preservation request, or make an emergency disclosure request.">
+<link rel="canonical" href="https://motordexgame.com/law-enforcement.html">
+<meta name="robots" content="index,follow">
+<link rel="icon" type="image/png" href="/icon-180.png">
+<style>
+/* The same sheet as delete-account.html, trimmed to what this page uses: the
+   app's dark DEX chrome, Jersey 25 for headings, Silkscreen for labels and
+   readable sans-serif prose. Change the two together. */
+@font-face{font-family:'Silk';src:url(fonts/silkscreen.woff2) format('woff2');font-display:swap}
+@font-face{font-family:'J25';src:url(fonts/jersey25.woff2) format('woff2');font-display:swap}
+
+/* Same law as the app and the landing page: nothing is ever rounded. */
+*{box-sizing:border-box;margin:0;padding:0;border-radius:0 !important}
+
+html{background:#0E1016;-webkit-text-size-adjust:100%}
+body{
+  background:#0E1016;
+  background-image:radial-gradient(#181D27 1px, transparent 1px);
+  background-size:8px 8px;
+  color:#B9C2D0;
+  font-family:ui-sans-serif,-apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif;
+  font-size:15px; line-height:1.75; letter-spacing:.1px;
+  padding:0 18px 64px;
+}
+.wrap{width:100%;max-width:640px;margin:0 auto}
+
+/* ---- the red device housing, echoing every tab root in the app ---- */
+.hous{
+  background:#D63A2E;border-bottom:5px solid #8E1F16;
+  margin:0 -18px 30px;padding:15px 18px;
+  display:flex;align-items:center;gap:11px;
+}
+.lens{width:26px;height:26px;flex:0 0 26px;background:#2F3845;border:3px solid #F4A79C;position:relative}
+.lens i{position:absolute;left:5px;top:5px;width:10px;height:10px;background:#7FC7E8;display:block}
+.leds{display:flex;gap:6px}
+.leds b{width:8px;height:8px;background:#F4A79C;display:block}
+.leds b:first-child{background:#FFE9A8}
+.plate{
+  margin-left:auto;font-family:'Silk';font-size:10px;letter-spacing:2px;color:#fff;
+  background:#8E1F16;padding:5px 9px;
+}
+
+h1{
+  font-family:'J25';font-weight:400;line-height:.92;color:#fff;
+  font-size:clamp(22px,8vw,52px);letter-spacing:1px;margin-bottom:14px;
+}
+.meta{font-family:'Silk';color:#6B7686;font-size:9px;letter-spacing:1.6px;line-height:1.9;margin-bottom:26px}
+
+h2{
+  scroll-margin-top:18px;
+  font-family:'J25';font-weight:400;color:#fff;
+  font-size:clamp(17px,5.2vw,30px);line-height:1.05;letter-spacing:.5px;
+  margin:40px 0 4px;
+}
+h2 + p, h2 + ul, h2 + .box{margin-top:14px}
+p{margin:0 0 16px}
+strong{color:#E8ECF2;font-weight:400}
+a{color:#D63A2E;text-decoration:none;border-bottom:1px solid #5C1F19}
+a:hover{color:#F4A79C;border-bottom-color:#D63A2E}
+
+ul{list-style:none;margin:0 0 18px}
+li{position:relative;padding-left:18px;margin-bottom:9px}
+/* a square bullet — a disc would be a rounded corner */
+li:before{content:"";position:absolute;left:0;top:12px;width:5px;height:5px;background:#D63A2E}
+
+.jump{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 26px}
+.jump a{
+  font-family:'Silk';font-size:9px;letter-spacing:1.4px;color:#E8ECF2;
+  background:#232936;border:0;padding:7px 10px;line-height:1.4;
+}
+.jump a.go{background:#D63A2E;color:#fff}
+.jump a:hover{background:#2E3646;color:#fff}
+.jump a.go:hover{background:#B7301F}
+
+/* ---- a word the app itself shows: the label on the button you tap ---- */
+.ui{
+  font-family:'Silk';font-weight:400;font-size:11px;letter-spacing:.6px;
+  color:#E8ECF2;background:#232936;padding:1px 6px;
+  overflow-wrap:anywhere;
+}
+
+/* ---- the emphasis panel: a sunken well, lit from the top-left ---- */
+.box{
+  background:#12161E;border:3px solid #0C1016;
+  box-shadow:inset 3px 3px 0 #070A0E, inset -3px -3px 0 #2A3040;
+  padding:22px 20px 8px;margin:24px 0 26px;
+}
+.box .lab{
+  font-family:'Silk';font-size:9px;letter-spacing:2px;color:#E0C273;margin-bottom:12px;display:block;
+}
+.mail{
+  font-family:'Silk';font-size:clamp(11px,3.4vw,14px);letter-spacing:.5px;
+  color:#E8ECF2;border-bottom:2px solid #D63A2E;
+  word-break:break-all;
+}
+
+.warn{border-left:5px solid #E0C273;padding:2px 0 2px 16px;margin:22px 0;color:#C9B98A}
+.indie{color:#6B7686;font-size:13px;margin-top:28px}
+
+footer{margin-top:52px;padding-top:18px;border-top:3px solid #232936;text-align:center}
+footer a{font-family:'Silk';font-size:9px;letter-spacing:1.5px;color:#9BA5B4;padding:0 6px;line-height:2.6;border:0}
+footer a:hover{color:#D63A2E}
+.copy{font-family:'Silk';font-size:9px;color:#5D6675;margin-top:12px;letter-spacing:1.5px}
+
+@media (max-width:420px){
+  body{font-size:14px;line-height:1.72;padding:0 14px 48px}
+  .hous{margin:0 -14px 24px}
+  .plate{display:none}
+}
+</style>
+</head>
+<body>
+
+<div class="hous">
+  <span class="lens"><i></i></span>
+  <span class="leds"><b></b><b></b><b></b><b></b></span>
+  <span class="plate">MOTORDEX</span>
+</div>
+
+<div class="wrap">
+
+<h1>LAW ENFORCEMENT</h1>
+<p class="meta">MOTORDEX &middot; BY MOTORDEX GAME LLC<br>GUIDELINES FOR GOVERNMENT AND LAW ENFORCEMENT REQUESTS &middot; UPDATED 21 OCT 2026</p>
+
+<p>This page is for police, prosecutors and other government agencies. If you are a
+player looking for help, see <a href="support.html">Support</a>. If someone is in
+danger right now, call your local emergency number first.</p>
+
+<div class="box">
+  <span class="lab">SEND REQUESTS TO</span>
+  <p><a class="mail" href="mailto:&#115;&#117;&#112;&#112;&#111;&#114;&#116;&#64;&#109;&#111;&#116;&#111;&#114;&#100;&#101;&#120;&#103;&#97;&#109;&#101;&#46;&#99;&#111;&#109;?subject=LAW%20ENFORCEMENT%20REQUEST">&#115;&#117;&#112;&#112;&#111;&#114;&#116;&#64;&#109;&#111;&#116;&#111;&#114;&#100;&#101;&#120;&#103;&#97;&#109;&#101;&#46;&#99;&#111;&#109;</a></p>
+  <p>Subject line: <strong>LAW ENFORCEMENT REQUEST</strong> (or <strong>EMERGENCY
+  DISCLOSURE REQUEST</strong>). Send from an official government email address, on
+  letterhead, with your name, badge or ID number, agency, and a phone number we can
+  call back through your agency's switchboard.</p>
+  <p>By post: MotorDex Game LLC, 570 El Camino Real #150-306, Redwood City, CA 94063, USA.
+  We do not accept requests by phone or through the app.</p>
+</div>
+
+<nav class="jump" aria-label="On this page">
+  <a class="go" href="#emergency">EMERGENCY</a>
+  <a href="#preserve">PRESERVATION</a>
+  <a href="#process">LEGAL PROCESS</a>
+  <a href="#data">WHAT WE HOLD</a>
+  <a href="#notice">USER NOTICE</a>
+  <a href="#intl">OUTSIDE THE US</a>
+</nav>
+
+<h2 id="emergency">EMERGENCY REQUESTS</h2>
+<p>If you believe someone faces an imminent risk of death or serious physical injury,
+we may disclose information without legal process (18 U.S.C. &sect;&sect; 2702(b)(8)
+and 2702(c)(4)). Send an <strong>EMERGENCY DISCLOSURE REQUEST</strong> from an official
+address describing the emergency, why it is imminent, the account involved (the
+player's handle as shown in the app), and the specific information you need. We read
+these requests as a priority. We may ask for confirmation through your agency.</p>
+
+<h2 id="preserve">PRESERVATION REQUESTS</h2>
+<p>We honour preservation requests under 18 U.S.C. &sect; 2703(f). On a valid request we
+take a copy of the account's records and keep it for <strong>90 days</strong>, extendable
+once by a further 90 days on a renewed request, while you obtain legal process. Identify
+the account by handle (and, if you have them, the date of a catch or a screenshot of the
+profile) and say what you want preserved.</p>
+<p>Child sexual abuse material we become aware of is reported to NCMEC's CyberTipline
+and preserved for one year as federal law requires (18 U.S.C. &sect; 2258A).</p>
+
+<h2 id="process">LEGAL PROCESS WE REQUIRE</h2>
+<ul>
+  <li><strong>Basic subscriber information</strong> (handle, email address if any, sign-in
+      method, account creation date, recent sign-in IP addresses): a valid subpoena or
+      equivalent process (18 U.S.C. &sect; 2703(c)(2)).</li>
+  <li><strong>Other non-content records</strong> (such as catch timestamps and the
+      approximate location stored with a catch): a court order under 18 U.S.C.
+      &sect; 2703(d).</li>
+  <li><strong>Content</strong> (photos, notes): a search warrant (18 U.S.C. &sect; 2703(a)-(b)).</li>
+</ul>
+<p>Requests must be specific: the account (handle), the date range, and the data
+sought. We may push back on requests that are overly broad, unclear, or not legally
+valid. We do not charge for responding to valid requests.</p>
+
+<h2 id="data">WHAT MOTORDEX HOLDS</h2>
+<p>MotorDex is a car-spotting game. Players photograph cars and collect them as cards.
+There are no private messages. What an account can have:</p>
+<ul>
+  <li><strong>Account</strong>: handle, an email address (only for email sign-ups; Sign in
+      with Apple often gives a private relay address; guest accounts have none), sign-in
+      method, creation date and, where collected, an age bracket and records of the terms and AI consents accepted.</li>
+  <li><strong>Sign-in records</strong>: IP address and device type of sign-in sessions,
+      kept for 30 days after the session was last used.</li>
+  <li><strong>Catches</strong>: the photo of each car, the time it was taken, and the
+      location if the player allowed it (current versions round it on our server to an
+      area of about 110 m; some older catches hold a more precise location). Kept until the
+      player deletes the catch or the account.</li>
+  <li><strong>Profile photo</strong>, friends list (by handle) and reactions.</li>
+  <li><strong>Reports and moderation records</strong>: kept for one year after a case is
+      closed, including after the account is deleted.</li>
+  <li><strong>Purchases</strong>: records of App Store / Google Play subscriptions as
+      reported by the stores. We never receive card numbers.</li>
+</ul>
+<p>When a player deletes their account, their data is removed and cannot be recovered
+by us, except the records our <a href="privacy.html">Privacy Policy</a> says we keep
+(backups roll off on the schedule stated there). Retention periods are set out in full
+in the Privacy Policy.</p>
+
+<h2 id="notice">NOTICE TO USERS</h2>
+<p>Our policy is to tell a player before disclosing their information, so they can seek
+legal advice, unless the law forbids it (for example a non-disclosure order under
+18 U.S.C. &sect; 2705(b)), the request is an emergency, or notice would put someone at
+risk or be counterproductive (for example in child-safety cases).</p>
+
+<h2 id="intl">REQUESTS FROM OUTSIDE THE UNITED STATES</h2>
+<p>MotorDex Game LLC is a US company. Non-US authorities should use a Mutual Legal
+Assistance Treaty (MLAT), a letters rogatory process, or an agreement under the US
+CLOUD Act where one applies. Emergency requests from any country are reviewed as above.</p>
+
+<h2 id="legal">LEGAL</h2>
+<p><a href="privacy.html">Privacy Policy</a> &middot;
+<a href="terms.html">Terms of Use</a> &middot;
+<a href="support.html">Support</a></p>
+<p class="indie">Nothing on this page creates rights for any third party or waives any
+objection MotorDex Game LLC may have to a request.</p>
+
+<footer>
+  <a href="/">HOME</a>
+  <a href="what-is-motordex.html">ABOUT</a>
+  <a href="support.html">SUPPORT</a>
+  <a href="privacy.html">PRIVACY</a>
+  <a href="terms.html">TERMS</a>
+  <a href="child-safety.html">CHILD SAFETY</a>
+  <a href="community-guidelines.html">GUIDELINES</a>
+  <a href="copyright.html">COPYRIGHT</a>
+  <a href="takedown.html">TAKEDOWN</a>
+  <a href="law-enforcement.html">LAW ENFORCEMENT</a>
+  <a href="legal.html">LEGAL</a>
+  <div class="copy">&copy; 2026 MOTORDEX GAME LLC</div>
+</footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,276 @@
+<!-- Publish with the relaunch build; these three sentences describe the relaunch version.
+     (The three are marked RELAUNCH below: parent acknowledgment for under-18s, location off by
+     default for under-18s, and under-18s hidden from the public leaderboard by default.) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MotorDex — Child Safety</title>
+<meta name="description" content="How MotorDex protects younger players: who can play, what we screen, how to report, our zero-tolerance policy on child sexual abuse material, and our child-safety contact.">
+<link rel="canonical" href="https://motordexgame.com/child-safety.html">
+<link rel="icon" type="image/png" href="/icon-180.png">
+<style>
+/* The same sheet as support.html and delete-account.html: the app's dark DEX
+   chrome, Jersey 25 for headings, Silkscreen for labels and readable sans-serif
+   prose. Change them together. No external requests: the two fonts are ours. */
+@font-face{font-family:'Silk';src:url(fonts/silkscreen.woff2) format('woff2');font-display:swap}
+@font-face{font-family:'J25';src:url(fonts/jersey25.woff2) format('woff2');font-display:swap}
+
+/* Same law as the app and the landing page: nothing is ever rounded. */
+*{box-sizing:border-box;margin:0;padding:0;border-radius:0 !important}
+
+html{background:#0E1016;-webkit-text-size-adjust:100%}
+body{
+  background:#0E1016;
+  background-image:radial-gradient(#181D27 1px, transparent 1px);
+  background-size:8px 8px;
+  color:#B9C2D0;
+  font-family:ui-sans-serif,-apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif;
+  font-size:15px; line-height:1.75; letter-spacing:.1px;
+  padding:0 18px 64px;
+}
+.wrap{width:100%;max-width:640px;margin:0 auto}
+
+/* ---- the red device housing, echoing every tab root in the app ---- */
+.hous{
+  background:#D63A2E;border-bottom:5px solid #8E1F16;
+  margin:0 -18px 30px;padding:15px 18px;
+  display:flex;align-items:center;gap:11px;
+}
+.lens{width:26px;height:26px;flex:0 0 26px;background:#2F3845;border:3px solid #F4A79C;position:relative}
+.lens i{position:absolute;left:5px;top:5px;width:10px;height:10px;background:#7FC7E8;display:block}
+.leds{display:flex;gap:6px}
+.leds b{width:8px;height:8px;background:#F4A79C;display:block}
+.leds b:first-child{background:#FFE9A8}
+.plate{
+  margin-left:auto;font-family:'Silk';font-size:10px;letter-spacing:2px;color:#fff;
+  background:#8E1F16;padding:5px 9px;
+}
+
+h1{
+  font-family:'J25';font-weight:400;line-height:.92;color:#fff;
+  font-size:clamp(22px,8vw,52px);letter-spacing:1px;margin-bottom:14px;
+}
+.meta{font-family:'Silk';color:#6B7686;font-size:9px;letter-spacing:1.6px;line-height:1.9;margin-bottom:26px}
+
+h2{
+  scroll-margin-top:18px;
+  font-family:'J25';font-weight:400;color:#fff;
+  font-size:clamp(17px,5.2vw,30px);line-height:1.05;letter-spacing:.5px;
+  margin:40px 0 4px;
+}
+h2 + p, h2 + ul, h2 + ol, h2 + .box{margin-top:14px}
+p{margin:0 0 16px}
+strong{color:#E8ECF2;font-weight:400}
+a{color:#D63A2E;text-decoration:none;border-bottom:1px solid #5C1F19}
+a:hover{color:#F4A79C;border-bottom-color:#D63A2E}
+
+ul{list-style:none;margin:0 0 18px}
+ul li{position:relative;padding-left:18px;margin-bottom:9px}
+/* a square bullet — a disc would be a rounded corner */
+ul li:before{content:"";position:absolute;left:0;top:12px;width:5px;height:5px;background:#D63A2E}
+
+/* a numbered list: the number sits on a small steel plate, same square law */
+ol{list-style:none;counter-reset:n;margin:0 0 18px}
+ol li{position:relative;padding-left:32px;margin-bottom:10px;counter-increment:n}
+ol li:before{
+  content:counter(n);position:absolute;left:0;top:4px;width:22px;height:20px;
+  background:#232936;color:#E0C273;font-family:'Silk';font-size:9px;line-height:20px;text-align:center;
+}
+
+.jump{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 26px}
+.jump a{
+  font-family:'Silk';font-size:9px;letter-spacing:1.4px;color:#E8ECF2;
+  background:#232936;border:0;padding:7px 10px;line-height:1.4;
+}
+.jump a.go{background:#D63A2E;color:#fff}
+.jump a:hover{background:#2E3646;color:#fff}
+.jump a.go:hover{background:#B7301F}
+
+/* ---- a word the app itself shows: the label on the button you tap ---- */
+.ui{
+  font-family:'Silk';font-weight:400;font-size:11px;letter-spacing:.6px;
+  color:#E8ECF2;background:#232936;padding:1px 6px;
+  overflow-wrap:anywhere;
+}
+
+/* ---- the emphasis panel: a sunken well, lit from the top-left ---- */
+.box{
+  background:#12161E;border:3px solid #0C1016;
+  box-shadow:inset 3px 3px 0 #070A0E, inset -3px -3px 0 #2A3040;
+  padding:22px 20px 8px;margin:24px 0 26px;
+}
+.box .lab{
+  font-family:'Silk';font-size:9px;letter-spacing:2px;color:#E0C273;margin-bottom:12px;display:block;
+}
+.mail{
+  font-family:'Silk';font-size:clamp(11px,3.4vw,14px);letter-spacing:.5px;
+  color:#E8ECF2;border-bottom:2px solid #D63A2E;
+  word-break:break-all;
+}
+
+.warn{border-left:5px solid #E0C273;padding:2px 0 2px 16px;margin:22px 0;color:#C9B98A}
+.indie{color:#6B7686;font-size:13px;margin-top:28px}
+
+footer{margin-top:52px;padding-top:18px;border-top:3px solid #232936;text-align:center}
+footer a{font-family:'Silk';font-size:9px;letter-spacing:1.5px;color:#9BA5B4;padding:0 6px;line-height:2.6;border:0;white-space:nowrap}
+footer a:hover{color:#D63A2E}
+.copy{font-family:'Silk';font-size:9px;color:#5D6675;margin-top:12px;letter-spacing:1.5px}
+
+@media (max-width:420px){
+  body{font-size:14px;line-height:1.72;padding:0 14px 48px}
+  .hous{margin:0 -14px 24px}
+  .plate{display:none}
+}
+</style>
+</head>
+<body>
+
+<div class="hous">
+  <span class="lens"><i></i></span>
+  <span class="leds"><b></b><b></b><b></b><b></b></span>
+  <span class="plate">MOTORDEX</span>
+</div>
+
+<div class="wrap">
+
+<h1>CHILD SAFETY AT MOTORDEX</h1>
+<p class="meta">MOTORDEX &middot; BY MOTORDEX GAME LLC<br>FOR THE IPHONE AND ANDROID APPS &middot; UPDATED 21 OCT 2026</p>
+
+<p><strong>MotorDex</strong> is a game where you photograph real cars and collect
+them as cards. It is for players <strong>13 and older</strong>. We comply with
+child-safety and privacy laws, including the US Children's Online Privacy
+Protection Act (COPPA). This page is our published child-safety standard: it
+says what we prohibit, what we do to keep younger players safe, and how to
+reach us if something is wrong.</p>
+
+<p><strong>MotorDex prohibits child sexual abuse and exploitation
+(CSAE).</strong></p>
+
+<nav class="jump" aria-label="On this page">
+  <a class="go" href="#report">REPORT A CONCERN</a>
+  <a href="#who">WHO CAN PLAY</a>
+  <a href="#what">WHAT WE DO</a>
+  <a href="#csam">CSAE PROHIBITED</a>
+  <a href="#contact">CONTACT</a>
+</nav>
+
+<h2 id="who">WHO CAN PLAY</h2>
+<p>You must be at least 13 to play. We ask your age when you set up the app.
+Anyone under 13 cannot create an account. If we learn that a player is under
+13, we delete the account and its data.</p>
+<!-- RELAUNCH sentence 1 of 3 -->
+<p>A player under 18 can only play after a parent or guardian has acknowledged
+our <a href="terms.html">Terms of Use</a> and
+<a href="privacy.html">Privacy Policy</a> for them.</p>
+
+<h2 id="what">WHAT WE DO</h2>
+<ul>
+  <li><strong>Age check at sign-up.</strong> The app asks your age before you
+      can play.</li>
+  <li><strong>Parent acknowledgment.</strong> Players under 18 need a parent or
+      guardian to acknowledge the Terms and Privacy Policy.</li>
+  <li><strong>Screening.</strong> Every photo and every handle (player name) is
+      screened automatically before it can appear. Our staff review reports and
+      flagged content.</li>
+  <li><strong>Report and Block.</strong> In the app you can report any catch
+      and block any player. Blocking hides that player and their content from
+      you.</li>
+  <!-- RELAUNCH sentence 2 of 3 -->
+  <li><strong>Location off by default for under-18s.</strong> For players under
+      18, location is off unless they turn it on. Catch locations are never
+      shown to other players at any age.</li>
+  <!-- RELAUNCH sentence 3 of 3 -->
+  <li><strong>Hidden from the public leaderboard by default.</strong> Players
+      under 18 do not appear on the public MotorDex World leaderboard unless they
+      choose to.</li>
+  <li><strong>No personalised ads, no selling data.</strong> MotorDex shows no
+      ads inside the app and we do not sell personal data.</li>
+</ul>
+<p>The rules every player follows are in our
+<a href="community-guidelines.html">Community Guidelines</a>: photograph cars,
+not people. How we handle data is in the
+<a href="privacy.html">Privacy Policy</a>.</p>
+
+<h2 id="csam">CHILD SEXUAL ABUSE AND EXPLOITATION (CSAE) IS PROHIBITED</h2>
+<p>MotorDex prohibits child sexual abuse and exploitation (CSAE) of any kind,
+by anyone, anywhere in the app. That includes child sexual abuse material
+(CSAM), any sexual content involving a minor, grooming, sextortion,
+trafficking, and using MotorDex to contact, groom or exploit a minor. This
+standard applies to every player, every photo, every handle and every
+profile, and it is also in our
+<a href="community-guidelines.html">Community Guidelines</a> and
+<a href="terms.html">Terms of Use</a>.</p>
+<p><strong>How we handle CSAM.</strong> If we find child sexual abuse
+material, or it is reported to us, we <strong>remove it</strong>,
+<strong>preserve it as the law requires</strong>, <strong>report it to the
+National Center for Missing &amp; Exploited Children (NCMEC)</strong> through
+its CyberTipline, and close the account. We cooperate with law
+enforcement.</p>
+<p><strong>Child-safety laws.</strong> We comply with the child-safety laws
+that apply to us, including COPPA and the US federal law that requires online
+services to report apparent CSAM to NCMEC (18 U.S.C. &sect; 2258A), and with
+the child-safety rules of the Apple App Store and Google Play.</p>
+
+<h2 id="report">HOW TO REPORT A CONCERN</h2>
+<p>You can report from inside the app, without leaving it:</p>
+<ul>
+  <li><strong>In the app:</strong> on any catch in the feed, open its menu and
+      tap <b class="ui">REPORT THIS PHOTO</b>, or <b class="ui">BLOCK</b> to
+      block that player. On the World leaderboard and in your friends list you
+      can <b class="ui">REPORT</b> a name or <b class="ui">BLOCK</b> a
+      player.</li>
+  <li><strong>By email:</strong> write to us with
+      <b class="ui">CHILD SAFETY</b> in the subject line. Tell us the player's
+      handle and what you saw. Describe the content; please do not forward the
+      image itself.</li>
+</ul>
+<p>We act on child-safety reports promptly. You do not need a MotorDex account
+to report.</p>
+<div class="warn">If a child is in immediate danger, contact your local police
+first. You can also report child sexual abuse material directly to NCMEC at
+<a href="https://report.cybertip.org/">report.cybertip.org</a>.</div>
+
+<h2 id="contact">CHILD-SAFETY CONTACT</h2>
+<p>Our designated point of contact for child safety, including our CSAM
+prevention and reporting practices, is <strong>Matteo Farinacci</strong>,
+founder of MotorDex Game LLC.</p>
+<div class="box">
+  <span class="lab">DESIGNATED CHILD-SAFETY CONTACT</span>
+  <p><strong>Matteo Farinacci</strong><br>
+  <a class="mail" href="mailto:&#109;&#97;&#116;&#116;&#101;&#111;&#64;&#109;&#111;&#116;&#111;&#114;&#100;&#101;&#120;&#103;&#97;&#109;&#101;&#46;&#99;&#111;&#109;?subject=CHILD%20SAFETY">&#109;&#97;&#116;&#116;&#101;&#111;&#64;&#109;&#111;&#116;&#111;&#114;&#100;&#101;&#120;&#103;&#97;&#109;&#101;&#46;&#99;&#111;&#109;</a></p>
+  <p>Or our support address:<br><a class="mail" href="mailto:&#115;&#117;&#112;&#112;&#111;&#114;&#116;&#64;&#109;&#111;&#116;&#111;&#114;&#100;&#101;&#120;&#103;&#97;&#109;&#101;&#46;&#99;&#111;&#109;?subject=CHILD%20SAFETY">&#115;&#117;&#112;&#112;&#111;&#114;&#116;&#64;&#109;&#111;&#116;&#111;&#114;&#100;&#101;&#120;&#103;&#97;&#109;&#101;&#46;&#99;&#111;&#109;</a></p>
+  <p>Attention: <strong>Child Safety</strong><br>
+  MotorDex Game LLC<br>
+  570 El Camino Real #150-306<br>
+  Redwood City, CA 94063, USA<br>
+  <a href="tel:+18556686739">(855) 668-6739</a></p>
+</div>
+<p>Parents and guardians: if you have questions about your child's account, or
+want it deleted, email the same address. Our
+<a href="delete-account.html">Delete Your Account</a> page explains what is
+removed.</p>
+
+<p class="indie">MotorDex is an independent game made by MotorDex Game LLC. It
+is not affiliated with, sponsored by or endorsed by any car manufacturer; car
+names are used only to identify vehicles.</p>
+
+<footer>
+  <a href="/">HOME</a>
+  <a href="what-is-motordex.html">ABOUT</a>
+  <a href="support.html">SUPPORT</a>
+  <a href="privacy.html">PRIVACY</a>
+  <a href="terms.html">TERMS</a>
+  <a href="child-safety.html">CHILD SAFETY</a>
+  <a href="community-guidelines.html">GUIDELINES</a>
+  <a href="copyright.html">COPYRIGHT</a>
+  <a href="takedown.html">TAKEDOWN</a>
+  <a href="law-enforcement.html">LAW ENFORCEMENT</a>
+  <a href="legal.html">LEGAL</a>
+  <div class="copy">&copy; 2026 MOTORDEX GAME LLC</div>
+</footer>
+
+</div>
+</body>
+</html>

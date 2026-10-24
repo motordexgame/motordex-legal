@@ -11,7 +11,7 @@ Key facts (from the live MotorDex database, October 2026):
 - Catalog: 2,073 collectible car models from over 200 manufacturers, built in more than 30 countries, and growing. Everyday cars (87 Toyota, 86 Ford, 73 Chevrolet models) up to 50 Ferraris, 24 Lamborghinis, 20 McLarens, 11 Bugattis and 8 Koenigseggs.
 - Rarity: six tiers, lowest to highest: Common, Uncommon, Rare, Epic, Legendary, Mythic. Each catch is also graded individually.
 - App Store rating: 4.9 out of 5 from 650+ ratings.
-- Usage: players have caught more than 1 million cars since launch in July 2026 (the app's own worldwide counter).
+- Usage: players have caught more than 1 million cars (the app's own worldwide counter).
 - Cards show the player's photo, horsepower, top speed, 0-60 time, original MSRP, estimated market value, rarity and a serial number.
 - Progression: XP and levels, daily challenges, monthly leaderboards and a friends feed.
 
@@ -33,6 +33,7 @@ Key facts (from the live MotorDex database, October 2026):
 - [Support](https://motordexgame.com/support.html)
 - [Privacy Policy](https://motordexgame.com/privacy.html)
 - [Terms of Use](https://motordexgame.com/terms.html)
+- [Legal and contact](https://motordexgame.com/legal.html): every legal page in one place, including child safety, intimate-image removal, copyright notices and community guidelines
 
 ## Contact
 

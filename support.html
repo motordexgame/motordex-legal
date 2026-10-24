@@ -4,54 +4,250 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MotorDex — Support</title>
-<meta name="description" content="Get help with MotorDex, the car spotting app: contact support, request a car, restore a purchase or delete your account.">
+<meta name="description" content="Get help with MotorDex, the car spotting app: contact support, MotorDex Pro on iPhone and Android, cancelling, restoring a purchase and deleting your account.">
 <link rel="canonical" href="https://motordexgame.com/support.html">
 <link rel="icon" type="image/png" href="/icon-180.png">
 <style>
-  body { font-family: -apple-system, system-ui, sans-serif; max-width: 720px; margin: 0 auto;
-         padding: 24px; line-height: 1.6; color: #2F3845; }
-  h1 { color: #D63A2E; } h2 { margin-top: 2em; }
-  .meta { color: #84878F; font-size: 0.9em; }
-  a { color: #D63A2E; }
-  ul { padding-left: 1.2em; }
+/* The same sheet as delete-account.html, trimmed to what this page uses: the
+   app's dark DEX chrome, Jersey 25 for headings, Silkscreen for labels and
+   readable sans-serif prose. Change the two together. */
+@font-face{font-family:'Silk';src:url(fonts/silkscreen.woff2) format('woff2');font-display:swap}
+@font-face{font-family:'J25';src:url(fonts/jersey25.woff2) format('woff2');font-display:swap}
+
+/* Same law as the app and the landing page: nothing is ever rounded. */
+*{box-sizing:border-box;margin:0;padding:0;border-radius:0 !important}
+
+html{background:#0E1016;-webkit-text-size-adjust:100%}
+body{
+  background:#0E1016;
+  background-image:radial-gradient(#181D27 1px, transparent 1px);
+  background-size:8px 8px;
+  color:#B9C2D0;
+  font-family:ui-sans-serif,-apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif;
+  font-size:15px; line-height:1.75; letter-spacing:.1px;
+  padding:0 18px 64px;
+}
+.wrap{width:100%;max-width:640px;margin:0 auto}
+
+/* ---- the red device housing, echoing every tab root in the app ---- */
+.hous{
+  background:#D63A2E;border-bottom:5px solid #8E1F16;
+  margin:0 -18px 30px;padding:15px 18px;
+  display:flex;align-items:center;gap:11px;
+}
+.lens{width:26px;height:26px;flex:0 0 26px;background:#2F3845;border:3px solid #F4A79C;position:relative}
+.lens i{position:absolute;left:5px;top:5px;width:10px;height:10px;background:#7FC7E8;display:block}
+.leds{display:flex;gap:6px}
+.leds b{width:8px;height:8px;background:#F4A79C;display:block}
+.leds b:first-child{background:#FFE9A8}
+.plate{
+  margin-left:auto;font-family:'Silk';font-size:10px;letter-spacing:2px;color:#fff;
+  background:#8E1F16;padding:5px 9px;
+}
+
+h1{
+  font-family:'J25';font-weight:400;line-height:.92;color:#fff;
+  font-size:clamp(22px,8vw,52px);letter-spacing:1px;margin-bottom:14px;
+}
+.meta{font-family:'Silk';color:#6B7686;font-size:9px;letter-spacing:1.6px;line-height:1.9;margin-bottom:26px}
+
+h2{
+  scroll-margin-top:18px;
+  font-family:'J25';font-weight:400;color:#fff;
+  font-size:clamp(17px,5.2vw,30px);line-height:1.05;letter-spacing:.5px;
+  margin:40px 0 4px;
+}
+h2 + p, h2 + ul, h2 + .box{margin-top:14px}
+p{margin:0 0 16px}
+strong{color:#E8ECF2;font-weight:400}
+a{color:#D63A2E;text-decoration:none;border-bottom:1px solid #5C1F19}
+a:hover{color:#F4A79C;border-bottom-color:#D63A2E}
+
+ul{list-style:none;margin:0 0 18px}
+li{position:relative;padding-left:18px;margin-bottom:9px}
+/* a square bullet — a disc would be a rounded corner */
+li:before{content:"";position:absolute;left:0;top:12px;width:5px;height:5px;background:#D63A2E}
+
+.jump{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 26px}
+.jump a{
+  font-family:'Silk';font-size:9px;letter-spacing:1.4px;color:#E8ECF2;
+  background:#232936;border:0;padding:7px 10px;line-height:1.4;
+}
+.jump a.go{background:#D63A2E;color:#fff}
+.jump a:hover{background:#2E3646;color:#fff}
+.jump a.go:hover{background:#B7301F}
+
+/* ---- a word the app itself shows: the label on the button you tap ---- */
+.ui{
+  font-family:'Silk';font-weight:400;font-size:11px;letter-spacing:.6px;
+  color:#E8ECF2;background:#232936;padding:1px 6px;
+  overflow-wrap:anywhere;
+}
+
+/* ---- the emphasis panel: a sunken well, lit from the top-left ---- */
+.box{
+  background:#12161E;border:3px solid #0C1016;
+  box-shadow:inset 3px 3px 0 #070A0E, inset -3px -3px 0 #2A3040;
+  padding:22px 20px 8px;margin:24px 0 26px;
+}
+.box .lab{
+  font-family:'Silk';font-size:9px;letter-spacing:2px;color:#E0C273;margin-bottom:12px;display:block;
+}
+.mail{
+  font-family:'Silk';font-size:clamp(11px,3.4vw,14px);letter-spacing:.5px;
+  color:#E8ECF2;border-bottom:2px solid #D63A2E;
+  word-break:break-all;
+}
+
+.warn{border-left:5px solid #E0C273;padding:2px 0 2px 16px;margin:22px 0;color:#C9B98A}
+.indie{color:#6B7686;font-size:13px;margin-top:28px}
+
+footer{margin-top:52px;padding-top:18px;border-top:3px solid #232936;text-align:center}
+footer a{font-family:'Silk';font-size:9px;letter-spacing:1.5px;color:#9BA5B4;padding:0 6px;line-height:2.6;border:0}
+footer a:hover{color:#D63A2E}
+.copy{font-family:'Silk';font-size:9px;color:#5D6675;margin-top:12px;letter-spacing:1.5px}
+
+@media (max-width:420px){
+  body{font-size:14px;line-height:1.72;padding:0 14px 48px}
+  .hous{margin:0 -14px 24px}
+  .plate{display:none}
+}
 </style>
 </head>
 <body>
-<h1>MotorDex Support</h1>
-<p class="meta">We read every message and aim to reply within a few days.</p>
 
-<p>MotorDex is a game where you photograph real cars you spot and collect them as
-trading cards. Need help, found a bug, or want a car added? Get in touch:</p>
+<div class="hous">
+  <span class="lens"><i></i></span>
+  <span class="leds"><b></b><b></b><b></b><b></b></span>
+  <span class="plate">MOTORDEX</span>
+</div>
 
-<p><strong>Email:</strong> <a href="mailto:&#115;&#117;&#112;&#112;&#111;&#114;&#116;&#64;&#109;&#111;&#116;&#111;&#114;&#100;&#101;&#120;&#103;&#97;&#109;&#101;&#46;&#99;&#111;&#109;">&#115;&#117;&#112;&#112;&#111;&#114;&#116;&#64;&#109;&#111;&#116;&#111;&#114;&#100;&#101;&#120;&#103;&#97;&#109;&#101;&#46;&#99;&#111;&#109;</a></p>
+<div class="wrap">
 
-<h2>Common questions</h2>
+<h1>MOTORDEX SUPPORT</h1>
+<p class="meta">MOTORDEX &middot; BY MOTORDEX GAME LLC<br>FOR THE IPHONE AND ANDROID APPS &middot; UPDATED 18 OCT 2026</p>
+
+<p><strong>MotorDex</strong> is a game for iPhone and Android, made by
+<strong>MotorDex Game LLC</strong>: you photograph real cars you spot and
+collect them as trading cards. Need help, found a bug, or want a car added?
+Email us. We read every message and aim to reply within a few days.</p>
+
+<div class="box">
+  <span class="lab">EMAIL US</span>
+  <p><a class="mail" href="mailto:&#115;&#117;&#112;&#112;&#111;&#114;&#116;&#64;&#109;&#111;&#116;&#111;&#114;&#100;&#101;&#120;&#103;&#97;&#109;&#101;&#46;&#99;&#111;&#109;">&#115;&#117;&#112;&#112;&#111;&#114;&#116;&#64;&#109;&#111;&#116;&#111;&#114;&#100;&#101;&#120;&#103;&#97;&#109;&#101;&#46;&#99;&#111;&#109;</a></p>
+  <p>Tell us your <strong>handle</strong>, your phone model, and what happened. A
+  screenshot helps. We will never ask for your password or a reset code.</p>
+</div>
+
+<nav class="jump" aria-label="On this page">
+  <a class="go" href="#delete">DELETE ACCOUNT</a>
+  <a href="#pro">MOTORDEX PRO</a>
+  <a href="#cancel">CANCEL</a>
+  <a href="#restore">RESTORE</a>
+  <a href="#scanning">SCANNING</a>
+  <a href="#blocking">REPORT &amp; BLOCK</a>
+</nav>
+
+<h2 id="delete">DELETE YOUR ACCOUNT</h2>
+<p>In the app: <b class="ui">HOME</b> &rarr; the <strong>gear</strong> in the
+top-right corner &rarr; <b class="ui">ACCOUNT</b> &rarr;
+<b class="ui">DELETE ACCOUNT</b>, then confirm. Uninstalled the app, or can't
+sign in? <a href="delete-account.html#by-email">Ask us by email</a> instead;
+you do not need to reinstall anything.</p>
+<p>Deleting removes your account, your catches and their photos for good. A
+few records, such as purchase records, are kept. Our
+<a href="delete-account.html">Delete Your Account</a> page lists exactly
+<a href="delete-account.html#deleted">what is deleted</a> and
+<a href="delete-account.html#kept">what we keep, and for how long</a>.</p>
+<div class="warn"><strong>Paying for Pro?</strong> Cancel the subscription
+first. Deleting your account does not stop the billing.
+<a href="#cancel">How to cancel</a></div>
+<p>Used Sign in with Apple? Check that MotorDex is gone from iPhone Settings
+&rarr; your name &rarr; Sign-In &amp; Security &rarr; Sign in with Apple, and
+remove it there if it is still listed.</p>
+
+<h2 id="pro">MOTORDEX PRO</h2>
+<p>MotorDex is free to play, and your garage holds 100 cards. Pro removes the
+card cap and adds batch import, burst mode and an extra AI double-check on your
+toughest finds: classics, lookalikes, deep cuts. Prices are shown in the app before you pay.</p>
 <ul>
-  <li><strong>A scan failed or misidentified a car.</strong> Scanning needs a clear,
-      well-lit shot of the car and a network connection. If it times out, just try again.
-      A wrong guess is usually fixed by a closer, less-angled photo.</li>
-  <li><strong>How do I delete my account?</strong> Open the app → Settings → Delete
-      Account. This permanently removes your account, catches, photos, and all data.
-      Can't get into the app? See <a href="delete-account.html">Delete Your
-      Account</a> to request it by email. On iPhone, if you used Sign in with Apple,
-      also revoke it under Settings → your name → Sign in with Apple.</li>
-  <li><strong>How do I restore a purchase?</strong> Open the paywall (or Settings) and
-      tap Restore Purchases. Subscriptions are managed by the store you bought from:
-      on Android, the Play Store app → your profile → Payments &amp; subscriptions; on
-      iPhone, Settings → your name → Subscriptions.</li>
-  <li><strong>What is MotorDex Pro?</strong> The free tier holds up to 100 cards. Pro
-      unlocks an unlimited garage and batch import, as a monthly subscription or a
-      one-time Lifetime unlock.</li>
-  <li><strong>Daily scan limit.</strong> There is a generous per-day scan limit to keep
-      the service healthy. Normal play won't hit it.</li>
-  <li><strong>Reporting and blocking.</strong> In the friends feed you can report a catch
-      or block a user; blocking removes them from your feed and friends.</li>
+  <li><strong>iPhone</strong> &mdash; a monthly or yearly subscription, bought
+      through the App Store. Open it from the
+      <b class="ui" data-app="ios">MOTORDEX PRO</b> banner on
+      <b class="ui" data-app="ios">HOME</b>, or from
+      Settings &rarr; <b class="ui" data-app="ios">ACCOUNT</b> &rarr;
+      <b class="ui" data-app="ios">UPGRADE TO PRO</b>.</li>
+  <li><strong>Android</strong> &mdash; Pro on Android is coming soon. It will
+      be a monthly or yearly subscription through Google Play. There is no
+      Lifetime option on Android.</li>
 </ul>
 
-<h2>Legal</h2>
-<p><a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms of Use</a></p>
+<h2 id="cancel">CANCEL A SUBSCRIPTION</h2>
+<p>A subscription belongs to your Apple or Google account, not to MotorDex, so
+cancel it in the store you bought it from, even if you now play on a different
+phone:</p>
+<ul>
+  <li><strong>iPhone</strong> &mdash; Settings &rarr; your name &rarr;
+      Subscriptions &rarr; MotorDex &rarr; Cancel</li>
+  <li><strong>Android</strong> &mdash; Play Store &rarr; profile icon &rarr;
+      Payments &amp; subscriptions &rarr; Subscriptions &rarr; MotorDex &rarr; Cancel</li>
+</ul>
+<p>After you cancel, Pro stays on until the end of the period you have already
+paid for. Deleting your account or uninstalling the app does not stop the billing. An
+iPhone Lifetime unlock (no longer sold; everyone who bought it keeps Pro) is not a
+subscription: there is nothing to cancel and nothing more to pay, and RESTORE
+PURCHASES on your iPhone brings it back on a new phone.</p>
+<p>Refunds on iPhone are handled by Apple, not by us: ask at
+<a href="https://reportaproblem.apple.com/">reportaproblem.apple.com</a>. On
+Android, you can ask Google Play (see
+<a href="https://support.google.com/googleplay/answer/2479637">Google Play's refund
+help</a>) or email us and we will help.</p>
 
-<p class="meta"><a href="/">MotorDex home</a> · <a href="/what-is-motordex.html">What is MotorDex?</a></p>
+<h2 id="restore">RESTORE A PURCHASE</h2>
+<p>Pro is tied to your MotorDex account. On iPhone, sign in to the account you
+bought it on, open Pro the same way as above and tap
+<b class="ui" data-app="ios">RESTORE PURCHASES</b>. A guest account can't
+restore, so sign in first. Still missing? Email us your handle and the date you
+bought it.</p>
 
+<h2 id="scanning">SCANNING</h2>
+<ul>
+  <li><strong>A scan failed or timed out.</strong> Scanning needs a network
+      connection and a clear, well-lit shot of the car. Just try again.</li>
+  <li><strong>Wrong car?</strong> A closer, less-angled photo usually fixes
+      it. Right after a catch, tap <b class="ui">WRONG CAR? TRY AGAIN</b> under
+      the card to pick from the AI's other guesses.</li>
+  <li><strong>Daily scan limit.</strong> There is a generous per-day scan limit
+      to keep the service healthy. Normal play won't hit it.</li>
+</ul>
+
+<h2 id="blocking">REPORT &amp; BLOCK</h2>
+<p>In the friends feed you can report a catch or block a player. Blocking
+removes them from your feed and your friends.</p>
+
+<h2 id="legal">LEGAL</h2>
+<p><a href="privacy.html">Privacy Policy</a> &middot;
+<a href="terms.html">Terms of Use</a> &middot;
+<a href="delete-account.html">Delete Your Account</a></p>
+<p class="indie">MotorDex is an independent game made by MotorDex Game LLC. It
+is not affiliated with, sponsored by or endorsed by any car manufacturer; car
+names are used only to identify vehicles.</p>
+
+<footer>
+  <a href="/">HOME</a>
+  <a href="what-is-motordex.html">ABOUT</a>
+  <a href="support.html">SUPPORT</a>
+  <a href="privacy.html">PRIVACY</a>
+  <a href="terms.html">TERMS</a>
+  <a href="child-safety.html">CHILD SAFETY</a>
+  <a href="community-guidelines.html">GUIDELINES</a>
+  <a href="copyright.html">COPYRIGHT</a>
+  <a href="takedown.html">TAKEDOWN</a>
+  <a href="law-enforcement.html">LAW ENFORCEMENT</a>
+  <a href="legal.html">LEGAL</a>
+  <div class="copy">&copy; 2026 MOTORDEX GAME LLC</div>
+</footer>
+
+</div>
 </body>
 </html>

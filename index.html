@@ -436,12 +436,18 @@ footer a:hover{color:#D63A2E}
     <a href="mailto:&#115;&#117;&#112;&#112;&#111;&#114;&#116;&#64;&#109;&#111;&#116;&#111;&#114;&#100;&#101;&#120;&#103;&#97;&#109;&#101;&#46;&#99;&#111;&#109;" id="ctopen" aria-controls="ct" aria-expanded="false">CONTACT</a>
     <a href="mailto:&#115;&#117;&#112;&#112;&#111;&#114;&#116;&#64;&#109;&#111;&#116;&#111;&#114;&#100;&#101;&#120;&#103;&#97;&#109;&#101;&#46;&#99;&#111;&#109;?subject=Feedback" id="fbopen" aria-controls="fb" aria-expanded="false">FEEDBACK</a>
     <a href="/what-is-motordex.html">ABOUT</a>
-    
     <a href="/cars.html">ALL CARS</a>
     <a href="/support.html">SUPPORT</a>
     <a href="/privacy.html">PRIVACY</a>
     <a href="/terms.html">TERMS</a>
     <a href="/delete-account.html">DELETE ACCOUNT</a>
+    <a href="/child-safety.html">CHILD SAFETY</a>
+    <a href="/community-guidelines.html">GUIDELINES</a>
+    <a href="/copyright.html">COPYRIGHT</a>
+    <a href="/takedown.html">TAKEDOWN</a>
+    <a href="/law-enforcement.html">LAW ENFORCEMENT</a>
+    <a href="/legal.html">LEGAL</a>
+    <a href="https://db-ip.com" rel="noopener">IP GEOLOCATION BY DB-IP</a>
     <!-- Revealed by JS from the FEEDBACK link. Hidden by default so a reader with JS
          off keeps the working mailto rather than a form that cannot submit. -->
     <form class="wl fb" id="fb" hidden novalidate>
@@ -572,14 +578,30 @@ footer a:hover{color:#D63A2E}
   var msg  = document.getElementById('wlmsg');
   if (!open || !form || !mail || !go || !msg) return;
 
+  function say(text, cls){ msg.textContent = text; msg.className = 'wlmsg' + (cls ? ' ' + cls : ''); }
+
+  // Back from the confirmation link (waitlist-confirm redirects here with ?waitlist=<result>).
+  // A fixed set of results, shown as text only; anything else is ignored.
+  var back = { confirmed: ['YOU’RE ON THE LIST. WE’LL EMAIL YOU WHEN ANDROID LANDS.', 'ok'],
+               already:   ['YOU’RE ALREADY CONFIRMED. SEE YOU AT LAUNCH.', 'ok'],
+               expired:   ['THAT LINK EXPIRED. SIGN UP AGAIN BELOW.', 'bad'],
+               invalid:   ['THAT LINK DIDN’T WORK. SIGN UP AGAIN BELOW.', 'bad'],
+               error:     ['SOMETHING WENT WRONG. TRY THE LINK AGAIN IN A MOMENT.', 'bad'] };
+  var res = (location.search.match(/[?&]waitlist=([a-z]+)/) || [])[1];
+  if (res && back[res]) {
+    form.hidden = false;
+    open.setAttribute('aria-expanded','true');
+    say(back[res][0], back[res][1]);
+    if (window.history && history.replaceState) history.replaceState(null, '', location.pathname + location.hash);
+    form.scrollIntoView({ block: 'center' });
+  }
+
   open.addEventListener('click', function(e){
     e.preventDefault();                 // stop the mailto now that the form exists
     form.hidden = false;
     open.setAttribute('aria-expanded','true');
     mail.focus();
   });
-
-  function say(text, cls){ msg.textContent = text; msg.className = 'wlmsg' + (cls ? ' ' + cls : ''); }
 
   form.addEventListener('submit', function(e){
     e.preventDefault();
@@ -602,10 +624,11 @@ footer a:hover{color:#D63A2E}
         // for the row back would turn a successful insert into a 401.
         'Prefer': 'return=minimal'
       },
-      body: JSON.stringify({ email: email, platform: 'android', heard_from: 'site' })
+      body: JSON.stringify({ email: email, platform: 'android', heard_from: 'website' })
     }).then(function(r){
       if (r.ok) {
-        form.innerHTML = '<p class="wlmsg ok">YOU’RE ON THE LIST.<br>WE’LL EMAIL YOU WHEN ANDROID LANDS.</p>';
+        // Double opt-in (21 Oct 2026): the row stays unconfirmed until the emailed link is clicked.
+        form.innerHTML = '<p class="wlmsg ok">ALMOST THERE — CHECK YOUR EMAIL.<br>TAP THE LINK WE SENT TO CONFIRM.</p>';
         return;
       }
       // The throttle raises check_violation with "waitlist: slow down"; a
@@ -630,7 +653,7 @@ footer a:hover{color:#D63A2E}
 // WHY CATCHES AND NOT SCANS. total_catches() already exists, is granted to the
 // public key ON PURPOSE, and is safe at any poll rate: it sums the public
 // per-car mint counter (~1,400 rows), never a user's data. The scan tally lives
-// in scan_day_counter, which is locked to anon and ALSO holds the daily Gemini
+// in scan_day_counter, which is locked to anon and ALSO holds the daily AI
 // spend - exposing it would mean a new public database function on production.
 // It also keeps the site and the app showing the same number.
 //
