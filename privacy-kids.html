@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MotorDex — Privacy for Younger Players</title>
+<meta name="description" content="MotorDex privacy in plain words for players under 18: your birthday, photos, friends, location, the World leaderboard and your choices. In English and French.">
+<link rel="canonical" href="https://motordexgame.com/privacy-kids.html">
+<link rel="icon" type="image/png" href="/icon-180.png">
+<!-- Child-friendly summary of web/privacy.html (UK Children's Code std 4; GDPR Art. 12). Source text and
+     approval record: docs/legal/assessments/kids_privacy_summary.md. Every sentence must stay true to the
+     Privacy Policy; change both in the same batch. -->
+<style>
+/* The same sheet as support.html and delete-account.html: the app's dark DEX
+   chrome, Jersey 25 for headings, Silkscreen for labels and readable sans-serif
+   prose. Change them together. No external requests: the two fonts are ours. */
+@font-face{font-family:'Silk';src:url(fonts/silkscreen.woff2) format('woff2');font-display:swap}
+@font-face{font-family:'J25';src:url(fonts/jersey25.woff2) format('woff2');font-display:swap}
+
+/* Same law as the app and the landing page: nothing is ever rounded. */
+*{box-sizing:border-box;margin:0;padding:0;border-radius:0 !important}
+
+html{background:#0E1016;-webkit-text-size-adjust:100%}
+body{
+  background:#0E1016;
+  background-image:radial-gradient(#181D27 1px, transparent 1px);
+  background-size:8px 8px;
+  color:#B9C2D0;
+  font-family:ui-sans-serif,-apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif;
+  font-size:15px; line-height:1.75; letter-spacing:.1px;
+  padding:0 18px 64px;
+}
+.wrap{width:100%;max-width:640px;margin:0 auto}
+
+/* ---- the red device housing, echoing every tab root in the app ---- */
+.hous{
+  background:#D63A2E;border-bottom:5px solid #8E1F16;
+  margin:0 -18px 30px;padding:15px 18px;
+  display:flex;align-items:center;gap:11px;
+}
+.lens{width:26px;height:26px;flex:0 0 26px;background:#2F3845;border:3px solid #F4A79C;position:relative}
+.lens i{position:absolute;left:5px;top:5px;width:10px;height:10px;background:#7FC7E8;display:block}
+.leds{display:flex;gap:6px}
+.leds b{width:8px;height:8px;background:#F4A79C;display:block}
+.leds b:first-child{background:#FFE9A8}
+.plate{
+  margin-left:auto;font-family:'Silk';font-size:10px;letter-spacing:2px;color:#fff;
+  background:#8E1F16;padding:5px 9px;
+}
+
+h1{
+  font-family:'J25';font-weight:400;line-height:.92;color:#fff;
+  font-size:clamp(22px,8vw,52px);letter-spacing:1px;margin-bottom:14px;
+}
+.meta{font-family:'Silk';color:#6B7686;font-size:9px;letter-spacing:1.6px;line-height:1.9;margin-bottom:26px}
+
+h2{
+  scroll-margin-top:18px;
+  font-family:'J25';font-weight:400;color:#fff;
+  font-size:clamp(17px,5.2vw,30px);line-height:1.05;letter-spacing:.5px;
+  margin:40px 0 4px;
+}
+h2 + p, h2 + ul, h2 + ol, h2 + .box{margin-top:14px}
+p{margin:0 0 16px}
+strong{color:#E8ECF2;font-weight:400}
+a{color:#D63A2E;text-decoration:none;border-bottom:1px solid #5C1F19}
+a:hover{color:#F4A79C;border-bottom-color:#D63A2E}
+
+ul{list-style:none;margin:0 0 18px}
+ul li{position:relative;padding-left:18px;margin-bottom:9px}
+/* a square bullet — a disc would be a rounded corner */
+ul li:before{content:"";position:absolute;left:0;top:12px;width:5px;height:5px;background:#D63A2E}
+
+/* a numbered list: the number sits on a small steel plate, same square law */
+ol{list-style:none;counter-reset:n;margin:0 0 18px}
+ol li{position:relative;padding-left:32px;margin-bottom:10px;counter-increment:n}
+ol li:before{
+  content:counter(n);position:absolute;left:0;top:4px;width:22px;height:20px;
+  background:#232936;color:#E0C273;font-family:'Silk';font-size:9px;line-height:20px;text-align:center;
+}
+
+.jump{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 26px}
+.jump a{
+  font-family:'Silk';font-size:9px;letter-spacing:1.4px;color:#E8ECF2;
+  background:#232936;border:0;padding:7px 10px;line-height:1.4;
+}
+.jump a.go{background:#D63A2E;color:#fff}
+.jump a:hover{background:#2E3646;color:#fff}
+.jump a.go:hover{background:#B7301F}
+
+/* ---- a word the app itself shows: the label on the button you tap ---- */
+.ui{
+  font-family:'Silk';font-weight:400;font-size:11px;letter-spacing:.6px;
+  color:#E8ECF2;background:#232936;padding:1px 6px;
+  overflow-wrap:anywhere;
+}
+
+/* ---- the emphasis panel: a sunken well, lit from the top-left ---- */
+.box{
+  background:#12161E;border:3px solid #0C1016;
+  box-shadow:inset 3px 3px 0 #070A0E, inset -3px -3px 0 #2A3040;
+  padding:22px 20px 8px;margin:24px 0 26px;
+}
+.box .lab{
+  font-family:'Silk';font-size:9px;letter-spacing:2px;color:#E0C273;margin-bottom:12px;display:block;
+}
+.mail{
+  font-family:'Silk';font-size:clamp(11px,3.4vw,14px);letter-spacing:.5px;
+  color:#E8ECF2;border-bottom:2px solid #D63A2E;
+  word-break:break-all;
+}
+
+.warn{border-left:5px solid #E0C273;padding:2px 0 2px 16px;margin:22px 0;color:#C9B98A}
+.indie{color:#6B7686;font-size:13px;margin-top:28px}
+
+footer{margin-top:52px;padding-top:18px;border-top:3px solid #232936;text-align:center}
+footer a{font-family:'Silk';font-size:9px;letter-spacing:1.5px;color:#9BA5B4;padding:0 6px;line-height:2.6;border:0;white-space:nowrap}
+footer a:hover{color:#D63A2E}
+.copy{font-family:'Silk';font-size:9px;color:#5D6675;margin-top:12px;letter-spacing:1.5px}
+
+@media (max-width:420px){
+  body{font-size:14px;line-height:1.72;padding:0 14px 48px}
+  .hous{margin:0 -14px 24px}
+  .plate{display:none}
+}
+</style>
+</head>
+<body>
+
+<div class="hous">
+  <span class="lens"><i></i></span>
+  <span class="leds"><b></b><b></b><b></b><b></b></span>
+  <span class="plate">MOTORDEX</span>
+</div>
+
+<div class="wrap">
+
+<nav class="jump" aria-label="Language / Langue">
+  <a class="go" href="#en" hreflang="en">ENGLISH</a>
+  <a href="#fr" hreflang="fr">FRANÇAIS</a>
+</nav>
+
+<section id="en" lang="en">
+
+<h1>YOUR PRIVACY, THE SHORT VERSION</h1>
+<p class="meta">FOR PLAYERS UNDER 18 &middot; MOTORDEX GAME LLC<br>UPDATED 28 OCT 2026</p>
+
+<p>This page explains what happens to your information, in plain words. Our
+<a href="privacy.html">Privacy Policy</a> has every detail.</p>
+
+<h2 id="en-who">WHO CAN PLAY</h2>
+<p>You must be <strong>13 or older</strong>. In some countries you must be older
+(for example 14 in Canada, Italy and Spain, 15 in France, 16 in Germany and the
+Netherlands). If you are under 18, a parent or guardian should know you play.</p>
+
+<h2 id="en-birthday">YOUR BIRTHDAY</h2>
+<p>We ask for your birth month and year. We keep them locked away on our server.
+The app only knows your age group (13&ndash;15, 16&ndash;17 or 18+). We use it to
+keep the right settings on for you.</p>
+
+<h2 id="en-photos">YOUR PHOTOS</h2>
+<p>When you scan a car, your photo goes to our AI helper. It tells us which car
+it is and checks the photo is OK to show. Before the photo leaves, we remove
+hidden information like where and when it was taken. The AI company is in the
+United States. It may keep a copy for up to 30 days. By default it does not use
+your photos to train its AI. If you play without an account, your photos stay on
+your phone and are not sent to the AI.</p>
+<p class="warn">Take photos of cars, not people. Never take photos from the road
+or while someone is driving.</p>
+
+<h2 id="en-friends">FRIENDS</h2>
+<p>Only people you swap friend codes with can be your friends. Friends can see
+your cards and photos. They never see where you took them. A friend could take a
+screenshot, so only share photos you are happy for them to keep.</p>
+
+<h2 id="en-board">THE WORLD LEADERBOARD</h2>
+<p>If you are under 18, you are <strong>hidden</strong> from the World leaderboard.
+You can switch yourself on in Settings. If you do, it shows your username, level,
+best car and totals. It never shows your photos.</p>
+
+<h2 id="en-location">YOUR LOCATION</h2>
+<p>If you are under 16, we <strong>never</strong> store where you caught a car. If
+you are 16 or 17, map pins are <strong>off</strong>. You can turn them on. Then we
+keep only a rough area of about 2&nbsp;km, and a sign shows on the SCAN screen.
+Nobody else sees your map.</p>
+
+<h2 id="en-never">WHAT WE NEVER DO</h2>
+<ul>
+  <li>We don't show ads.</li>
+  <li>We don't sell your information.</li>
+  <li>We don't track you across other apps.</li>
+  <li>We don't use face recognition or read number plates.</li>
+</ul>
+
+<h2 id="en-safe">KEEPING MOTORDEX SAFE</h2>
+<p>An AI checks photos and usernames. If we remove or hide something of yours,
+you get a note in the app. It says why, and whether a computer or a person
+decided. If you think we got it wrong, email us with the number on the note and
+a person will look again. You can <span class="ui">REPORT</span> or
+<span class="ui">BLOCK</span> anyone who makes you feel uncomfortable.</p>
+
+<h2 id="en-pro">BUYING PRO</h2>
+<p>Ask a parent or guardian first. If you are under 18, your app store asks them
+to approve.</p>
+
+<h2 id="en-control">YOU ARE IN CONTROL</h2>
+<p>In <span class="ui">SETTINGS &rarr; PRIVACY</span> you can:</p>
+<ul>
+  <li>download a copy of your information,</li>
+  <li>turn AI scanning off,</li>
+  <li>turn map pins off or remove a location,</li>
+  <li>delete your account.</li>
+</ul>
+<p>You can also email us to see, fix or delete your information. A parent can
+help you.</p>
+
+<h2 id="en-keep">HOW LONG WE KEEP THINGS</h2>
+<p>We keep your account and catches until you delete them. When you delete your
+account, most things are removed straight away. Some safety records, like
+reports, are kept longer, usually up to one year after a report is closed.</p>
+
+<h2 id="en-where">WHERE YOUR INFORMATION LIVES</h2>
+<p>On our computers in the United States, run by companies that work for us
+(Supabase, Anthropic, Google and RevenueCat). They must keep it safe and use it
+only for MotorDex.</p>
+
+<h2 id="en-worried">IF YOU ARE WORRIED</h2>
+<p>Talk to a parent, a teacher or another adult you trust. You can also:</p>
+<ul>
+  <li>email us (address below),</li>
+  <li>complain to a privacy regulator: the ICO in the UK, the data protection
+  authority in your EU country, the FDPIC in Switzerland, or the Commission
+  d'acc&egrave;s &agrave; l'information in Qu&eacute;bec,</li>
+  <li>talk to a helpline: Childline <a href="tel:08001111">0800 1111</a> (UK),
+  <a href="tel:116111">116 111</a> (in many European countries), Kids Help Phone
+  <a href="tel:+18006686868">1-800-668-6868</a> (Canada).</li>
+</ul>
+
+<div class="box">
+  <span class="lab">CONTACT US</span>
+  <p><a class="mail" href="mailto:support@motordexgame.com">support@motordexgame.com</a></p>
+  <p>MotorDex Game LLC, 570 El Camino Real #150-306, Redwood City, CA 94063, USA.
+  Our full <a href="privacy.html">Privacy Policy</a> also lists who to contact in
+  Europe.</p>
+</div>
+
+</section>
+
+<section id="fr" lang="fr">
+
+<h1>TA VIE PRIV&Eacute;E, L'ESSENTIEL</h1>
+<p class="meta">POUR LES JOUEURS DE MOINS DE 18 ANS &middot; MOTORDEX GAME LLC<br>MIS &Agrave; JOUR LE 28 OCT. 2026</p>
+
+<p>Cette page explique simplement ce qui arrive &agrave; tes informations. Notre
+<a href="fr/privacy.html">Politique de confidentialit&eacute;</a> donne tous les
+d&eacute;tails.</p>
+
+<h2 id="fr-who">QUI PEUT JOUER</h2>
+<p>Tu dois avoir <strong>au moins 13 ans</strong>. Dans certains pays, il faut
+&ecirc;tre plus &acirc;g&eacute; (par exemple 14 ans au Canada, en Italie et en
+Espagne, 15 ans en France, 16 ans en Allemagne et aux Pays-Bas). Si tu as moins
+de 18 ans, un parent ou un tuteur doit savoir que tu joues.</p>
+
+<h2 id="fr-birthday">TA DATE DE NAISSANCE</h2>
+<p>Nous te demandons ton mois et ton ann&eacute;e de naissance. Nous les gardons
+sous cl&eacute; sur notre serveur. L'application conna&icirc;t seulement ta
+tranche d'&acirc;ge (13&ndash;15, 16&ndash;17 ou 18+). Elle sert &agrave; garder
+les bons r&eacute;glages pour toi.</p>
+
+<h2 id="fr-photos">TES PHOTOS</h2>
+<p>Quand tu scannes une voiture, ta photo est envoy&eacute;e &agrave; notre
+assistant d'IA. Il nous dit quelle voiture c'est et v&eacute;rifie que la photo
+peut &ecirc;tre montr&eacute;e. Avant l'envoi, nous retirons les informations
+cach&eacute;es, comme le lieu et l'heure de la photo. L'entreprise d'IA est aux
+&Eacute;tats-Unis. Elle peut garder une copie jusqu'&agrave; 30 jours. Par
+d&eacute;faut, elle n'utilise pas tes photos pour entra&icirc;ner son IA. Si tu
+joues sans compte, tes photos restent sur ton t&eacute;l&eacute;phone et ne sont
+pas envoy&eacute;es &agrave; l'IA.</p>
+<p class="warn">Photographie des voitures, pas des personnes. Ne prends jamais de
+photo depuis la route ou pendant que quelqu'un conduit.</p>
+
+<h2 id="fr-friends">LES AMIS</h2>
+<p>Seules les personnes avec qui tu &eacute;changes un code ami peuvent &ecirc;tre
+tes amis. Tes amis voient tes cartes et tes photos. Ils ne voient jamais o&ugrave;
+tu les as prises. Un ami peut faire une capture d'&eacute;cran&nbsp;: partage
+seulement des photos que tu acceptes qu'il garde.</p>
+
+<h2 id="fr-board">LE CLASSEMENT MONDIAL</h2>
+<p>Si tu as moins de 18 ans, tu es <strong>cach&eacute;</strong> du classement
+mondial. Tu peux t'y afficher dans les R&eacute;glages. Dans ce cas, il montre ton
+pseudo, ton niveau, ta meilleure voiture et tes totaux. Jamais tes photos.</p>
+
+<h2 id="fr-location">TA POSITION</h2>
+<p>Si tu as moins de 16 ans, nous n'enregistrons <strong>jamais</strong> o&ugrave;
+tu as attrap&eacute; une voiture. Si tu as 16 ou 17 ans, les &eacute;pingles sur
+la carte sont <strong>d&eacute;sactiv&eacute;es</strong>. Tu peux les activer.
+Nous gardons alors seulement une zone approximative d'environ 2&nbsp;km, et un
+signe s'affiche sur l'&eacute;cran SCAN. Personne d'autre ne voit ta carte.</p>
+
+<h2 id="fr-never">CE QUE NOUS NE FAISONS JAMAIS</h2>
+<ul>
+  <li>Pas de publicit&eacute;.</li>
+  <li>Nous ne vendons pas tes informations.</li>
+  <li>Nous ne te suivons pas dans d'autres applications.</li>
+  <li>Pas de reconnaissance faciale ni de lecture des plaques d'immatriculation.</li>
+</ul>
+
+<h2 id="fr-safe">GARDER MOTORDEX S&Ucirc;R</h2>
+<p>Une IA v&eacute;rifie les photos et les pseudos. Si nous retirons ou cachons
+quelque chose qui t'appartient, tu re&ccedil;ois un message dans l'application.
+Il dit pourquoi, et si c'est un ordinateur ou une personne qui a d&eacute;cid&eacute;.
+Si tu penses que c'est une erreur, &eacute;cris-nous avec le num&eacute;ro du
+message et une personne v&eacute;rifiera. Tu peux utiliser
+<span class="ui">REPORT</span> (signaler) ou <span class="ui">BLOCK</span>
+(bloquer) contre toute personne qui te met mal &agrave; l'aise.</p>
+
+<h2 id="fr-pro">ACHETER PRO</h2>
+<p>Demande d'abord &agrave; un parent ou un tuteur. Si tu as moins de 18 ans, ton
+magasin d'applications lui demande son accord.</p>
+
+<h2 id="fr-control">C'EST TOI QUI D&Eacute;CIDES</h2>
+<p>Dans <span class="ui">SETTINGS &rarr; PRIVACY</span> (R&eacute;glages &rarr;
+confidentialit&eacute;), tu peux&nbsp;:</p>
+<ul>
+  <li>t&eacute;l&eacute;charger une copie de tes informations,</li>
+  <li>d&eacute;sactiver le scan par IA,</li>
+  <li>d&eacute;sactiver les &eacute;pingles sur la carte ou retirer une position,</li>
+  <li>supprimer ton compte.</li>
+</ul>
+<p>Tu peux aussi nous &eacute;crire pour voir, corriger ou supprimer tes
+informations. Un parent peut t'aider.</p>
+
+<h2 id="fr-keep">COMBIEN DE TEMPS NOUS GARDONS LES CHOSES</h2>
+<p>Nous gardons ton compte et tes captures jusqu'&agrave; ce que tu les supprimes.
+Quand tu supprimes ton compte, la plupart des choses disparaissent tout de suite.
+Certains dossiers de s&eacute;curit&eacute;, comme les signalements, sont
+gard&eacute;s plus longtemps, en g&eacute;n&eacute;ral jusqu'&agrave; un an
+apr&egrave;s la cl&ocirc;ture du signalement.</p>
+
+<h2 id="fr-where">O&Ugrave; SONT TES INFORMATIONS</h2>
+<p>Sur nos serveurs aux &Eacute;tats-Unis, g&eacute;r&eacute;s par des entreprises
+qui travaillent pour nous (Supabase, Anthropic, Google et RevenueCat). Elles
+doivent les prot&eacute;ger et les utiliser seulement pour MotorDex.</p>
+
+<h2 id="fr-worried">SI QUELQUE CHOSE T'INQUI&Egrave;TE</h2>
+<p>Parles-en &agrave; un parent, un enseignant ou un autre adulte de confiance.
+Tu peux aussi&nbsp;:</p>
+<ul>
+  <li>nous &eacute;crire (adresse ci-dessous),</li>
+  <li>te plaindre aupr&egrave;s d'une autorit&eacute; de protection des
+  donn&eacute;es&nbsp;: la Commission d'acc&egrave;s &agrave; l'information au
+  Qu&eacute;bec, la CNIL en France, l'autorit&eacute; de ton pays dans l'UE, le
+  PFPDT en Suisse ou l'ICO au Royaume-Uni,</li>
+  <li>appeler une ligne d'&eacute;coute&nbsp;: Jeunesse, J'&eacute;coute
+  <a href="tel:+18006686868">1-800-668-6868</a> (Canada),
+  <a href="tel:116111">116 111</a> (dans de nombreux pays d'Europe), Childline
+  <a href="tel:08001111">0800 1111</a> (Royaume-Uni).</li>
+</ul>
+
+<div class="box">
+  <span class="lab">NOUS CONTACTER</span>
+  <p><a class="mail" href="mailto:support@motordexgame.com">support@motordexgame.com</a></p>
+  <p>MotorDex Game LLC, 570 El Camino Real #150-306, Redwood City, CA 94063,
+  &Eacute;tats-Unis. Notre <a href="fr/privacy.html">Politique de
+  confidentialit&eacute;</a> compl&egrave;te indique aussi qui contacter en
+  Europe.</p>
+</div>
+
+</section>
+
+<p class="indie">MotorDex is an independent game made by MotorDex Game LLC. It
+is not affiliated with, sponsored by or endorsed by any car manufacturer; car
+names are used only to identify vehicles.</p>
+
+<footer>
+  <a href="/">HOME</a>
+  <a href="what-is-motordex.html">ABOUT</a>
+  <a href="support.html">SUPPORT</a>
+  <a href="privacy.html">PRIVACY</a>
+  <a href="privacy-kids.html">PRIVACY FOR KIDS</a>
+  <a href="terms.html">TERMS</a>
+  <a href="child-safety.html">CHILD SAFETY</a>
+  <a href="community-guidelines.html">GUIDELINES</a>
+  <a href="copyright.html">COPYRIGHT</a>
+  <a href="takedown.html">TAKEDOWN</a>
+  <a href="law-enforcement.html">LAW ENFORCEMENT</a>
+  <a href="legal.html">LEGAL</a>
+  <div class="copy">&copy; 2026 MOTORDEX GAME LLC</div>
+</footer>
+
+</div>
+</body>
+</html>

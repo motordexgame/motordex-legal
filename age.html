@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MotorDex — Wrong Birthday</title>
+<meta name="description" content="Entered the wrong birthday in MotorDex and got locked out? How to check your age with Apple or Google and answer again.">
+<link rel="canonical" href="https://motordexgame.com/age.html">
+<link rel="icon" type="image/png" href="/icon-180.png">
+<style>
+/* SUBSET woff2, not the full TTFs. The faces are used for headings and
+   labels only, so shipping every glyph cost 170KB to render about sixty
+   characters; subset to Basic Latin, Latin-1 and general punctuation (no hinting),
+   about 3-5KB each. font-display:swap so the text is readable while
+   they load rather than invisible. */
+@font-face{font-family:'Silk';src:url(fonts/silkscreen.woff2) format('woff2');font-display:swap}
+@font-face{font-family:'J25';src:url(fonts/jersey25.woff2) format('woff2');font-display:swap}
+
+/* Same law as the app and the landing page: nothing is ever rounded. */
+*{box-sizing:border-box;margin:0;padding:0;border-radius:0 !important}
+
+html{background:#0E1016;-webkit-text-size-adjust:100%}
+body{
+  background:#0E1016;
+  /* the frost dot grid, as a 8px CSS gradient rather than a bitmap */
+  background-image:radial-gradient(#181D27 1px, transparent 1px);
+  background-size:8px 8px;
+  color:#B9C2D0;
+  /* PROSE is readable; Silkscreen is reserved for chrome and labels, exactly as
+     the app's type law reserves it. A whole page of pixel caps is authentic and
+     genuinely hard to read. */
+  font-family:ui-sans-serif,-apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif;
+  font-size:15px; line-height:1.75; letter-spacing:.1px;
+  padding:0 18px 64px;
+}
+
+/* Wider than index.html's 360px landing column ON PURPOSE — that width is
+   right for three buttons and wrong for eight paragraphs. Everything else
+   about the styling is shared. */
+.wrap{width:100%;max-width:640px;margin:0 auto}
+
+/* ---- the red device housing, echoing every tab root in the app ---- */
+.hous{
+  background:#D63A2E;border-bottom:5px solid #8E1F16;
+  margin:0 -18px 30px;padding:15px 18px;
+  display:flex;align-items:center;gap:11px;
+}
+.lens{width:26px;height:26px;flex:0 0 26px;background:#2F3845;border:3px solid #F4A79C;position:relative}
+.lens i{position:absolute;left:5px;top:5px;width:10px;height:10px;background:#7FC7E8;display:block}
+.leds{display:flex;gap:6px}
+.leds b{width:8px;height:8px;background:#F4A79C;display:block}
+.leds b:first-child{background:#FFE9A8}
+.plate{
+  margin-left:auto;font-family:'Silk';font-size:10px;letter-spacing:2px;color:#fff;
+  background:#8E1F16;padding:5px 9px;
+}
+
+h1{
+  font-family:'J25';font-weight:400;line-height:.92;color:#fff;
+  /* The floor has to be genuinely small: 360px is the most common Android
+     width and 375px every small iPhone, and Jersey25 is wide. A 34px floor
+     could not shrink far enough and the title ran off the screen on all
+     three. Measured, not eyeballed — see the width sweep. */
+  font-size:clamp(22px,8vw,52px);letter-spacing:1px;margin-bottom:14px;
+}
+.meta{font-family:'Silk';color:#6B7686;font-size:9px;letter-spacing:1.6px;line-height:1.9;margin-bottom:26px}
+
+h2{
+  scroll-margin-top:18px;
+  font-family:'J25';font-weight:400;color:#fff;
+  font-size:clamp(17px,5.2vw,30px);line-height:1.05;letter-spacing:.5px;
+  margin:40px 0 4px;
+}
+h2 + p, h2 + ul, h2 + .box{margin-top:14px}
+p{margin:0 0 16px}
+strong{color:#E8ECF2;font-weight:400}
+a{color:#D63A2E;text-decoration:none;border-bottom:1px solid #5C1F19}
+a:hover{color:#F4A79C;border-bottom-color:#D63A2E}
+
+ul{list-style:none;margin:0 0 18px}
+li{position:relative;padding-left:18px;margin-bottom:9px}
+/* a square bullet — a disc would be a rounded corner */
+li:before{content:"";position:absolute;left:0;top:12px;width:5px;height:5px;background:#D63A2E}
+
+/* ---- jump links: the deletion routes are the first thing on the page (Play
+   asks for the pathway to be prominent and easy to find) ---- */
+.jump{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 26px}
+.jump a{
+  font-family:'Silk';font-size:9px;letter-spacing:1.4px;color:#E8ECF2;
+  background:#232936;border:0;padding:7px 10px;line-height:1.4;
+}
+.jump a.go{background:#D63A2E;color:#fff}
+.jump a:hover{background:#2E3646;color:#fff}
+.jump a.go:hover{background:#B7301F}
+
+/* ---- a word the app itself shows: the label on the button you tap ---- */
+.ui{
+  font-family:'Silk';font-weight:400;font-size:11px;letter-spacing:.6px;
+  color:#E8ECF2;background:#232936;padding:1px 6px;
+  /* labels are short, but a phone at 320px must still never scroll sideways */
+  overflow-wrap:anywhere;
+}
+
+/* ---- the emphasis panel: a sunken well, lit from the top-left ---- */
+.box{
+  background:#12161E;border:3px solid #0C1016;
+  box-shadow:inset 3px 3px 0 #070A0E, inset -3px -3px 0 #2A3040;
+  padding:22px 20px 8px;margin:24px 0 26px;
+}
+.box .lab{
+  font-family:'Silk';font-size:9px;letter-spacing:2px;color:#E0C273;margin-bottom:12px;display:block;
+}
+.mail{
+  font-family:'Silk';font-size:clamp(11px,3.4vw,14px);letter-spacing:.5px;
+  color:#E8ECF2;border-bottom:2px solid #D63A2E;
+  /* long addresses must never push the panel wider than the phone */
+  word-break:break-all;
+}
+code{background:#1B212C;color:#E0C273;padding:2px 6px;font-family:'Silk';font-size:11px;overflow-wrap:anywhere}
+
+/* ---- steps ---- */
+.steps{counter-reset:s}
+.steps li{counter-increment:s;padding-left:34px;margin-bottom:12px}
+.steps li:before{
+  font-family:'Silk';content:counter(s);left:0;top:2px;width:22px;height:22px;background:#232936;
+  color:#9BA5B4;font-size:10px;line-height:22px;text-align:center;
+}
+
+/* ---- what we keep: each record says HOW LONG, which is what Play asks for ---- */
+.keep li{margin-bottom:16px}
+.how{display:block;font-family:'Silk';font-size:9px;letter-spacing:1.4px;color:#E0C273;margin-top:4px;line-height:1.8}
+
+.warn{border-left:5px solid #E0C273;padding:2px 0 2px 16px;margin:22px 0;color:#C9B98A}
+
+footer{margin-top:52px;padding-top:18px;border-top:3px solid #232936;text-align:center}
+footer a{font-family:'Silk';font-size:9px;letter-spacing:1.5px;color:#9BA5B4;padding:0 6px;line-height:2.6;border:0}
+footer a:hover{color:#D63A2E}
+.copy{font-family:'Silk';font-size:9px;color:#5D6675;margin-top:12px;letter-spacing:1.5px}
+
+/* Phone: slightly smaller prose, same rhythm. */
+@media (max-width:420px){
+  body{font-size:14px;line-height:1.72;padding:0 14px 48px}
+  .hous{margin:0 -14px 24px}
+  .plate{display:none}          /* the wordmark is the first thing to go */
+}
+</style>
+</head>
+<body>
+
+<div class="hous">
+  <span class="lens"><i></i></span>
+  <span class="leds"><b></b><b></b><b></b><b></b></span>
+  <span class="plate">MOTORDEX</span>
+</div>
+
+<div class="wrap">
+
+<h1>WRONG BIRTHDAY IN MOTORDEX?</h1>
+<p class="meta">MOTORDEX &middot; BY MOTORDEX GAME LLC<br>FOR THE IPHONE AND ANDROID APPS &middot; UPDATED 28 OCT 2026</p>
+
+<p>MotorDex asks for a birth month and year before anything else. If the
+answer is under the minimum age, MotorDex stays locked on that phone, even
+after reinstalling. If the birthday was typed wrong, this is how to fix it.</p>
+
+<h2 id="steps">HOW TO UNLOCK IT ON IPHONE</h2>
+<ul class="steps">
+  <li>On the iPhone where MotorDex is locked, open <strong>MotorDex</strong> and tap
+      <b class="ui">CHECK WITH YOUR APPLE ACCOUNT</b>.</li>
+  <li>Apple shares the age range of the Apple Account signed in on that
+      iPhone: the age given when that Apple Account was made, or the age a parent
+      set in <strong>Family Sharing</strong>. If it meets MotorDex&rsquo;s
+      minimum age, MotorDex unlocks and asks the birthday again. Enter it
+      carefully: if it doesn&rsquo;t match what Apple shared, MotorDex locks
+      again on that iPhone for good.</li>
+  <li>If it still says <em>&ldquo;Your Apple Account couldn&rsquo;t confirm
+      your age,&rdquo;</em> check the birthday on the Apple Account signed in
+      on that iPhone (for a child in Family Sharing, a parent can see it in
+      <strong>Settings &rarr; [your name] &rarr; Family &rarr; [child]</strong>).</li>
+  <li>An adult&rsquo;s Apple Account on an iPhone with parental controls
+      turned on can&rsquo;t unlock MotorDex, unless a parent set that age in
+      Family Sharing.</li>
+  <li>MotorDex is for ages <strong>13 and up</strong> (higher in some
+      countries). If your child is under the minimum, we can&rsquo;t make an
+      exception, but we will delete their account and data on request.</li>
+</ul>
+
+<div class="box">
+  <span class="lab">DELETE A CHILD&rsquo;S ACCOUNT AND DATA</span>
+  <p><a class="mail" href="mailto:&#115;&#117;&#112;&#112;&#111;&#114;&#116;&#64;&#109;&#111;&#116;&#111;&#114;&#100;&#101;&#120;&#103;&#97;&#109;&#101;&#46;&#99;&#111;&#109;">&#115;&#117;&#112;&#112;&#111;&#114;&#116;&#64;&#109;&#111;&#116;&#111;&#114;&#100;&#101;&#120;&#103;&#97;&#109;&#101;&#46;&#99;&#111;&#109;</a></p>
+</div>
+
+<h2 id="android">HOW TO UNLOCK IT ON ANDROID</h2>
+<ul class="steps">
+  <li>On the Android phone where MotorDex is locked, open <strong>MotorDex</strong>
+      and tap <b class="ui">CHECK WITH YOUR GOOGLE ACCOUNT</b>.</li>
+  <li>Google Play shares the age range of the Google account on that phone:
+      the age given when that Google account was made, or the age a parent set
+      for it. If it meets MotorDex&rsquo;s minimum age, MotorDex unlocks and asks
+      the birthday again. Enter it carefully: if it doesn&rsquo;t match what
+      Google shared, MotorDex locks again on that phone for good.</li>
+  <li>If it still says <em>&ldquo;Your Google account couldn&rsquo;t confirm
+      your age,&rdquo;</em> check the birthday on the Google account used for
+      Google Play on that phone (for a child&rsquo;s supervised account, a
+      parent can see it in the <strong>Family Link</strong> app).</li>
+</ul>
+
+<h2 id="australia">IN AUSTRALIA</h2>
+<p>Australian law sets a minimum age of <strong>16</strong>, and a typed
+birthday is not enough there. With an Australian App Store or Google Play
+account, MotorDex opens only once your Apple Account (iPhone) or Google account
+(Android) confirms that you are 16 or older. If the App says
+<em>&ldquo;in Australia you must be 16 or older, and your Apple Account (or Google
+account) must confirm it,&rdquo;</em> allow MotorDex to see your age range when your
+phone asks, or tap <b class="ui">CHECK WITH YOUR APPLE ACCOUNT</b> /
+<b class="ui">CHECK WITH YOUR GOOGLE ACCOUNT</b> on the locked page. On iPhone this
+needs iOS 26 or later. Nothing about this check is sent to MotorDex.</p>
+
+<p>More about how we handle age and data is in our
+<a href="privacy.html">Privacy Policy</a>.</p>
+
+<footer>
+  <a href="/">HOME</a>
+  <a href="what-is-motordex.html">ABOUT</a>
+  <a href="support.html">SUPPORT</a>
+  <a href="privacy.html">PRIVACY</a>
+  <a href="terms.html">TERMS</a>
+  <a href="child-safety.html">CHILD SAFETY</a>
+  <a href="community-guidelines.html">GUIDELINES</a>
+  <a href="copyright.html">COPYRIGHT</a>
+  <a href="takedown.html">TAKEDOWN</a>
+  <a href="law-enforcement.html">LAW ENFORCEMENT</a>
+  <a href="legal.html">LEGAL</a>
+  <div class="copy">&copy; 2026 MOTORDEX GAME LLC</div>
+</footer>
+
+</div>
+</body>
+</html>

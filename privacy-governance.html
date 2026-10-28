@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MotorDex — Privacy Governance and Complaints</title>
+<meta name="description" content="Who is in charge of personal information at MotorDex, the rules we follow, and how to make a privacy complaint. In English and French (Québec Law 25).">
+<link rel="canonical" href="https://motordexgame.com/privacy-governance.html">
+<link rel="icon" type="image/png" href="/icon-180.png">
+<!-- Plain-language summary of docs/legal/governance/PERSONAL_INFORMATION_GOVERNANCE_POLICY.md (Québec
+     P-39.1 s.3.2) and the published title + contact of the person in charge (s.3.1,
+     docs/legal/governance/Q01_PERSON_IN_CHARGE_DESIGNATION.md). Change them together. -->
+<style>
+/* The same sheet as support.html and delete-account.html: the app's dark DEX
+   chrome, Jersey 25 for headings, Silkscreen for labels and readable sans-serif
+   prose. Change them together. No external requests: the two fonts are ours. */
+@font-face{font-family:'Silk';src:url(fonts/silkscreen.woff2) format('woff2');font-display:swap}
+@font-face{font-family:'J25';src:url(fonts/jersey25.woff2) format('woff2');font-display:swap}
+
+/* Same law as the app and the landing page: nothing is ever rounded. */
+*{box-sizing:border-box;margin:0;padding:0;border-radius:0 !important}
+
+html{background:#0E1016;-webkit-text-size-adjust:100%}
+body{
+  background:#0E1016;
+  background-image:radial-gradient(#181D27 1px, transparent 1px);
+  background-size:8px 8px;
+  color:#B9C2D0;
+  font-family:ui-sans-serif,-apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif;
+  font-size:15px; line-height:1.75; letter-spacing:.1px;
+  padding:0 18px 64px;
+}
+.wrap{width:100%;max-width:640px;margin:0 auto}
+
+/* ---- the red device housing, echoing every tab root in the app ---- */
+.hous{
+  background:#D63A2E;border-bottom:5px solid #8E1F16;
+  margin:0 -18px 30px;padding:15px 18px;
+  display:flex;align-items:center;gap:11px;
+}
+.lens{width:26px;height:26px;flex:0 0 26px;background:#2F3845;border:3px solid #F4A79C;position:relative}
+.lens i{position:absolute;left:5px;top:5px;width:10px;height:10px;background:#7FC7E8;display:block}
+.leds{display:flex;gap:6px}
+.leds b{width:8px;height:8px;background:#F4A79C;display:block}
+.leds b:first-child{background:#FFE9A8}
+.plate{
+  margin-left:auto;font-family:'Silk';font-size:10px;letter-spacing:2px;color:#fff;
+  background:#8E1F16;padding:5px 9px;
+}
+
+h1{
+  font-family:'J25';font-weight:400;line-height:.92;color:#fff;
+  font-size:clamp(22px,8vw,52px);letter-spacing:1px;margin-bottom:14px;
+}
+.meta{font-family:'Silk';color:#6B7686;font-size:9px;letter-spacing:1.6px;line-height:1.9;margin-bottom:26px}
+
+h2{
+  scroll-margin-top:18px;
+  font-family:'J25';font-weight:400;color:#fff;
+  font-size:clamp(17px,5.2vw,30px);line-height:1.05;letter-spacing:.5px;
+  margin:40px 0 4px;
+}
+h2 + p, h2 + ul, h2 + ol, h2 + .box{margin-top:14px}
+p{margin:0 0 16px}
+strong{color:#E8ECF2;font-weight:400}
+a{color:#D63A2E;text-decoration:none;border-bottom:1px solid #5C1F19}
+a:hover{color:#F4A79C;border-bottom-color:#D63A2E}
+
+ul{list-style:none;margin:0 0 18px}
+ul li{position:relative;padding-left:18px;margin-bottom:9px}
+/* a square bullet — a disc would be a rounded corner */
+ul li:before{content:"";position:absolute;left:0;top:12px;width:5px;height:5px;background:#D63A2E}
+
+/* a numbered list: the number sits on a small steel plate, same square law */
+ol{list-style:none;counter-reset:n;margin:0 0 18px}
+ol li{position:relative;padding-left:32px;margin-bottom:10px;counter-increment:n}
+ol li:before{
+  content:counter(n);position:absolute;left:0;top:4px;width:22px;height:20px;
+  background:#232936;color:#E0C273;font-family:'Silk';font-size:9px;line-height:20px;text-align:center;
+}
+
+.jump{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 26px}
+.jump a{
+  font-family:'Silk';font-size:9px;letter-spacing:1.4px;color:#E8ECF2;
+  background:#232936;border:0;padding:7px 10px;line-height:1.4;
+}
+.jump a.go{background:#D63A2E;color:#fff}
+.jump a:hover{background:#2E3646;color:#fff}
+.jump a.go:hover{background:#B7301F}
+
+/* ---- a word the app itself shows: the label on the button you tap ---- */
+.ui{
+  font-family:'Silk';font-weight:400;font-size:11px;letter-spacing:.6px;
+  color:#E8ECF2;background:#232936;padding:1px 6px;
+  overflow-wrap:anywhere;
+}
+
+/* ---- the emphasis panel: a sunken well, lit from the top-left ---- */
+.box{
+  background:#12161E;border:3px solid #0C1016;
+  box-shadow:inset 3px 3px 0 #070A0E, inset -3px -3px 0 #2A3040;
+  padding:22px 20px 8px;margin:24px 0 26px;
+}
+.box .lab{
+  font-family:'Silk';font-size:9px;letter-spacing:2px;color:#E0C273;margin-bottom:12px;display:block;
+}
+.mail{
+  font-family:'Silk';font-size:clamp(11px,3.4vw,14px);letter-spacing:.5px;
+  color:#E8ECF2;border-bottom:2px solid #D63A2E;
+  word-break:break-all;
+}
+
+.warn{border-left:5px solid #E0C273;padding:2px 0 2px 16px;margin:22px 0;color:#C9B98A}
+.indie{color:#6B7686;font-size:13px;margin-top:28px}
+
+footer{margin-top:52px;padding-top:18px;border-top:3px solid #232936;text-align:center}
+footer a{font-family:'Silk';font-size:9px;letter-spacing:1.5px;color:#9BA5B4;padding:0 6px;line-height:2.6;border:0;white-space:nowrap}
+footer a:hover{color:#D63A2E}
+.copy{font-family:'Silk';font-size:9px;color:#5D6675;margin-top:12px;letter-spacing:1.5px}
+
+@media (max-width:420px){
+  body{font-size:14px;line-height:1.72;padding:0 14px 48px}
+  .hous{margin:0 -14px 24px}
+  .plate{display:none}
+}
+</style>
+</head>
+<body>
+
+<div class="hous">
+  <span class="lens"><i></i></span>
+  <span class="leds"><b></b><b></b><b></b><b></b></span>
+  <span class="plate">MOTORDEX</span>
+</div>
+
+<div class="wrap">
+
+<nav class="jump" aria-label="Language / Langue">
+  <a class="go" href="#en" hreflang="en">ENGLISH</a>
+  <a href="#fr" hreflang="fr">FRANÇAIS</a>
+</nav>
+
+<section id="en" lang="en">
+
+<h1>HOW WE LOOK AFTER YOUR INFORMATION</h1>
+<p class="meta">PRIVACY GOVERNANCE AND COMPLAINTS &middot; MOTORDEX GAME LLC<br>UPDATED 28 OCT 2026</p>
+
+<p>This page sums up, in plain words, the rules we follow inside MotorDex to
+protect personal information, and how to complain if you are not happy. Our
+<a href="privacy.html">Privacy Policy</a> says what we collect and why.</p>
+
+<h2 id="en-who">WHO IS IN CHARGE</h2>
+<p>Our <strong>Privacy Officer</strong> is the Owner and Managing Member of
+MotorDex Game LLC. He is the person in charge of the protection of personal
+information (including under Qu&eacute;bec law). He decides who may see
+players' data, and access is limited to what each task needs. The companies that host and process data for us may use it
+only on our instructions, under written agreements.</p>
+<div class="box">
+  <span class="lab">PRIVACY OFFICER</span>
+  <p><a class="mail" href="mailto:support@motordexgame.com?subject=PRIVACY">support@motordexgame.com</a></p>
+  <p>Subject line: PRIVACY<br>
+  MotorDex Game LLC, 570 El Camino Real #150-306, Redwood City, CA 94063, USA<br>
+  <a href="tel:+18556686739">(855) 668-6739</a></p>
+</div>
+
+<h2 id="en-rules">OUR RULES</h2>
+<ul>
+  <li>We collect only what the game needs, and say why before we collect it.</li>
+  <li>We use information only for the reasons in the Privacy Policy.</li>
+  <li>Before we build or change a system that uses personal information, we
+  check the privacy risks first.</li>
+  <li>Before information leaves Qu&eacute;bec (our servers are in the United
+  States), we check it will be properly protected and sign a written
+  agreement.</li>
+  <li>Every kind of information has a time limit. When it ends, the information
+  is deleted or made anonymous automatically. The list is in
+  <a href="privacy.html">Section 8 of the Privacy Policy</a>.</li>
+  <li>If information is lost or exposed, we record it, and we tell the
+  regulator and the people affected when the law requires.</li>
+</ul>
+
+<h2 id="en-rights">SEE, FIX OR DELETE YOUR INFORMATION</h2>
+<p>In the app: <span class="ui">SETTINGS &rarr; PRIVACY</span> lets you download
+your data, delete your account, turn AI scanning off and remove locations. Or
+email us. We answer within <strong>30 days</strong>.</p>
+
+<h2 id="en-complain">HOW TO COMPLAIN</h2>
+<ol>
+  <li>Email <a href="mailto:support@motordexgame.com?subject=PRIVACY">support@motordexgame.com</a>
+  with PRIVACY in the subject, or write to the address above. Anyone can
+  complain. A parent can complain for a child.</li>
+  <li>We confirm we got it within <strong>5 business days</strong>.</li>
+  <li>We send you a written answer within <strong>30 days</strong>.</li>
+  <li>If you are not satisfied, you can go to a regulator: in Qu&eacute;bec, the
+  Commission d'acc&egrave;s &agrave; l'information (CAI); elsewhere in Canada,
+  the Office of the Privacy Commissioner of Canada; in the UK, the ICO; in the
+  EU, your country's data protection authority; in Switzerland, the FDPIC.</li>
+</ol>
+
+</section>
+
+<section id="fr" lang="fr">
+
+<h1>COMMENT NOUS PROT&Eacute;GEONS VOS RENSEIGNEMENTS</h1>
+<p class="meta">GOUVERNANCE DES RENSEIGNEMENTS PERSONNELS ET PLAINTES &middot; MOTORDEX GAME LLC<br>MIS &Agrave; JOUR LE 28 OCT. 2026</p>
+
+<p>Cette page r&eacute;sume, en mots simples, les r&egrave;gles que nous suivons
+chez MotorDex pour prot&eacute;ger les renseignements personnels, et comment
+porter plainte si vous n'&ecirc;tes pas satisfait. Notre
+<a href="fr/privacy.html">Politique de confidentialit&eacute;</a> explique ce que
+nous recueillons et pourquoi.</p>
+
+<h2 id="fr-who">QUI EST RESPONSABLE</h2>
+<p>Notre <strong>responsable de la protection des renseignements
+personnels</strong> est le propri&eacute;taire et membre gestionnaire de
+MotorDex Game LLC. Il est la personne responsable de la protection des
+renseignements personnels (notamment au sens de la loi du Qu&eacute;bec). Il
+d&eacute;cide qui peut voir les donn&eacute;es des joueurs, et l'acc&egrave;s est
+limit&eacute; &agrave; ce que chaque t&acirc;che exige. Les entreprises
+qui h&eacute;bergent et traitent les donn&eacute;es pour nous ne peuvent les
+utiliser que selon nos instructions, en vertu d'ententes &eacute;crites.</p>
+<div class="box">
+  <span class="lab">RESPONSABLE DE LA PROTECTION DES RENSEIGNEMENTS PERSONNELS</span>
+  <p><a class="mail" href="mailto:support@motordexgame.com?subject=PRIVACY">support@motordexgame.com</a></p>
+  <p>Objet&nbsp;: PRIVACY<br>
+  MotorDex Game LLC, 570 El Camino Real #150-306, Redwood City, CA 94063,
+  &Eacute;tats-Unis<br>
+  <a href="tel:+18556686739">(855) 668-6739</a></p>
+</div>
+
+<h2 id="fr-rules">NOS R&Egrave;GLES</h2>
+<ul>
+  <li>Nous recueillons seulement ce dont le jeu a besoin, et nous disons pourquoi
+  avant de le recueillir.</li>
+  <li>Nous utilisons les renseignements seulement pour les raisons indiqu&eacute;es
+  dans la Politique de confidentialit&eacute;.</li>
+  <li>Avant de cr&eacute;er ou de modifier un syst&egrave;me qui utilise des
+  renseignements personnels, nous &eacute;valuons d'abord les risques pour la vie
+  priv&eacute;e.</li>
+  <li>Avant que des renseignements quittent le Qu&eacute;bec (nos serveurs sont
+  aux &Eacute;tats-Unis), nous v&eacute;rifions qu'ils seront bien prot&eacute;g&eacute;s
+  et nous signons une entente &eacute;crite.</li>
+  <li>Chaque type de renseignement a une dur&eacute;e de conservation. &Agrave; la
+  fin, il est d&eacute;truit ou anonymis&eacute; automatiquement. La liste est
+  &agrave; la <a href="fr/privacy.html">section 8 de la Politique de
+  confidentialit&eacute;</a>.</li>
+  <li>Si des renseignements sont perdus ou expos&eacute;s, nous l'inscrivons dans
+  un registre et nous avisons la Commission et les personnes concern&eacute;es
+  lorsque la loi l'exige.</li>
+</ul>
+
+<h2 id="fr-rights">CONSULTER, CORRIGER OU SUPPRIMER VOS RENSEIGNEMENTS</h2>
+<p>Dans l'application&nbsp;: <span class="ui">SETTINGS &rarr; PRIVACY</span>
+(R&eacute;glages &rarr; confidentialit&eacute;) permet de t&eacute;l&eacute;charger
+vos donn&eacute;es, de supprimer votre compte, de d&eacute;sactiver le scan par IA
+et de retirer des positions. Vous pouvez aussi nous &eacute;crire. Nous
+r&eacute;pondons dans un d&eacute;lai de <strong>30 jours</strong>.</p>
+
+<h2 id="fr-complain">COMMENT PORTER PLAINTE</h2>
+<ol>
+  <li>&Eacute;crivez &agrave; <a href="mailto:support@motordexgame.com?subject=PRIVACY">support@motordexgame.com</a>
+  avec PRIVACY en objet, ou &agrave; l'adresse ci-dessus. Tout le monde peut
+  porter plainte. Un parent peut le faire pour son enfant.</li>
+  <li>Nous accusons r&eacute;ception dans un d&eacute;lai de <strong>5 jours
+  ouvrables</strong>.</li>
+  <li>Nous vous r&eacute;pondons par &eacute;crit dans un d&eacute;lai de
+  <strong>30 jours</strong>.</li>
+  <li>Si vous n'&ecirc;tes pas satisfait, vous pouvez vous adresser &agrave; une
+  autorit&eacute;&nbsp;: au Qu&eacute;bec, la Commission d'acc&egrave;s &agrave;
+  l'information (CAI)&nbsp;; ailleurs au Canada, le Commissariat &agrave; la
+  protection de la vie priv&eacute;e du Canada&nbsp;; au Royaume-Uni, l'ICO&nbsp;;
+  dans l'UE, l'autorit&eacute; de protection des donn&eacute;es de votre
+  pays&nbsp;; en Suisse, le PFPDT.</li>
+</ol>
+
+</section>
+
+<p class="indie">MotorDex is an independent game made by MotorDex Game LLC. It
+is not affiliated with, sponsored by or endorsed by any car manufacturer; car
+names are used only to identify vehicles.</p>
+
+<footer>
+  <a href="/">HOME</a>
+  <a href="what-is-motordex.html">ABOUT</a>
+  <a href="support.html">SUPPORT</a>
+  <a href="privacy.html">PRIVACY</a>
+  <a href="privacy-governance.html">PRIVACY GOVERNANCE</a>
+  <a href="terms.html">TERMS</a>
+  <a href="child-safety.html">CHILD SAFETY</a>
+  <a href="community-guidelines.html">GUIDELINES</a>
+  <a href="copyright.html">COPYRIGHT</a>
+  <a href="takedown.html">TAKEDOWN</a>
+  <a href="law-enforcement.html">LAW ENFORCEMENT</a>
+  <a href="legal.html">LEGAL</a>
+  <div class="copy">&copy; 2026 MOTORDEX GAME LLC</div>
+</footer>
+
+</div>
+</body>
+</html>
