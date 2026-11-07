@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>MotorDex — Car Spotting App: Scan &amp; Collect Real Cars</title>
-<meta name="description" content="MotorDex is the free car spotting app, rated 4.9 on the App Store. Scan any car, identify it in seconds and collect it as a card.">
+<meta name="description" content="MotorDex is a free car spotting app, rated 4.9 on the App Store. Snap a car, the AI suggests its make and model from 2,000+ cars, and you collect it as a card.">
 <meta property="og:title" content="MotorDex — Car Spotting App: Scan &amp; Collect Real Cars">
 <meta property="og:description" content="Spot a car, scan it, collect it as a trading card. Free to play.">
 <meta property="og:type" content="website">
@@ -76,12 +76,13 @@
       ],
       "disambiguatingDescription": "MotorDex is a free car spotting app and car identifier made by MotorDex Game LLC. It is not affiliated with other products that have similar names.",
       "sameAs": [
-        "https://apps.apple.com/us/app/motordex/id6779553740"
+        "https://apps.apple.com/us/app/motordex/id6779553740",
+        "https://play.google.com/store/apps/details?id=com.motordex.motordex"
       ],
-      "description": "A free car spotting app and collection game. Scan a real car with your camera, MotorDex identifies the make and model, and you collect it as a trading card with full specs, a rarity tier and an estimated value.",
-      "operatingSystem": "iOS",
-      "availableOnDevice": "iPhone",
-      "softwareRequirements": "iOS",
+      "description": "A free car spotting app and collection game. Scan a real car with your camera, the AI suggests the make and model from 2,000+ car models (it can make mistakes), and you collect it as a trading card with estimated specs, a rarity tier and an estimated value.",
+      "operatingSystem": "iOS, Android",
+      "availableOnDevice": "iPhone, Android phone",
+      "softwareRequirements": "iOS or Android",
       "inLanguage": "en",
       "image": "https://motordexgame.com/og.png",
       "applicationCategory": "GameApplication",
@@ -90,7 +91,10 @@
       "keywords": "car spotting app, car spotting game, car identifier, identify car from photo, car recognition app, car scanner, what car is that, car collecting game, car trading cards, supercar spotting, exotic cars, rare cars",
       "url": "https://motordexgame.com/",
       "downloadUrl": "https://apps.apple.com/us/app/motordex/id6779553740",
-      "installUrl": "https://apps.apple.com/us/app/motordex/id6779553740",
+      "installUrl": [
+        "https://apps.apple.com/us/app/motordex/id6779553740",
+        "https://play.google.com/store/apps/details?id=com.motordex.motordex"
+      ],
       "offers": {
         "@type": "Offer",
         "price": "0",
@@ -100,14 +104,14 @@
         "@id": "https://motordexgame.com/#org"
       },
       "featureList": [
-        "Identifies a car's make and model from a photo",
+        "AI suggests a car's make and model from a photo (2,000+ car models; it can make mistakes)",
         "2,073 collectible car models from over 200 manufacturers across more than 30 countries",
         "Six rarity tiers: Common, Uncommon, Rare, Epic, Legendary, Mythic",
-        "Trading cards with horsepower, top speed, 0-60, MSRP and market value",
+        "Trading cards with estimated horsepower, top speed, 0-60, MSRP and market value",
         "XP and levels, daily challenges, monthly leaderboards and a friends feed",
-        "Identify a car from a photo you already took, straight from your library",
+        "Scan a photo you already took, straight from your library",
         "Every catch is graded individually, so the exact car you photograph matters",
-        "A collection that doubles as a map of everywhere you have spotted cars",
+        "Turn on location and your catches are pinned on your own map (location stays off for players under 16)",
         "Retro pixel-art design with a pixel sprite for over 2,000 cars"
       ]
     },
@@ -304,6 +308,7 @@ h1{font-family:'J25';font-size:41px;line-height:.9;color:#fff;font-weight:400;ma
   color:#9BA5B4;margin:10px 2px 0;min-height:1px;
 }
 .wlmsg.ok{color:#E0C273}
+.wlback{margin:-6px 2px 22px}
 .wlmsg.bad{color:#D63A2E}
 
 .badges{display:flex;justify-content:center;gap:6px;margin:0 3px 30px;flex-wrap:wrap}
@@ -407,25 +412,18 @@ footer a:hover{color:#D63A2E}
 
   <div class="iabhint" id="iabhint" data-nosnippet>STUCK IN INSTAGRAM'S BROWSER?<br>TAP &#183;&#183;&#183; &#8594; OPEN IN BROWSER</div>
 
-  <a class="cta2" id="wlopen" href="mailto:&#115;&#117;&#112;&#112;&#111;&#114;&#116;&#64;&#109;&#111;&#116;&#111;&#114;&#100;&#101;&#120;&#103;&#97;&#109;&#101;&#46;&#99;&#111;&#109;?subject=Android%20waitlist">
-    <b>ANDROID WAITLIST</b>
-    <span class="s">BE FIRST WHEN IT LANDS</span>
+  <a class="cta2" href="https://play.google.com/store/apps/details?id=com.motordex.motordex">
+    <b>GET IT ON GOOGLE PLAY</b>
+    <span class="s">FREE ON ANDROID</span>
   </a>
 
-  <!-- Revealed by JS when the button above is tapped. Hidden by default so a
-       reader with JS off keeps the working mailto rather than a form that
-       cannot submit. -->
-  <form class="wl" id="wl" hidden novalidate>
-    <label class="wlab" for="wlmail">YOUR EMAIL</label>
-    <input class="wlin" id="wlmail" name="email" type="email"
-           inputmode="email" autocomplete="email" autocapitalize="off"
-           spellcheck="false" placeholder="you@example.com" required>
-    <button class="wlgo" id="wlgo" type="submit">JOIN THE LIST</button>
-    <p class="wlmsg" id="wlmsg" role="status" aria-live="polite"></p>
-  </form>
+  <!-- Android is out (12 Nov 2026), so the waitlist takes no new sign-ups. This line stays only for the two
+       links that still land here: a confirmation link from before launch and the launch email's unsubscribe
+       link (waitlist-confirm redirects with ?waitlist=<result>). -->
+  <p class="wlmsg wlback" id="wlmsg" role="status" aria-live="polite" hidden></p>
 
   <div class="badges">
-    <span>IPHONE</span><span>FREE</span><span>2,000+ CARS</span>
+    <span>IPHONE</span><span>ANDROID</span><span>FREE</span><span>2,000+ CARS</span>
   </div>
 
   <div class="socials">
@@ -447,6 +445,7 @@ footer a:hover{color:#D63A2E}
     <a href="/takedown.html">TAKEDOWN</a>
     <a href="/law-enforcement.html">LAW ENFORCEMENT</a>
     <a href="/legal.html">LEGAL</a>
+    <a href="/impressum.html">IMPRESSUM</a>
     <a href="https://db-ip.com" rel="noopener">IP GEOLOCATION BY DB-IP</a>
     <!-- Revealed by JS from the FEEDBACK link. Hidden by default so a reader with JS
          off keeps the working mailto rather than a form that cannot submit. -->
@@ -563,88 +562,26 @@ footer a:hover{color:#D63A2E}
   }
 })();
 
-// Android waitlist -> the `waitlist` table, straight over PostgREST.
-//
-// PROGRESSIVE ENHANCEMENT ON PURPOSE. The markup ships with the button as a
-// working mailto and the form `hidden`; this script is what turns it into a
-// form. With JS off nothing here runs and the mailto still collects the
-// address, which is the behaviour the page had before - so the upgrade can
-// only ever add a path, never remove one.
+// Android waitlist links that still land here (12 Nov 2026: Android is out, the sign-up form is gone).
+// waitlist-confirm redirects a confirmation link or the launch email's unsubscribe link here with
+// ?waitlist=<result>. A fixed set of results, shown as text only; anything else is ignored.
 (function(){
-  var open = document.getElementById('wlopen');
-  var form = document.getElementById('wl');
-  var mail = document.getElementById('wlmail');
-  var go   = document.getElementById('wlgo');
-  var msg  = document.getElementById('wlmsg');
-  if (!open || !form || !mail || !go || !msg) return;
-
-  function say(text, cls){ msg.textContent = text; msg.className = 'wlmsg' + (cls ? ' ' + cls : ''); }
-
-  // Back from the confirmation link (waitlist-confirm redirects here with ?waitlist=<result>).
-  // A fixed set of results, shown as text only; anything else is ignored.
-  var back = { confirmed: ['YOU’RE ON THE LIST. WE’LL EMAIL YOU WHEN ANDROID LANDS.', 'ok'],
-               already:   ['YOU’RE ALREADY CONFIRMED. SEE YOU AT LAUNCH.', 'ok'],
-               expired:   ['THAT LINK EXPIRED. SIGN UP AGAIN BELOW.', 'bad'],
-               invalid:   ['THAT LINK DIDN’T WORK. SIGN UP AGAIN BELOW.', 'bad'],
+  var msg = document.getElementById('wlmsg');
+  if (!msg) return;
+  var back = { confirmed: ['YOU’RE CONFIRMED. WE’LL EMAIL YOU THE GOOGLE PLAY LINK.', 'ok'],
+               already:   ['YOU’RE ALREADY CONFIRMED.', 'ok'],
+               removed:   ['YOU’RE OFF THE LIST. WE WON’T EMAIL YOU AGAIN.', 'ok'],
+               expired:   ['THAT LINK EXPIRED. MOTORDEX IS ON GOOGLE PLAY NOW.', 'bad'],
+               invalid:   ['THAT LINK DIDN’T WORK. MOTORDEX IS ON GOOGLE PLAY NOW.', 'bad'],
                error:     ['SOMETHING WENT WRONG. TRY THE LINK AGAIN IN A MOMENT.', 'bad'] };
   var res = (location.search.match(/[?&]waitlist=([a-z]+)/) || [])[1];
   if (res && back[res]) {
-    form.hidden = false;
-    open.setAttribute('aria-expanded','true');
-    say(back[res][0], back[res][1]);
+    msg.textContent = back[res][0];
+    msg.className = 'wlmsg ' + back[res][1];
+    msg.hidden = false;
     if (window.history && history.replaceState) history.replaceState(null, '', location.pathname + location.hash);
-    form.scrollIntoView({ block: 'center' });
+    msg.scrollIntoView({ block: 'center' });
   }
-
-  open.addEventListener('click', function(e){
-    e.preventDefault();                 // stop the mailto now that the form exists
-    form.hidden = false;
-    open.setAttribute('aria-expanded','true');
-    mail.focus();
-  });
-
-  form.addEventListener('submit', function(e){
-    e.preventDefault();
-    var email = (mail.value || '').trim();
-    // Same shape the table's CHECK constraint enforces, applied here only so a
-    // typo gets an instant answer instead of a round trip. The server remains
-    // the authority - this is a courtesy, not a gate.
-    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email) || email.length > 254) {
-      say('THAT EMAIL DOESN’T LOOK RIGHT.', 'bad'); mail.focus(); return;
-    }
-
-    go.disabled = true; say('SENDING…');
-    fetch('https://wjteolkwzshrnqoyupdx.supabase.co/rest/v1/waitlist', {
-      method: 'POST',
-      headers: {
-        'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndqdGVvbGt3enNocm5xb3l1cGR4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAwOTc0MTAsImV4cCI6MjA5NTY3MzQxMH0.fLsVWIwz8addY-jo_isljSKndNXydOKQhMgABMSRuYM',
-        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndqdGVvbGt3enNocm5xb3l1cGR4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAwOTc0MTAsImV4cCI6MjA5NTY3MzQxMH0.fLsVWIwz8addY-jo_isljSKndNXydOKQhMgABMSRuYM',
-        'Content-Type': 'application/json',
-        // return=minimal matters: anon has no SELECT on this table, so asking
-        // for the row back would turn a successful insert into a 401.
-        'Prefer': 'return=minimal'
-      },
-      body: JSON.stringify({ email: email, platform: 'android', heard_from: 'website' })
-    }).then(function(r){
-      if (r.ok) {
-        // Double opt-in (21 Oct 2026): the row stays unconfirmed until the emailed link is clicked.
-        form.innerHTML = '<p class="wlmsg ok">ALMOST THERE — CHECK YOUR EMAIL.<br>TAP THE LINK WE SENT TO CONFIRM.</p>';
-        return;
-      }
-      // The throttle raises check_violation with "waitlist: slow down"; a
-      // double-tap is the common way to hit it, so say what to do rather than
-      // reporting a failure the person cannot act on.
-      return r.text().then(function(t){
-        go.disabled = false;
-        if (/slow down/i.test(t)) { say('ONE SEC — TRY THAT AGAIN IN A MOMENT.', 'bad'); }
-        else if (r.status === 409)  { say('YOU’RE ALREADY ON THE LIST.', 'ok'); }
-        else { say('COULDN’T SIGN YOU UP. EMAIL ' + ['SUPPORT','MOTORDEXGAME.COM'].join('@') + ' AND WE’LL ADD YOU.', 'bad'); }
-      });
-    }).catch(function(){
-      go.disabled = false;
-      say('NO CONNECTION. TRY AGAIN IN A MOMENT.', 'bad');
-    });
-  });
 })();
 
 // Live worldwide counter -> total_catches(), the same public RPC the app's
@@ -666,7 +603,7 @@ footer a:hover{color:#D63A2E}
   if (!box || !row || !sr || !window.fetch) return;
 
   var URL  = 'https://wjteolkwzshrnqoyupdx.supabase.co/rest/v1/rpc/total_catches';
-  var ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndqdGVvbGt3enNocm5xb3l1cGR4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAwOTc0MTAsImV4cCI6MjA5NTY3MzQxMH0.fLsVWIwz8addY-jo_isljSKndNXydOKQhMgABMSRuYM';
+  var KEY  = 'sb_publishable_S6xHAn6w_858PN0Xqv2NlA_c2D1SMiK';
   var DIGITS = 7, CAP = Math.pow(10, DIGITS) - 1, POLL = 6000;
   var STILL = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   // Old glyph slides up, new one rises from below: four 45ms integer steps over
@@ -753,7 +690,7 @@ footer a:hover{color:#D63A2E}
     var kill = ctl ? setTimeout(function(){ ctl.abort(); }, 8000) : null;
     fetch(URL, {
       method: 'POST',
-      headers: { 'apikey': ANON, 'Authorization': 'Bearer ' + ANON, 'Content-Type': 'application/json' },
+      headers: { 'apikey': KEY, 'Content-Type': 'application/json' },
       body: '{}',
       signal: ctl ? ctl.signal : undefined
     }).then(function(r){ if (!r.ok) throw 0; return r.json(); })
@@ -841,7 +778,7 @@ footer a:hover{color:#D63A2E}
   if (!open || !form || !text || !go || !msg || !window.fetch) return;
 
   var URL  = 'https://wjteolkwzshrnqoyupdx.supabase.co/rest/v1/site_feedback';
-  var ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndqdGVvbGt3enNocm5xb3l1cGR4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAwOTc0MTAsImV4cCI6MjA5NTY3MzQxMH0.fLsVWIwz8addY-jo_isljSKndNXydOKQhMgABMSRuYM';
+  var KEY  = 'sb_publishable_S6xHAn6w_858PN0Xqv2NlA_c2D1SMiK';
   var DONE = '<p class="wlmsg ok">THANKS — WE GOT IT.</p>';   // static text only, never user input
 
   open.addEventListener('click', function(e){
@@ -872,7 +809,7 @@ footer a:hover{color:#D63A2E}
     fetch(URL, {
       method: 'POST',
       headers: {
-        'apikey': ANON, 'Authorization': 'Bearer ' + ANON,
+        'apikey': KEY,
         'Content-Type': 'application/json', 'Prefer': 'return=minimal'
       },
       body: JSON.stringify({ message: body, page: 'site' }),

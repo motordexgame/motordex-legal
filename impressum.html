@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MotorDex — Impressum</title>
+<meta name="description" content="Impressum von MotorDex: Anbieterkennzeichnung nach § 5 DDG und Verantwortlicher nach § 18 Abs. 2 MStV (MotorDex Game LLC). Legal notice (Impressum) for MotorDex, in German and English.">
+<link rel="canonical" href="https://motordexgame.com/impressum.html">
+<link rel="icon" type="image/png" href="/icon-180.png">
+<style>
+/* The same sheet as support.html and delete-account.html: the app's dark DEX
+   chrome, Jersey 25 for headings, Silkscreen for labels and readable sans-serif
+   prose. Change them together. No external requests: the two fonts are ours. */
+@font-face{font-family:'Silk';src:url(fonts/silkscreen.woff2) format('woff2');font-display:swap}
+@font-face{font-family:'J25';src:url(fonts/jersey25.woff2) format('woff2');font-display:swap}
+
+/* Same law as the app and the landing page: nothing is ever rounded. */
+*{box-sizing:border-box;margin:0;padding:0;border-radius:0 !important}
+
+html{background:#0E1016;-webkit-text-size-adjust:100%}
+body{
+  background:#0E1016;
+  background-image:radial-gradient(#181D27 1px, transparent 1px);
+  background-size:8px 8px;
+  color:#B9C2D0;
+  font-family:ui-sans-serif,-apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif;
+  font-size:15px; line-height:1.75; letter-spacing:.1px;
+  padding:0 18px 64px;
+}
+.wrap{width:100%;max-width:640px;margin:0 auto}
+
+/* ---- the red device housing, echoing every tab root in the app ---- */
+.hous{
+  background:#D63A2E;border-bottom:5px solid #8E1F16;
+  margin:0 -18px 30px;padding:15px 18px;
+  display:flex;align-items:center;gap:11px;
+}
+.lens{width:26px;height:26px;flex:0 0 26px;background:#2F3845;border:3px solid #F4A79C;position:relative}
+.lens i{position:absolute;left:5px;top:5px;width:10px;height:10px;background:#7FC7E8;display:block}
+.leds{display:flex;gap:6px}
+.leds b{width:8px;height:8px;background:#F4A79C;display:block}
+.leds b:first-child{background:#FFE9A8}
+.plate{
+  margin-left:auto;font-family:'Silk';font-size:10px;letter-spacing:2px;color:#fff;
+  background:#8E1F16;padding:5px 9px;
+}
+
+h1{
+  font-family:'J25';font-weight:400;line-height:.92;color:#fff;
+  font-size:clamp(22px,8vw,52px);letter-spacing:1px;margin-bottom:14px;
+}
+.meta{font-family:'Silk';color:#6B7686;font-size:9px;letter-spacing:1.6px;line-height:1.9;margin-bottom:26px}
+
+h2{
+  scroll-margin-top:18px;
+  font-family:'J25';font-weight:400;color:#fff;
+  font-size:clamp(17px,5.2vw,30px);line-height:1.05;letter-spacing:.5px;
+  margin:40px 0 4px;
+}
+h2 + p, h2 + ul, h2 + ol, h2 + .box{margin-top:14px}
+p{margin:0 0 16px}
+strong{color:#E8ECF2;font-weight:400}
+a{color:#D63A2E;text-decoration:none;border-bottom:1px solid #5C1F19}
+a:hover{color:#F4A79C;border-bottom-color:#D63A2E}
+
+ul{list-style:none;margin:0 0 18px}
+ul li{position:relative;padding-left:18px;margin-bottom:9px}
+/* a square bullet — a disc would be a rounded corner */
+ul li:before{content:"";position:absolute;left:0;top:12px;width:5px;height:5px;background:#D63A2E}
+
+/* a numbered list: the number sits on a small steel plate, same square law */
+ol{list-style:none;counter-reset:n;margin:0 0 18px}
+ol li{position:relative;padding-left:32px;margin-bottom:10px;counter-increment:n}
+ol li:before{
+  content:counter(n);position:absolute;left:0;top:4px;width:22px;height:20px;
+  background:#232936;color:#E0C273;font-family:'Silk';font-size:9px;line-height:20px;text-align:center;
+}
+
+.jump{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 26px}
+.jump a{
+  font-family:'Silk';font-size:9px;letter-spacing:1.4px;color:#E8ECF2;
+  background:#232936;border:0;padding:7px 10px;line-height:1.4;
+}
+.jump a.go{background:#D63A2E;color:#fff}
+.jump a:hover{background:#2E3646;color:#fff}
+.jump a.go:hover{background:#B7301F}
+
+/* ---- a word the app itself shows: the label on the button you tap ---- */
+.ui{
+  font-family:'Silk';font-weight:400;font-size:11px;letter-spacing:.6px;
+  color:#E8ECF2;background:#232936;padding:1px 6px;
+  overflow-wrap:anywhere;
+}
+
+/* ---- the emphasis panel: a sunken well, lit from the top-left ---- */
+.box{
+  background:#12161E;border:3px solid #0C1016;
+  box-shadow:inset 3px 3px 0 #070A0E, inset -3px -3px 0 #2A3040;
+  padding:22px 20px 8px;margin:24px 0 26px;
+}
+.box .lab{
+  font-family:'Silk';font-size:9px;letter-spacing:2px;color:#E0C273;margin-bottom:12px;display:block;
+}
+.mail{
+  font-family:'Silk';font-size:clamp(11px,3.4vw,14px);letter-spacing:.5px;
+  color:#E8ECF2;border-bottom:2px solid #D63A2E;
+  word-break:break-all;
+}
+
+.warn{border-left:5px solid #E0C273;padding:2px 0 2px 16px;margin:22px 0;color:#C9B98A}
+.indie{color:#6B7686;font-size:13px;margin-top:28px}
+
+footer{margin-top:52px;padding-top:18px;border-top:3px solid #232936;text-align:center}
+footer a{font-family:'Silk';font-size:9px;letter-spacing:1.5px;color:#9BA5B4;padding:0 6px;line-height:2.6;border:0;white-space:nowrap}
+footer a:hover{color:#D63A2E}
+.copy{font-family:'Silk';font-size:9px;color:#5D6675;margin-top:12px;letter-spacing:1.5px}
+
+@media (max-width:420px){
+  body{font-size:14px;line-height:1.72;padding:0 14px 48px}
+  .hous{margin:0 -14px 24px}
+  .plate{display:none}
+}
+</style>
+<style>
+table.td{width:100%;border-collapse:collapse;margin:8px 0 22px}
+table.td th,table.td td{border:1px solid #2F3845;padding:8px 10px;vertical-align:top;text-align:left}
+table.td th{width:34%;color:#E8EDF4;font-weight:600}
+</style>
+</head>
+<body>
+
+<div class="hous">
+  <span class="lens"><i></i></span>
+  <span class="leds"><b></b><b></b><b></b><b></b></span>
+  <span class="plate">MOTORDEX</span>
+</div>
+
+<div class="wrap">
+
+<h1>IMPRESSUM</h1>
+<p class="meta">MOTORDEX &middot; LEGAL NOTICE &middot; &sect; 5 DDG &middot; &sect; 18 ABS. 2 MSTV &middot; UPDATED 6 NOV 2026</p>
+
+<p>Angaben gem&auml;&szlig; &sect; 5 Digitale-Dienste-Gesetz (DDG) f&uuml;r die App MotorDex und die Website motordexgame.com. <span lang="en">The English version is below.</span></p>
+
+<h2 id="de">IMPRESSUM (DEUTSCH)</h2>
+<table class="td">
+<tr><th>Anbieter</th><td>MotorDex Game LLC (Limited Liability Company nach dem Recht des US-Bundesstaats Kalifornien)</td></tr>
+<tr><th>Anschrift</th><td>570 El Camino Real #150-306, Redwood City, CA 94063, USA</td></tr>
+<tr><th>Vertreten durch</th><td>Matteo Farinacci, Owner and Managing Member (Inhaber und gesch&auml;ftsf&uuml;hrendes Mitglied)</td></tr>
+<tr><th>E-Mail</th><td><a href="mailto:support@motordexgame.com">support@motordexgame.com</a></td></tr>
+<tr><th>Telefon</th><td><a href="tel:+18556686739">+1 855 668 6739</a> (auf Englisch)</td></tr>
+<tr><th>Registereintrag</th><td>California Secretary of State, Entity No. B20260402601</td></tr>
+<tr><th>Verantwortlich f&uuml;r den Inhalt nach &sect; 18 Abs. 2 MStV</th><td>Matteo Farinacci, Anschrift wie oben</td></tr>
+<tr><th>Vertreter in der EU (Art. 27 DSGVO; Art. 13 Digital Services Act)</th><td>Data Protection Representative Limited, handelnd als DataRep, eingetragen in Irland (Unternehmensnummer 616588). Datenschutz: <a href="mailto:datarequest@datarep.com">datarequest@datarep.com</a>; Digital Services Act: <a href="mailto:digitalrequest@datarep.com">digitalrequest@datarep.com</a> oder +353 1 919 8899; bitte &bdquo;MotorDex&ldquo; in den Betreff schreiben. Post: DataRep, 77 Camden Street Lower, Dublin, D02 XE80, Irland, oder in Deutschland DataRep, 3rd and 4th floor, Altmarkt 10 B/D, Dresden, 01067, Deutschland. Briefe bitte an &bdquo;DataRep&ldquo; adressieren, nicht an MotorDex.</td></tr>
+</table>
+
+<h2 id="en" lang="en">LEGAL NOTICE (ENGLISH)</h2>
+<p lang="en">Provider identification under Section 5 of the German Digital Services Act (Digitale-Dienste-Gesetz, DDG) for the MotorDex app and the website motordexgame.com.</p>
+<table class="td" lang="en">
+<tr><th>Provider</th><td>MotorDex Game LLC (a California limited liability company, United States)</td></tr>
+<tr><th>Address</th><td>570 El Camino Real #150-306, Redwood City, CA 94063, United States of America</td></tr>
+<tr><th>Represented by</th><td>Matteo Farinacci, Owner and Managing Member</td></tr>
+<tr><th>Email</th><td><a href="mailto:support@motordexgame.com">support@motordexgame.com</a></td></tr>
+<tr><th>Telephone</th><td><a href="tel:+18556686739">+1 855 668 6739</a> (English)</td></tr>
+<tr><th>Register entry</th><td>California Secretary of State, Entity No. B20260402601</td></tr>
+<tr><th>Responsible for content under Section 18(2) MStV (German Interstate Media Treaty)</th><td>Matteo Farinacci, address as above</td></tr>
+<tr><th>Representative in the EU (GDPR Art. 27; Digital Services Act Art. 13)</th><td>Data Protection Representative Limited, trading as DataRep, incorporated in Ireland (company number 616588). Data protection: <a href="mailto:datarequest@datarep.com">datarequest@datarep.com</a>; Digital Services Act: <a href="mailto:digitalrequest@datarep.com">digitalrequest@datarep.com</a> or +353 1 919 8899; quote &ldquo;MotorDex&rdquo; in the subject line. Post: DataRep, 77 Camden Street Lower, Dublin, D02 XE80, Ireland, or in Germany DataRep, 3rd and 4th floor, Altmarkt 10 B/D, Dresden, 01067, Germany. Letters must be addressed to &ldquo;DataRep&rdquo;, not to MotorDex.</td></tr>
+</table>
+
+<p class="indie">Weitere rechtliche Informationen / more legal information: <a href="legal.html">Legal and contact</a>, <a href="privacy.html">Privacy Policy</a>, <a href="terms.html">Terms of Use</a>.</p>
+
+<footer>
+  <a href="/">HOME</a>
+  <a href="what-is-motordex.html">ABOUT</a>
+  <a href="support.html">SUPPORT</a>
+  <a href="privacy.html">PRIVACY</a>
+  <a href="terms.html">TERMS</a>
+  <a href="child-safety.html">CHILD SAFETY</a>
+  <a href="community-guidelines.html">GUIDELINES</a>
+  <a href="report.html">REPORT</a>
+  <a href="copyright.html">COPYRIGHT</a>
+  <a href="takedown.html">TAKEDOWN</a>
+  <a href="law-enforcement.html">LAW ENFORCEMENT</a>
+  <a href="legal.html">LEGAL</a>
+  <a href="impressum.html">IMPRESSUM</a>
+  <div class="copy">&copy; 2026 MOTORDEX GAME LLC</div>
+</footer>
+
+</div>
+</body>
+</html>

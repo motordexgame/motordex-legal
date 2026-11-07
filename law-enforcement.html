@@ -189,16 +189,22 @@ There are no private messages. What an account can have:</p>
 <ul>
   <li><strong>Account</strong>: handle, an email address (only for email sign-ups; Sign in
       with Apple often gives a private relay address; guest accounts have none), sign-in
-      method, creation date and, where collected, an age bracket and records of the terms and AI consents accepted.</li>
+      method, creation date and, where collected, the birth month and year (kept in a separate,
+      access-restricted record), an age bracket and records of the terms and AI consents accepted;
+      an optional contact email, if the player gave one.</li>
   <li><strong>Sign-in records</strong>: IP address and device type of sign-in sessions,
       kept for 30 days after the session was last used.</li>
   <li><strong>Catches</strong>: the photo of each car, the time it was taken, and the
-      location if the player allowed it (current versions round it on our server to an
-      area of about 110 m; some older catches hold a more precise location). Kept until the
-      player deletes the catch or the account.</li>
+      location if the player allowed it (our server rounds it to an area of about 110 m,
+      or about 2 km for players under 18). Kept until the
+      player deletes the catch or the account (an account inactive for 3 years, or a guest
+      account inactive for 24 months, may be deleted with its catches).</li>
   <li><strong>Profile photo</strong>, friends list (by handle) and reactions.</li>
   <li><strong>Reports and moderation records</strong>: kept for one year after a case is
-      closed, including after the account is deleted.</li>
+      closed, including after the account is deleted. For urgent reports they include a
+      fingerprint (SHA-256) of the reported image and the storage addresses of identical copies.</li>
+  <li><strong>Legal notices sent through our web form</strong>: kept for 12 months after our
+      decision.</li>
   <li><strong>Purchases</strong>: records of App Store / Google Play subscriptions as
       reported by the stores. We never receive card numbers.</li>
 </ul>
@@ -249,6 +255,7 @@ objection MotorDex Game LLC may have to a request.</p>
   <a href="takedown.html">TAKEDOWN</a>
   <a href="law-enforcement.html">LAW ENFORCEMENT</a>
   <a href="legal.html">LEGAL</a>
+  <a href="impressum.html">IMPRESSUM</a>
   <div class="copy">&copy; 2026 MOTORDEX GAME LLC</div>
 </footer>
 

@@ -1,18 +1,19 @@
 # MotorDex
 
-> MotorDex is a free car spotting app that turns real-world car spotting into a collection. You photograph a car, the app identifies its make and model, and you keep it as a trading card with full specs, a rarity tier and an estimated value. Made by MotorDex Game LLC.
+> MotorDex is a free car spotting app that turns real-world car spotting into a collection. You photograph a car, the app's AI suggests its make and model from 2,000+ car models (it can make mistakes), and you keep it as a trading card with estimated specs, a rarity tier and an estimated value. Made by MotorDex Game LLC.
 
 Key facts (from the live MotorDex database, October 2026):
 
 - Name: MotorDex (App Store subtitle: "Scan & Collect Real Cars"), made by MotorDex Game LLC. Not affiliated with other products that have similar names.
-- Platform: iPhone (iOS).
-- Price: free to download and play.
+- Platform: iPhone (iOS) and Android (Google Play, from 12 November 2026).
+- Price: free to download and play, with no ads inside the app; the free garage holds 100 cards. An optional Pro subscription removes that cap and adds batch import.
 - What people use it for: identifying a car from a photo ("what car is that?"), car spotting as a game, a car collecting game, collecting supercars and exotic cars, learning car specs.
 - Catalog: 2,073 collectible car models from over 200 manufacturers, built in more than 30 countries, and growing. Everyday cars (87 Toyota, 86 Ford, 73 Chevrolet models) up to 50 Ferraris, 24 Lamborghinis, 20 McLarens, 11 Bugattis and 8 Koenigseggs.
 - Rarity: six tiers, lowest to highest: Common, Uncommon, Rare, Epic, Legendary, Mythic. Each catch is also graded individually.
-- App Store rating: 4.9 out of 5 from 650+ ratings.
+- App Store rating: 4.9 out of 5 from 800+ ratings (US App Store, 2 November 2026).
 - Usage: players have caught more than 1 million cars (the app's own worldwide counter).
-- Cards show the player's photo, horsepower, top speed, 0-60 time, original MSRP, estimated market value, rarity and a serial number.
+- Cards show the player's photo (or the car's pixel art if the photo is unavailable), estimated horsepower, top speed, 0-60 time and original MSRP, an estimated market value, rarity and a serial number.
+- Accuracy: the AI can make mistakes, especially with rare classics and lookalikes. Players can tap WRONG CAR? TRY AGAIN or REPORT A BAD MATCH, and request cars that are not in the catalog yet.
 - Progression: XP and levels, daily challenges, monthly leaderboards and a friends feed.
 
 ## What players say (App Store reviews, quoted word for word)

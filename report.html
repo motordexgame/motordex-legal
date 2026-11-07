@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MotorDex — Report Illegal Content or Complain</title>
-<meta name="description" content="Report content in MotorDex you believe is illegal, complain about how we keep people safe, or ask us to review a decision. For anyone, with or without an account: EU Digital Services Act notices and UK Online Safety Act reports and complaints.">
+<meta name="description" content="Report content in MotorDex you believe is illegal, complain about how we keep people safe, or ask us to review a decision. For anyone, with or without an account: EU Digital Services Act notices, UK Online Safety Act reports and complaints, and reports under California Civil Code section 3273.66 of sexual images of yourself from when you were under 18.">
 <link rel="canonical" href="https://motordexgame.com/report.html">
 <link rel="icon" type="image/png" href="/icon-180.png">
 <style>
@@ -167,7 +167,7 @@ input:focus,select:focus,textarea:focus{outline:3px solid #D63A2E;outline-offset
 <div class="wrap">
 
 <h1>REPORT ILLEGAL CONTENT OR MAKE A COMPLAINT</h1>
-<p class="meta">MOTORDEX &middot; BY MOTORDEX GAME LLC<br>NOTICES UNDER THE EU DIGITAL SERVICES ACT (ART. 16) &middot; REPORTS AND COMPLAINTS UNDER THE UK ONLINE SAFETY ACT 2023 &middot; UPDATED 28 OCT 2026</p>
+<p class="meta">MOTORDEX &middot; BY MOTORDEX GAME LLC<br>NOTICES UNDER THE EU DIGITAL SERVICES ACT (ART. 16) &middot; REPORTS AND COMPLAINTS UNDER THE UK ONLINE SAFETY ACT 2023 &middot; REPORTS UNDER CALIFORNIA CIVIL CODE &sect; 3273.66 &middot; UPDATED 3 NOV 2026</p>
 
 <p><strong>Anyone can use this page</strong>, with or without a MotorDex
 account. Use it to tell us about content in MotorDex that you believe is
@@ -183,6 +183,7 @@ national hotline. Do not download, copy or share the material, even to report it
 
 <p class="jump">
   <a class="go" href="#form">THE FORM</a>
+  <a href="#me">AN IMAGE OF ME</a>
   <a href="#next">WHAT HAPPENS NEXT</a>
   <a href="#disagree">IF YOU DISAGREE</a>
   <a href="#data">WHAT WE KEEP</a>
@@ -196,6 +197,24 @@ person, and the app tells you what we decided. To have an intimate image of
 you removed, see <a href="takedown.html">Request removal of an intimate
 image</a> (we act within 48 hours). For a copyright claim under US law, see
 <a href="copyright.html">Copyright notices</a>.</p>
+
+<div class="box" id="me">
+  <span class="lab">A SEXUAL IMAGE OR VIDEO OF YOU, FROM WHEN YOU WERE UNDER 18?</span>
+  <p>Report it with the form below: choose <b class="ui">REPORT ILLEGAL CONTENT</b>, then
+  <b class="ui">SEXUAL IMAGE OR VIDEO OF ME WHEN UNDER 18</b>. We only need an
+  email address where you want us to write to you. Please do not send us the image, and you do
+  not have to describe it.</p>
+  <p>We email you a confirmation straight away (always within 36 hours), then an update every
+  7 days, and our final decision within 30 days &mdash; we aim to decide within 7 days. If
+  something outside our control delays the decision, we tell you and give you the new date. A
+  person, never an automated tool, makes the decision. If there is a reasonable basis to believe
+  the material is child sexual abuse material and we find it on MotorDex, we permanently block it
+  from being seen on MotorDex and look for other copies of it here.</p>
+  <p>Anyone can use this, wherever they live; it is also our reporting mechanism under section
+  3273.66 of the California Civil Code. Someone else reporting it for you, such as a parent:
+  choose <b class="ui">CHILD SEXUAL ABUSE MATERIAL</b> and give your email, and you get the same
+  confirmation, updates and decision.</p>
+</div>
 
 <h2 id="form">THE FORM</h2>
 
@@ -221,7 +240,7 @@ information by email instead &mdash; see <a href="#email">By email or post</a>.<
     <label class="lab2" for="where">WHERE IS IT? <span class="req" id="wherereq">*</span></label>
     <input type="text" id="where" name="content_ref" maxlength="500" autocomplete="off"
            placeholder="@handle and which photo">
-    <p class="help">The player's handle (as shown in MotorDex, for example
+    <p class="help" id="wherehelp">The player's handle (as shown in MotorDex, for example
     <b class="ui">@NAME</b>) and, for a photo, the car and roughly when it was
     posted. If you came here from the app, the photo's reference is already
     attached.</p>
@@ -235,7 +254,7 @@ information by email instead &mdash; see <a href="#email">By email or post</a>.<
     <p class="help">Shown in the app's notice and in our email. Leave it empty if you do not have one.</p>
   </div>
 
-  <label class="lab2" for="expl" id="expllab">WHY IS IT ILLEGAL? <span class="req">*</span></label>
+  <label class="lab2" for="expl" id="expllab">WHY IS IT ILLEGAL? <span class="req" id="explreq">*</span></label>
   <textarea id="expl" name="explanation" maxlength="5000" required></textarea>
   <p class="help" id="explhelp">Explain why you believe the content is illegal, and which law it breaks if you know.
   The more precise you are, the faster we can act.</p>
@@ -246,6 +265,14 @@ information by email instead &mdash; see <a href="#email">By email or post</a>.<
   <label class="lab2" for="em">YOUR EMAIL <span class="req" id="emreq">*</span></label>
   <input type="email" id="em" name="email" maxlength="254" autocomplete="email">
   <p class="help" id="emhelp">We send a confirmation and then our decision to this address.</p>
+
+  <fieldset id="cablk" hidden>
+    <legend>DO YOU LIVE IN CALIFORNIA? (OPTIONAL)</legend>
+    <label class="opt"><input type="radio" name="ca" value="yes"><span>Yes</span></label>
+    <label class="opt"><input type="radio" name="ca" value="no"><span>No</span></label>
+    <label class="opt"><input type="radio" name="ca" value="" checked><span>Prefer not to say</span></label>
+    <p class="help">We handle your report the same way whatever you answer.</p>
+  </fieldset>
 
   <label class="lab2" for="ctry">WHERE DO YOU LIVE? (OPTIONAL)</label>
   <select id="ctry" name="country">
@@ -286,10 +313,14 @@ information by email instead &mdash; see <a href="#email">By email or post</a>.<
       any automated means were used, and what you can do if you disagree.
       Complaints are answered the same way; we aim to reply within 14 days.</li>
 </ol>
+<p>A report of a sexual image or video of the person reporting it, from when
+they were under 18, and a report of child sexual abuse material that gives an
+email address, also get an update every 7 days and a final decision within 30
+days (<a href="#me">see above</a>).</p>
 <p>The player concerned is told what we did and why, with how to appeal, in
-the app. We do not tell them who sent the notice, unless the law requires it
-or it is strictly necessary (for example, a rights holder's name in a
-copyright claim).</p>
+the app, except when content is removed for a child-safety reason. We do not
+tell them who sent the notice, unless the law requires it or it is strictly
+necessary (for example, a rights holder's name in a copyright claim).</p>
 
 <h2 id="disagree">IF YOU DISAGREE</h2>
 <ul>
@@ -306,8 +337,8 @@ copyright claim).</p>
 </ul>
 
 <h2 id="data">WHAT WE KEEP</h2>
-<p>We keep what you send &mdash; including your name and email &mdash; only to
-handle it: to review it, act on it, reply to you and defend our decision. It is
+<p>We keep what you send &mdash; including your name, your email and, if you
+answer it, whether you live in California &mdash; only to handle it: to review it, act on it, reply to you and defend our decision. It is
 deleted <strong>12 months after our decision</strong>, unless the law requires
 us to keep it longer (for example a legal hold or a report to the
 authorities). We do not store your network (IP) address: to stop abuse we keep
@@ -322,14 +353,16 @@ a scrambled code of it that changes every day and is erased after 2 days. Our
   <b class="ui">APPEAL</b>. Include: where the content is (handle and which
   photo), why it is illegal, your name and email (not needed for child sexual
   abuse material), and the statement that your notice is accurate and
-  complete and made in good faith.</p>
+  complete and made in good faith. For a sexual image or video of yourself from
+  when you were under 18, please use the form above if you can.</p>
   <p>Post: MotorDex Game LLC, 570 El Camino Real #150-306, Redwood City, CA
   94063, USA. Telephone: (855) 668-6739. Please write to us in English.</p>
 </div>
 
 <p class="indie">This page is our notice-and-action and complaints procedure
 under Article 16 of the EU Digital Services Act and sections 20 and 21 of the
-UK Online Safety Act 2023, and is described in section 9 of our
+UK Online Safety Act 2023, and our reporting mechanism under section 3273.66
+of the California Civil Code. It is described in section 9 of our
 <a href="terms.html">Terms of Use</a>. Our single point of contact for
 authorities and users is on the <a href="legal.html">Legal</a> page.</p>
 
@@ -346,6 +379,7 @@ authorities and users is on the <a href="legal.html">Legal</a> page.</p>
   <a href="takedown.html">TAKEDOWN</a>
   <a href="law-enforcement.html">LAW ENFORCEMENT</a>
   <a href="legal.html">LEGAL</a>
+  <a href="impressum.html">IMPRESSUM</a>
   <div class="copy">&copy; 2026 MOTORDEX GAME LLC</div>
 </footer>
 
@@ -362,9 +396,11 @@ authorities and users is on the <a href="legal.html">Legal</a> page.</p>
   var form = document.getElementById('ln'); if (!form) return;
   var $ = function(id){ return document.getElementById(id); };
   var cat = $('cat'), msg = $('msg'), send = $('send'), started = Date.now(), catchRef = null;
+  var whereHelp = $('wherehelp').innerHTML;   // 390: restored when the "image of me" help is not shown
   var CATS = {
     illegal_content: [
       ['child_sexual_abuse','Child sexual abuse material, or a child at risk'],
+      ['depicted_minor','Sexual image or video of me when under 18'],
       ['threat_to_life','A threat to someone’s life or safety'],
       ['self_harm','Encouraging suicide, self-harm or eating disorders'],
       ['intimate_image','An intimate image shared without consent'],
@@ -395,12 +431,16 @@ authorities and users is on the <a href="legal.html">Legal</a> page.</p>
     ['LI','Liechtenstein'],['LT','Lithuania'],['LU','Luxembourg'],['MT','Malta'],['NL','Netherlands'],
     ['NO','Norway'],['PL','Poland'],['PT','Portugal'],['RO','Romania'],['SK','Slovakia'],['SI','Slovenia'],
     ['ES','Spain'],['SE','Sweden'],['CH','Switzerland'],['GB','United Kingdom'],['US','United States'],
-    ['CA','Canada'],['AU','Australia']];
+    ['CA','Canada'],['AU','Australia'],['NZ','New Zealand'],['JP','Japan'],['KR','South Korea'],
+    ['TW','Taiwan'],['SG','Singapore'],['IN','India'],['PK','Pakistan'],['IL','Israel'],['KW','Kuwait'],
+    ['OM','Oman'],['CO','Colombia'],['','Another country']];
   COUNTRIES.forEach(function(c){ var o = document.createElement('option'); o.value = c[0]; o.textContent = c[1]; $('ctry').appendChild(o); });
 
   function kind(){ var k = form.querySelector('input[name=kind]:checked'); return k ? k.value : 'illegal_content'; }
   function say(t, cls){ msg.textContent = t; msg.className = 'msg' + (cls ? ' ' + cls : ''); }
   function csam(){ return kind() === 'illegal_content' && cat.value === 'child_sexual_abuse'; }
+  // 390: the person shown reports it (Cal. Civ. Code 3273.66): only an email is asked for.
+  function dm(){ return kind() === 'illegal_content' && cat.value === 'depicted_minor'; }
 
   function shape(){
     var k = kind(), list = CATS[k], keep = cat.value;
@@ -408,34 +448,60 @@ authorities and users is on the <a href="legal.html">Legal</a> page.</p>
     var first = document.createElement('option'); first.value = ''; first.textContent = 'Choose one…'; cat.appendChild(first);
     list.forEach(function(c){ var o = document.createElement('option'); o.value = c[0]; o.textContent = c[1]; cat.appendChild(o); });
     if (list.some(function(c){ return c[0] === keep; })) cat.value = keep;
-    var ill = k === 'illegal_content';
-    $('wherereq').hidden = !ill;
+    var ill = k === 'illegal_content', me = dm();
+    $('wherereq').hidden = !ill || me;
     $('noticeblk').hidden = k !== 'appeal';
-    $('gfblk').hidden = !ill;
-    $('expllab').firstChild.nodeValue = ill ? 'WHY IS IT ILLEGAL? ' : k === 'complaint' ? 'WHAT IS YOUR COMPLAINT? ' : 'WHY SHOULD WE CHANGE OUR DECISION? ';
-    $('explhelp').textContent = ill
+    $('gfblk').hidden = !ill || me;
+    $('cablk').hidden = !(csam() || me);
+    $('cathelp').textContent = me
+      ? 'For the person shown. Someone else reporting it, such as a parent: choose “Child sexual abuse material” and give your email.'
+      : '';
+    if (me) $('wherehelp').textContent = 'Anything that helps us find it: a username, the car, roughly when. If you do not know, send the report anyway.';
+    else $('wherehelp').innerHTML = whereHelp;
+    $('explreq').hidden = me;
+    $('expllab').firstChild.nodeValue = me ? 'ANYTHING ELSE WE SHOULD KNOW? (OPTIONAL) '
+      : ill ? 'WHY IS IT ILLEGAL? ' : k === 'complaint' ? 'WHAT IS YOUR COMPLAINT? ' : 'WHY SHOULD WE CHANGE OUR DECISION? ';
+    $('explhelp').textContent = me
+      ? 'Optional. Please do not describe the image, and do not send it to us.'
+      : ill
       ? 'Explain why you believe the content is illegal, and which law it breaks if you know. The more precise you are, the faster we can act.'
       : k === 'complaint' ? 'Tell us what happened and what you would like us to do.'
       : 'Tell us what we decided and why you think it is wrong. If it was about your own account, give your handle.';
-    $('nmreq').hidden = !ill || csam();
+    $('nmreq').hidden = !ill || csam() || me;
     $('emreq').hidden = csam();
-    $('emhelp').textContent = csam()
+    $('emhelp').textContent = me
+      ? 'Where we write to you: a confirmation, an update every 7 days and our final decision. Use an address you check.'
+      : csam()
       ? 'Optional for child sexual abuse material: you may report anonymously, but without an email we cannot confirm receipt or tell you our decision.'
       : 'We send a confirmation and then our decision to this address.';
   }
   form.addEventListener('change', function(e){ if (e.target.name === 'kind' || e.target === cat) shape(); });
 
-  // A reference handed over by the app: #c=<catch id> (a photo) or #h=<handle>; #appeal / #n=<notice>.
-  (function(){
+  // A reference handed over by the app: #c=<catch id> (a photo) or #h=<handle>; #appeal / #n=<notice>;
+  // 390: #dm = "it is an image of me" (preselects that category).
+  // ab1394-inapp (3 Nov 2026): #k=<category key> preselects any illegal-content category by its key; the app's
+  // "SEXUAL PHOTO OF ME UNDER 18?" button sends #c=<catch id>&k=depicted_minor. Fragment only, like the rest.
+  // A malformed fragment (a bad %-escape in a shared or hand-made link) is ignored pair by pair and can never stop
+  // the form from showing: the email route must not become the only one (owner decision 3 Nov 2026).
+  var dmPre = false, kPre = null;
+  try { (function(){
     var h = (location.hash || '').replace(/^#/, ''); if (!h) return;
-    var p = {}; h.split('&').forEach(function(kv){ var i = kv.indexOf('='); p[i < 0 ? kv : kv.slice(0, i)] = i < 0 ? '' : decodeURIComponent(kv.slice(i + 1)); });
+    var p = Object.create(null); h.split('&').forEach(function(kv){ var i = kv.indexOf('='), v = '';
+      if (i >= 0) { try { v = decodeURIComponent(kv.slice(i + 1)); } catch (_) { return; } }
+      p[i < 0 ? kv : kv.slice(0, i)] = v; });
     if (/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(p.c || '')) { catchRef = p.c.toLowerCase(); $('refnote').hidden = false; }
     if (/^[A-Za-z0-9_.]{1,30}$/.test(p.h || '')) $('where').value = '@' + p.h;
     if ('appeal' in p || p.n) { form.querySelector('input[value=appeal]').checked = true; }
     if (/^[A-Za-z0-9-]{4,64}$/.test(p.n || '')) $('nref').value = p.n;
-    if (catchRef || p.h || 'appeal' in p || p.n) { if (history.replaceState) history.replaceState(null, '', location.pathname + '#form'); }
-  })();
+    if ('dm' in p && !('appeal' in p || p.n)) { form.querySelector('input[value=illegal_content]').checked = true; dmPre = true; }
+    if (p.k && !('appeal' in p || p.n) && CATS.illegal_content.some(function(c){ return c[0] === p.k; })) {
+      form.querySelector('input[value=illegal_content]').checked = true; kPre = p.k;
+    }
+    if (catchRef || p.h || 'appeal' in p || p.n || dmPre || kPre) { if (history.replaceState) history.replaceState(null, '', location.pathname + '#form'); }
+  })(); } catch (_) {}
   shape();
+  if (dmPre) { cat.value = 'depicted_minor'; shape(); }
+  if (kPre) { cat.value = kPre; shape(); }
   form.hidden = false;
 
   // PROOF OF WORK (381; supabase/functions/legal-notice/pow.ts). Each notice costs the sender's device
@@ -528,20 +594,22 @@ authorities and users is on the <a href="legal.html">Legal</a> page.</p>
 
   form.addEventListener('submit', function(e){
     e.preventDefault();
-    var k = kind(), ill = k === 'illegal_content';
+    var k = kind(), ill = k === 'illegal_content', me = dm();
+    var caPick = form.querySelector('input[name=ca]:checked');
     var body = {
       kind: k, category: cat.value, content_ref: $('where').value.trim() || null, catch_ref: catchRef,
       explanation: $('expl').value.trim(), name: $('nm').value.trim() || null, email: $('em').value.trim() || null,
       good_faith: $('gf').checked, notice_ref: k === 'appeal' ? ($('nref').value.trim() || null) : null,
       country: $('ctry').value || null, source: catchRef ? 'app' : 'web',
+      ca_resident: (csam() || me) && caPick && caPick.value ? caPick.value : null,
       website: $('website').value, t: Date.now() - started
     };
     if (!body.category) return bad('category');
-    if (ill && !body.content_ref && !catchRef) return bad('content_ref');
-    if (body.explanation.length < 10) return bad('explanation');
-    if (ill && !csam() && !body.name) return bad('name');
+    if (ill && !me && !body.content_ref && !catchRef) return bad('content_ref');
+    if (!me && body.explanation.length < 10) return bad('explanation');
+    if (ill && !csam() && !me && !body.name) return bad('name');
     if ((!csam() || body.email) && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(body.email || '')) return bad('email');
-    if (ill && !body.good_faith) return bad('good_faith');
+    if (ill && !me && !body.good_faith) return bad('good_faith');
     send.disabled = true; say('CHECKING… THIS TAKES A SECOND OR TWO.');
     solve(body).then(function(){ say('SENDING…');
       return fetch(URL_, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) }); })
@@ -556,6 +624,16 @@ authorities and users is on the <a href="legal.html">Legal</a> page.</p>
           return;
         }
         if (a.status === 'invalid' && a.field === 'pow') { challenge = null; return bad('pow'); }
+        // 390: a report by the person shown is never lost. If the server does not take this category (only if
+        // this page went live before row 390 and its legal-notice), send them to the email route instead.
+        if (a.status === 'invalid' && a.field === 'category' && me) {
+          var mail = document.querySelector('a.mail'), addr = mail ? mail.textContent.trim() : '';
+          send.disabled = false;
+          say('WE COULD NOT TAKE THIS REPORT THROUGH THE FORM. PLEASE EMAIL ' + (addr || 'US (BELOW)') +
+              ' WITH THE SUBJECT LEGAL NOTICE: SAY IT IS A SEXUAL IMAGE OR VIDEO OF YOU FROM WHEN YOU WERE UNDER 18,' +
+              ' AND WHERE IT IS IF YOU KNOW. DO NOT SEND THE IMAGE.', 'bad');
+          return;
+        }
         if (a.status === 'invalid') return bad(a.field);
         send.disabled = false;
         if (a.status === 'slow_down') say('TOO MANY SUBMISSIONS FROM HERE. TRY AGAIN LATER, OR EMAIL US (BELOW).', 'bad');
